@@ -80,7 +80,7 @@
         <button class="icon" id="graph-zoom-out">Zoom -</button>
       </div>
     </div>
-    <div id="status" class="status">等待运行 HTSA...</div>
+    <div id="status" class="status">Waiting to run HTSA...</div>
     <div class="cols" id="result-cols">
       <div id="graph-wrap"><div id="graph"></div></div>
       <div class="series" id="series-panel">
@@ -92,7 +92,7 @@
             <button class="icon" id="series-zoom-out">Zoom -</button>
           </div>
         </div>
-        <div class="status">运行 HTSA 后显示摘要树节点的时间序列</div>
+        <div class="status">Time series of summary tree nodes will appear after running HTSA</div>
       </div>
     </div>
   </div>
@@ -208,7 +208,7 @@
         if(!graphEl) return;
         graphEl.innerHTML = '';
         if(!treeData){
-          setStatus('没有可展示的摘要树边。');
+          setStatus('No summary tree edges to display.');
           return;
         }
         const dx = 22, dy = 140;
@@ -298,7 +298,7 @@
         if(!seriesPanel) return;
         seriesPanel.innerHTML = '<h3>Node Time Series</h3>';
         if((!edges && !nodesFilter) || !entry || !entry.parsed || !entry.parsed.node_dict){
-          const div=document.createElement('div'); div.className='status'; div.textContent='暂无数据';
+          const div=document.createElement('div'); div.className='status'; div.textContent='No data available';
           seriesPanel.appendChild(div); return;
         }
         const nodeDict = entry.parsed.node_dict;
@@ -313,18 +313,18 @@
           });
         }
         const uniqSet = new Set(nodes);
-        let uniq = [...uniqSet].slice(0, 80); // 最多显示 80 个
+        let uniq = [...uniqSet].slice(0, 80); // show at most 80
         if(uniq.length===0){
-          const div=document.createElement('div'); div.className='status'; div.textContent='摘要树无节点可展示';
+          const div=document.createElement('div'); div.className='status'; div.textContent='No nodes to display in summary tree';
           seriesPanel.appendChild(div); return;
         }
-        // BFS 排序（仅当有过滤节点）
+        // BFS order (only when nodes are filtered)
         if(nodesFilter){
           const order = bfsOrder(new Set(nodesFilter.map(String)), entry.parsed.edges || [], startNode);
           uniq = order;
         }
         uniq.forEach(nid=>{
-          // 摘要树重要节点会加前缀 S_，unimportant_* 没有原始序列
+          // Summary tree important nodes are prefixed S_; unimportant_* have no original series
           if(String(nid).startsWith('unimportant')) return;
           const baseId = String(nid).startsWith('S_') ? String(nid).slice(2) : String(nid);
           const data = nodeDict[baseId];
@@ -364,7 +364,7 @@
           const entry = store.get(modalTargetId);
           if (!entry) return;
 
-          // 收集选择
+          // collect selections
           const method = methodSel.value;
           const strategy = strategySel.value;
           const a = Number(document.getElementById('param-a')?.value ?? 0);
@@ -374,7 +374,7 @@
 
           render();
 
-          // 发送到后端
+          // send to backend
           try {
               const payload = {
                   filename: entry.file.name,
@@ -397,7 +397,7 @@
 
               if (!res.ok || !data.ok) {
                   const msg = data?.error ? data.error : `HTTP ${res.status}`;
-                  setStatus(`后端处理失败：${msg}`);
+                  setStatus(`Backend error: ${msg}`);
                   alert("Upload failed: " + msg);
                   return;
               }
@@ -406,15 +406,15 @@
               entry.originalEdges = entry.parsed?.edges || [];
               currentSubgraphs = data.subgraphs || null;
               const edgeCount = Array.isArray(data.gprime_edges) ? data.gprime_edges.length : 0;
-              setStatus(`收到摘要树：根 ${data.gprime_root ?? '(未提供)'}，边 ${edgeCount}。点击节点查看对应子图。`);
+              setStatus(`Summary tree received: root ${data.gprime_root ?? '(none)'}, ${edgeCount} edges. Click a node to view its subgraph.`);
               renderSummary(data.gprime_edges, data.gprime_root);
               renderSeries(data.gprime_edges, entry);
           } catch (err) {
-              setStatus(`网络错误：${err}`);
+              setStatus(`Network error: ${err}`);
               alert("Network error: " + err);
               return;
           } finally {
-              // 可选：跳转前关闭弹窗
+              // close modal
               closeModal();
           }
       };
@@ -450,10 +450,10 @@
       backBtn.onclick = ()=>{
         const entry = currentEntryId ? store.get(currentEntryId) : null;
         if(!entry || !currentSummaryEdges){
-          setStatus('暂无全局摘要树可返回。');
+          setStatus('No global summary tree to return to.');
           return;
         }
-        setStatus('返回全局摘要树');
+        setStatus('Returning to global summary tree');
         renderSummary(currentSummaryEdges, currentSummaryRoot);
         renderSeries(currentSummaryEdges, entry);
       };
@@ -498,7 +498,7 @@
           if(!sg || !Array.isArray(sg.nodes)) continue;
           const set = new Set(sg.nodes.map(String));
           if(set.has(baseId)) return { ...sg, baseId };
-          // 有些返回的 root 可以直接匹配
+          // some returned roots match directly
           if(sg.root && String(sg.root) === baseId) return { ...sg, baseId };
         }
         return null;
@@ -509,7 +509,7 @@
         graphEl.innerHTML = '';
         const nodeSet = new Set((nodes||[]).map(String));
         if(nodeSet.size === 0){
-          setStatus('未找到该节点对应的子图。');
+          setStatus('No subgraph found for this node.');
           return;
         }
         const allEdges = entry?.originalEdges || entry?.parsed?.edges || [];
@@ -530,15 +530,15 @@
       function handleNodeClick(nodeName){
         const entry = currentEntryId ? store.get(currentEntryId) : null;
         if(!entry){
-          setStatus('未找到当前文件上下文。');
+          setStatus('Current file context not found.');
           return;
         }
         const sg = findSubgraphByNode(nodeName);
         if(!sg){
-          setStatus(`未找到节点 ${nodeName} 对应的子图。`);
+          setStatus(`No subgraph found for node ${nodeName}.`);
           return;
         }
-        setStatus(`查看子图：${nodeName}，节点数 ${sg.nodes.length}`);
+        setStatus(`Viewing subgraph: ${nodeName}, ${sg.nodes.length} nodes`);
         renderSubgraphGraph(sg.nodes, sg.root || sg.baseId, entry);
         renderSeries(entry.parsed.edges || [], entry, sg.nodes, sg.root || sg.baseId);
       }
