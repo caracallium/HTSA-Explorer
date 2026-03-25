@@ -108,15 +108,11 @@
         <div class="row-flex">
           <label>Strategy:</label>
           <select id="strategy">
-            <option value="V-greedy">V-greedy</option>
-            <option value="P-greedy">P-greedy</option>
-            <option value="OSS">OSS</option>
+            <option value="Path-greedy">Path-greedy</option>
+            <option value="Optimal-Search">Optimal-Search</option>
           </select>
         </div>
-        <div class="row-flex">
-          <label for="param-a">a:</label>
-          <input id="param-a" type="number" step="0.001" value="0">
-        </div>
+        <input id="param-a" type="hidden" value="0.9">
         <div class="row-flex">
           <label for="param-k">k:</label>
           <input id="param-k" type="number" step="1" value="1">
@@ -591,7 +587,7 @@
             <span>${entry.file.name}</span><small>${(entry.file.size/1024).toFixed(1)} KB</small>
           </div><div class='actions'>
             ${entry.tsKey?`<span class='tag'>ts:${entry.tsKey}</span>`:''}
-            ${entry.htsa?`<span class='tag'>${entry.htsa.method} a=${entry.htsa.a} k=${entry.htsa.k} · ${entry.htsa.strategy}</span>`:''}
+            ${entry.htsa?`<span class='tag'>${entry.htsa.method} k=${entry.htsa.k} · ${entry.htsa.strategy}</span>`:''}
             <button class='icon' data-act='htsa' data-id='${id}'>HTSA</button>
             <button class='icon danger' data-act='del' data-id='${id}'>Delete</button>
           </div></div>
