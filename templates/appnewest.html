@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GraphML Drag-and-Drop Upload</title>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <style>
+    :root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --error:#f43f5e; }
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--fg); }
+    .wrap { min-height: 100%; display: grid; place-items: center; padding: 24px; }
+    .panel { width: min(1000px, 94vw); }
+    h1 { font-size: clamp(20px, 2.6vw, 28px); margin: 0 0 12px; }
+    p { margin: 6px 0 18px; color: var(--muted); }
+    .dropzone { border: 2px dashed #334155; border-radius: 16px; padding: 36px; text-align: center; transition: border-color .2s, background-color .2s, transform .1s; background: rgba(148,163,184,.05); }
+    .dropzone.dragover { border-color: var(--accent); background: rgba(56,189,248,.08); transform: translateY(-1px); }
+    .hint { font-size: 14px; color: var(--muted); margin-top: 8px; }
+    .files { margin-top: 18px; display: grid; gap: 12px; }
+    .file { padding: 12px; border-radius: 10px; background: rgba(148,163,184,.08); display: grid; gap: 10px; }
+    .row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+    .meta { display: flex; gap: 10px; align-items: baseline; }
+    .tag { font-size: 12px; color: #93c5fd; background: rgba(59,130,246,.15); border: 1px solid rgba(59,130,246,.35); padding: 2px 6px; border-radius: 9999px; }
+    button.icon { border: none; padding: 6px 10px; border-radius: 8px; background: rgba(148,163,184,.12); color: var(--fg); cursor: pointer; }
+    button.icon:hover { background: rgba(148,163,184,.2); }
+    button.danger { background: rgba(244,63,94,.15); color: #fecdd3; }
+    button.danger:hover { background: rgba(244,63,94,.25); }
+    pre { margin: 0; padding: 10px; background: rgba(15,23,42,.6); border-radius: 10px; overflow: auto; }
+    .out { font-size: 13px; line-height: 1.5; }
+    .actions { display: flex; gap: 8px; align-items: center; }
+    .results { width: min(1200px, 96vw); margin: 32px auto; display: grid; gap: 14px; }
+    .results h2 { margin: 0; font-size: 18px; color: var(--fg); }
+    .results .header-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .status { font-size: 13px; color: var(--muted); }
+    .cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; align-items: start; }
+    #graph-wrap { width: 100%; height: 560px; overflow: auto; background: rgba(148,163,184,.05); border: 1px solid #1f2a44; border-radius: 12px; }
+    #graph { min-width: 800px; min-height: 540px; }
+    .series { background: rgba(15,23,42,.6); border: 1px solid #1f2a44; border-radius: 12px; padding: 12px; max-height: 560px; overflow: auto; display: grid; gap: 10px; }
+    .series-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .series h3 { margin: 0; font-size: 15px; }
+    .chart { width: 100%; height: 120px; border: 1px solid #1f2a44; border-radius: 8px; background: rgba(148,163,184,.08); }
+    .upload-row { display: flex; gap: 10px; align-items: center; margin: 10px 0; }
+
+    .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: none; align-items: center; justify-content: center; z-index: 20; }
+    .modal-backdrop.show { display: flex; }
+    .modal { background: #0b1223; border: 1px solid #1f2a44; border-radius: 12px; width: min(560px, 92vw); padding: 16px; display: grid; gap: 12px; }
+    .modal h2 { margin: 0; font-size: 18px; }
+    .modal .row-flex { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .modal .col { display: grid; gap: 8px; }
+    .modal .footer { display: flex; justify-content: flex-end; gap: 8px; }
+    select, input[type="number"] { background: #0a162e; color: var(--fg); border: 1px solid #26324f; border-radius: 8px; padding: 8px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel">
+      <h1>GraphML Drag-and-Drop Upload</h1>
+      <p>Drag your <code>.graphml</code> files here. After dropping, you will input the <code>time_series_key</code>.</p>
+      <div class="upload-row">
+        <div id="dropzone" class="dropzone" tabindex="0">
+          <strong>Drag files here</strong>
+          <div class="hint">Only <code>.graphml</code> extension is allowed</div>
+        </div>
+        <div>
+          <input type="file" id="filepicker" accept=".graphml" style="display:none" />
+          <button class="icon" id="pick-btn">Choose .graphml</button>
+        </div>
+      </div>
+      <div id="files" class="files"></div>
+    </div>
+  </div>
+
+  <div class="results">
+    <div class="header-row">
+      <h2>Summary Tree</h2>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="icon" id="back-btn">Back</button>
+        <button class="icon" id="toggle-graph">Hide Graph</button>
+        <button class="icon" id="graph-full-btn">Fullscreen</button>
+        <button class="icon" id="graph-zoom-in">Zoom +</button>
+        <button class="icon" id="graph-zoom-out">Zoom -</button>
+      </div>
+    </div>
+    <div id="status" class="status">等待运行 HTSA...</div>
+    <div class="cols" id="result-cols">
+      <div id="graph-wrap"><div id="graph"></div></div>
+      <div class="series" id="series-panel">
+        <div class="series-header">
+          <h3>Node Time Series</h3>
+          <div style="display:flex; gap:6px;">
+            <button class="icon" id="series-full-btn">Fullscreen</button>
+            <button class="icon" id="series-zoom-in">Zoom +</button>
+            <button class="icon" id="series-zoom-out">Zoom -</button>
+          </div>
+        </div>
+        <div class="status">运行 HTSA 后显示摘要树节点的时间序列</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal-backdrop">
+    <div class="modal">
+      <h2>HTSA</h2>
+      <div class="col">
+        <div class="row-flex">
+          <label>Method:</label>
+          <select id="method"><option value="FDS">FDS</option></select>
+        </div>
+        <div class="row-flex">
+          <label>Strategy:</label>
+          <select id="strategy">
+            <option value="V-greedy">V-greedy</option>
+            <option value="P-greedy">P-greedy</option>
+            <option value="OSS">OSS</option>
+          </select>
+        </div>
+        <div class="row-flex">
+          <label for="param-a">a:</label>
+          <input id="param-a" type="number" step="0.001" value="0">
+        </div>
+        <div class="row-flex">
+          <label for="param-k">k:</label>
+          <input id="param-k" type="number" step="1" value="1">
+        </div>
+      </div>
+      <div class="footer">
+        <button class="icon" id="cancel">Cancel</button>
+        <button class="icon" id="confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const dropzone = document.getElementById('dropzone');
+      const list = document.getElementById('files');
+      const modal = document.getElementById('modal');
+      const methodSel = document.getElementById('method');
+      const strategySel = document.getElementById('strategy');
+      const aInput = document.getElementById('param-a');
+      const kInput = document.getElementById('param-k');
+      const btnCancel = document.getElementById('cancel');
+      const btnConfirm = document.getElementById('confirm');
+      const filePicker = document.getElementById('filepicker');
+      const pickBtn = document.getElementById('pick-btn');
+      const toggleGraphBtn = document.getElementById('toggle-graph');
+      const graphWrap = document.getElementById('graph-wrap');
+      const colsEl = document.getElementById('result-cols');
+      const backBtn = document.getElementById('back-btn');
+      const graphFullBtn = document.getElementById('graph-full-btn');
+      const graphZoomInBtn = document.getElementById('graph-zoom-in');
+      const graphZoomOutBtn = document.getElementById('graph-zoom-out');
+      const seriesFullBtn = document.getElementById('series-full-btn');
+      const seriesZoomInBtn = document.getElementById('series-zoom-in');
+      const seriesZoomOutBtn = document.getElementById('series-zoom-out');
+      const store = new Map();
+      let modalTargetId = null;
+      const statusBox = document.getElementById('status');
+      const graphEl = document.getElementById('graph');
+      const seriesPanel = document.getElementById('series-panel');
+      let currentEntryId = null;
+      let currentSummaryEdges = null;
+      let currentSummaryRoot = null;
+      let currentSubgraphs = null;
+      let graphScale = 1.0;
+      let seriesScale = 1.0;
+
+      const uid = () => crypto.randomUUID?.() || 'f_' + Math.random().toString(36).slice(2);
+
+      function openModal(id){ modalTargetId = id; modal.classList.add('show'); }
+      function closeModal(){ modal.classList.remove('show'); modalTargetId = null; }
+      btnCancel.onclick = closeModal;
+      modal.onclick = e=>{ if(e.target===modal) closeModal(); };
+
+      function setStatus(msg){
+        if(statusBox){ statusBox.textContent = msg; }
+      }
+
+      function applyGraphZoom(){
+        if(!graphEl) return;
+        graphEl.style.transform = `scale(${graphScale})`;
+        graphEl.style.transformOrigin = 'top left';
+      }
+      function applySeriesZoom(){
+        if(!seriesPanel) return;
+        seriesPanel.style.transform = `scale(${seriesScale})`;
+        seriesPanel.style.transformOrigin = 'top left';
+      }
+      function clampScale(v){ return Math.min(4, Math.max(0.5, v)); }
+
+      function buildTreeFromEdges(edges, forcedRoot){
+        if(!Array.isArray(edges) || edges.length === 0) return null;
+        const nodes = new Map();
+        const childSet = new Set();
+        edges.forEach(e=>{
+          if(!Array.isArray(e) || e.length < 2) return;
+          const p = String(e[0]);
+          const c = String(e[1]);
+          if(!nodes.has(p)) nodes.set(p, { name:p, children:[] });
+          if(!nodes.has(c)) nodes.set(c, { name:c, children:[] });
+          nodes.get(p).children.push(nodes.get(c));
+          childSet.add(c);
+        });
+        let rootNode = forcedRoot && nodes.get(forcedRoot);
+        if(!rootNode){
+          const candidate = [...nodes.keys()].find(k=>!childSet.has(k));
+          rootNode = candidate ? nodes.get(candidate) : nodes.values().next().value;
+        }
+        return rootNode || null;
+      }
+
+      function renderTree(treeData, {onNodeClick} = {}){
+        if(!graphEl) return;
+        graphEl.innerHTML = '';
+        if(!treeData){
+          setStatus('没有可展示的摘要树边。');
+          return;
+        }
+        const dx = 22, dy = 140;
+        const root = d3.hierarchy(treeData);
+        const treeLayout = d3.tree().nodeSize([dx, dy]);
+        treeLayout(root);
+        let x0 = Infinity, x1 = -Infinity;
+        root.each(d => { if(d.x < x0) x0 = d.x; if(d.x > x1) x1 = d.x; });
+        const width = Math.max(graphEl.clientWidth || 900, 900);
+        const svg = d3.select(graphEl).append('svg')
+          .attr('viewBox', [-(dy/2), x0 - dx, width + 200, (x1 - x0) + dx * 2])
+          .attr('width', width + 200)
+          .attr('height', Math.max(220, (x1 - x0) + dx * 4))
+          .style('font-family', 'Inter, system-ui, sans-serif')
+          .style('font-size', 12);
+
+        svg.append('g')
+          .attr('fill', 'none')
+          .attr('stroke', '#334155')
+          .attr('stroke-width', 1.2)
+          .selectAll('path')
+          .data(root.links())
+          .join('path')
+          .attr('d', d => `M${d.source.y},${d.source.x}C${d.source.y + dy/3},${d.source.x} ${d.target.y - dy/3},${d.target.x} ${d.target.y},${d.target.x}`);
+
+        const node = svg.append('g')
+          .attr('stroke-linejoin', 'round')
+          .attr('stroke-width', 1.2)
+          .selectAll('g')
+          .data(root.descendants())
+          .join('g')
+          .attr('transform', d => `translate(${d.y},${d.x})`)
+          .style('cursor', 'pointer')
+          .on('click', (_, d) => onNodeClick && onNodeClick(d.data.name));
+
+        node.append('circle')
+          .attr('r', 7)
+          .attr('fill', d => String(d.data.name || '').startsWith('S_') ? '#38bdf8' : '#64748b')
+          .attr('stroke', '#0f172a');
+
+        node.append('text')
+          .attr('dy', '0.32em')
+          .attr('x', d => d.children ? -12 : 12)
+          .attr('text-anchor', d => d.children ? 'end' : 'start')
+          .attr('fill', '#e2e8f0')
+          .text(d => d.data.name);
+      }
+
+      function renderSummary(edges, root){
+        currentSummaryEdges = edges;
+        currentSummaryRoot = root;
+        graphScale = 1.0; seriesScale = 1.0; applyGraphZoom(); applySeriesZoom();
+        const treeData = buildTreeFromEdges(edges, root);
+        renderTree(treeData, {onNodeClick: handleNodeClick});
+      }
+
+      function bfsOrder(nodesSet, edges, start){
+        const adj = new Map();
+        edges.forEach(e=>{
+          if(!Array.isArray(e) || e.length<2) return;
+          const [u,v]=e.map(String);
+          if(!nodesSet.has(u) || !nodesSet.has(v)) return;
+          if(!adj.has(u)) adj.set(u, []);
+          adj.get(u).push(v);
+        });
+        const seen=new Set();
+        const order=[];
+        const q=[];
+        if(start && nodesSet.has(start)){ q.push(start); seen.add(start); }
+        for(const n of nodesSet){
+          if(q.length>=1) break;
+          q.push(n); seen.add(n); break;
+        }
+        while(q.length){
+          const u=q.shift();
+          order.push(u);
+          (adj.get(u)||[]).forEach(v=>{
+            if(!seen.has(v)){ seen.add(v); q.push(v); }
+          });
+        }
+        // append any missed nodes
+        nodesSet.forEach(n=>{ if(!seen.has(n)) order.push(n); });
+        return order;
+      }
+
+      function renderSeries(edges, entry, nodesFilter=null, startNode=null){
+        if(!seriesPanel) return;
+        seriesPanel.innerHTML = '<h3>Node Time Series</h3>';
+        if((!edges && !nodesFilter) || !entry || !entry.parsed || !entry.parsed.node_dict){
+          const div=document.createElement('div'); div.className='status'; div.textContent='暂无数据';
+          seriesPanel.appendChild(div); return;
+        }
+        const nodeDict = entry.parsed.node_dict;
+        let nodes = [];
+        if(nodesFilter){
+          nodes = nodesFilter.map(String);
+        } else {
+          edges.forEach(e=>{
+            if(!Array.isArray(e) || e.length < 2) return;
+            const p=String(e[0]), c=String(e[1]);
+            nodes.push(p); nodes.push(c);
+          });
+        }
+        const uniqSet = new Set(nodes);
+        let uniq = [...uniqSet].slice(0, 80); // 最多显示 80 个
+        if(uniq.length===0){
+          const div=document.createElement('div'); div.className='status'; div.textContent='摘要树无节点可展示';
+          seriesPanel.appendChild(div); return;
+        }
+        // BFS 排序（仅当有过滤节点）
+        if(nodesFilter){
+          const order = bfsOrder(new Set(nodesFilter.map(String)), entry.parsed.edges || [], startNode);
+          uniq = order;
+        }
+        uniq.forEach(nid=>{
+          // 摘要树重要节点会加前缀 S_，unimportant_* 没有原始序列
+          if(String(nid).startsWith('unimportant')) return;
+          const baseId = String(nid).startsWith('S_') ? String(nid).slice(2) : String(nid);
+          const data = nodeDict[baseId];
+          const ts = data?.time_series || data?.ts || (Array.isArray(data)?data[0]:null);
+          if(!Array.isArray(ts) || ts.length===0) return;
+          const card=document.createElement('div');
+          const title=document.createElement('div');
+          title.className='status';
+          title.textContent=`${baseId} (len=${ts.length})`;
+          const chart=document.createElement('div');
+          chart.className='chart';
+          card.appendChild(title);
+          card.appendChild(chart);
+          seriesPanel.appendChild(card);
+
+          const w = chart.clientWidth || 260;
+          const h = chart.clientHeight || 120;
+          const svg = d3.select(chart).append('svg')
+            .attr('width', w)
+            .attr('height', h);
+          const x = d3.scaleLinear().domain([0, ts.length-1]).range([8, w-8]);
+          const y = d3.scaleLinear().domain(d3.extent(ts)).nice().range([h-12, 8]);
+          const line = d3.line()
+            .x((d,i)=>x(i))
+            .y(d=>y(d));
+          svg.append('path')
+            .datum(ts)
+            .attr('fill','none')
+            .attr('stroke','#38bdf8')
+            .attr('stroke-width',1.5)
+            .attr('d', line);
+        });
+      }
+
+      btnConfirm.onclick = async () => {
+          if (!modalTargetId) return;
+          const entry = store.get(modalTargetId);
+          if (!entry) return;
+
+          // 收集选择
+          const method = methodSel.value;
+          const strategy = strategySel.value;
+          const a = Number(document.getElementById('param-a')?.value ?? 0);
+          const k = Number(document.getElementById('param-k')?.value ?? 1);
+          entry.htsa = { method, strategy, a, k };
+          currentEntryId = modalTargetId;
+
+          render();
+
+          // 发送到后端
+          try {
+              const payload = {
+                  filename: entry.file.name,
+                  size: entry.file.size,
+                  ts_key: entry.tsKey,
+                  htsa: entry.htsa,
+                  node_dict: entry.parsed?.node_dict ?? null,
+                  edges: entry.parsed?.edges ?? null,
+                  G: entry.parsed?.G ?? null
+              };
+
+              const res = await fetch("/api/htsa", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(payload)
+              });
+
+              const ct = (res.headers.get("content-type") || "").toLowerCase();
+              const data = ct.includes("application/json") ? await res.json() : {};
+
+              if (!res.ok || !data.ok) {
+                  const msg = data?.error ? data.error : `HTTP ${res.status}`;
+                  setStatus(`后端处理失败：${msg}`);
+                  alert("Upload failed: " + msg);
+                  return;
+              }
+
+              entry.summary = data;
+              entry.originalEdges = entry.parsed?.edges || [];
+              currentSubgraphs = data.subgraphs || null;
+              const edgeCount = Array.isArray(data.gprime_edges) ? data.gprime_edges.length : 0;
+              setStatus(`收到摘要树：根 ${data.gprime_root ?? '(未提供)'}，边 ${edgeCount}。点击节点查看对应子图。`);
+              renderSummary(data.gprime_edges, data.gprime_root);
+              renderSeries(data.gprime_edges, entry);
+          } catch (err) {
+              setStatus(`网络错误：${err}`);
+              alert("Network error: " + err);
+              return;
+          } finally {
+              // 可选：跳转前关闭弹窗
+              closeModal();
+          }
+      };
+
+
+      function prevent(e){e.preventDefault(); e.stopPropagation();}
+      ['dragenter','dragover','dragleave','drop'].forEach(ev=>dropzone.addEventListener(ev,prevent,false));
+      dropzone.addEventListener('drop', e=>{
+        const files = [...e.dataTransfer.files];
+        handleFiles(files);
+      });
+
+      pickBtn.onclick = ()=> filePicker.click();
+      filePicker.onchange = e=>{
+        const files=[...e.target.files];
+        handleFiles(files);
+        filePicker.value='';
+      };
+
+      toggleGraphBtn.onclick = ()=>{
+        const hidden = graphWrap.style.display === 'none';
+        if(hidden){
+          graphWrap.style.display = '';
+          if(colsEl) colsEl.style.gridTemplateColumns = '1.3fr 1fr';
+          toggleGraphBtn.textContent = 'Hide Graph';
+        } else {
+          graphWrap.style.display = 'none';
+          if(colsEl) colsEl.style.gridTemplateColumns = '1fr';
+          toggleGraphBtn.textContent = 'Show Graph';
+        }
+      };
+
+      backBtn.onclick = ()=>{
+        const entry = currentEntryId ? store.get(currentEntryId) : null;
+        if(!entry || !currentSummaryEdges){
+          setStatus('暂无全局摘要树可返回。');
+          return;
+        }
+        setStatus('返回全局摘要树');
+        renderSummary(currentSummaryEdges, currentSummaryRoot);
+        renderSeries(currentSummaryEdges, entry);
+      };
+
+      graphFullBtn.onclick = ()=>{
+        const el = graphWrap;
+        if(!document.fullscreenElement){
+          el.requestFullscreen?.();
+        }else{
+          document.exitFullscreen?.();
+        }
+      };
+      seriesFullBtn.onclick = ()=>{
+        const el = seriesPanel;
+        if(!document.fullscreenElement){
+          el.requestFullscreen?.();
+        }else{
+          document.exitFullscreen?.();
+        }
+      };
+      graphZoomInBtn.onclick = ()=>{ graphScale = clampScale(graphScale + 0.2); applyGraphZoom(); };
+      graphZoomOutBtn.onclick = ()=>{ graphScale = clampScale(graphScale - 0.2); applyGraphZoom(); };
+      seriesZoomInBtn.onclick = ()=>{ seriesScale = clampScale(seriesScale + 0.2); applySeriesZoom(); };
+      seriesZoomOutBtn.onclick = ()=>{ seriesScale = clampScale(seriesScale - 0.2); applySeriesZoom(); };
+
+      function handleFiles(files){
+        files.forEach(f=>{
+          if(!f.name.toLowerCase().endsWith('.graphml'))return;
+          const id=uid(); const ts=prompt(`Enter time_series_key for ${f.name}`,'time_series');
+          if(ts===null)return;
+          const clean=ts.trim();
+          store.set(id,{file:f,tsKey:clean,parsed:null,expanded:false,htsa:null});
+          readAndParse(id);
+        });
+        render();
+      }
+
+      function findSubgraphByNode(nodeName){
+        if(!currentSubgraphs || !Array.isArray(currentSubgraphs)) return null;
+        const baseId = String(nodeName).startsWith('S_') ? String(nodeName).slice(2) : String(nodeName);
+        for(const sg of currentSubgraphs){
+          if(!sg || !Array.isArray(sg.nodes)) continue;
+          const set = new Set(sg.nodes.map(String));
+          if(set.has(baseId)) return { ...sg, baseId };
+          // 有些返回的 root 可以直接匹配
+          if(sg.root && String(sg.root) === baseId) return { ...sg, baseId };
+        }
+        return null;
+      }
+
+      function renderSubgraphGraph(nodes, startNode, entry){
+        if(!graphEl) return;
+        graphEl.innerHTML = '';
+        const nodeSet = new Set((nodes||[]).map(String));
+        if(nodeSet.size === 0){
+          setStatus('未找到该节点对应的子图。');
+          return;
+        }
+        const allEdges = entry?.originalEdges || entry?.parsed?.edges || [];
+        const subEdges = allEdges.filter(e=>{
+          if(!Array.isArray(e) || e.length<2) return false;
+          const [u,v]=e.map(String);
+          return nodeSet.has(u) && nodeSet.has(v);
+        });
+        const roots = [];
+        const childSet = new Set();
+        subEdges.forEach(([u,v])=>childSet.add(String(v)));
+        nodeSet.forEach(n=>{ if(!childSet.has(n)) roots.push(n); });
+        const rootId = roots[0] || startNode || Array.from(nodeSet)[0];
+        const treeData = buildTreeFromEdges(subEdges.map(e=>[String(e[0]), String(e[1])]), rootId);
+        renderTree(treeData, {onNodeClick: handleNodeClick});
+      }
+
+      function handleNodeClick(nodeName){
+        const entry = currentEntryId ? store.get(currentEntryId) : null;
+        if(!entry){
+          setStatus('未找到当前文件上下文。');
+          return;
+        }
+        const sg = findSubgraphByNode(nodeName);
+        if(!sg){
+          setStatus(`未找到节点 ${nodeName} 对应的子图。`);
+          return;
+        }
+        setStatus(`查看子图：${nodeName}，节点数 ${sg.nodes.length}`);
+        renderSubgraphGraph(sg.nodes, sg.root || sg.baseId, entry);
+        renderSeries(entry.parsed.edges || [], entry, sg.nodes, sg.root || sg.baseId);
+      }
+
+      function readAndParse(id){
+        const entry=store.get(id);
+        const reader=new FileReader();
+        reader.onload=()=>{ entry.parsed=parseGraphML(reader.result,entry.tsKey); render(); };
+        reader.onerror=()=>{ entry.parsed={error:'read error'}; render(); };
+        reader.readAsText(entry.file);
+      }
+
+      function parseGraphML(xmlText, tsKey){
+        const doc=new DOMParser().parseFromString(xmlText,'application/xml');
+        const qa=(s,e=doc)=>[...e.querySelectorAll(s)];
+        const keyIdToAttr=new Map();
+        qa('key').forEach(k=>{ keyIdToAttr.set(k.getAttribute('id'),k.getAttribute('attr.name')||k.getAttribute('id'));});
+        const nodes=qa('node'), edgesElems=qa('edge');
+        const nodeDict={}, edges=[];
+        const matchers=new Set([tsKey,tsKey.toLowerCase(),tsKey.toUpperCase()]);
+        function isTS(key){const attr=keyIdToAttr.get(key)||key; return matchers.has(attr)||matchers.has(attr.toLowerCase());}
+        for(const n of nodes){
+          const id=n.getAttribute('id'); if(!id)continue;
+          let ts=null,val=0,info={};
+          for(const d of qa('data',n)){
+            const key=d.getAttribute('key'); const text=(d.textContent||'').trim();
+            if(isTS(key)){const arr=text.replace(/\[|\]/g,'').split(/[\s,]+/).map(Number).filter(Number.isFinite);
+              if(arr.length){ts=arr; val=arr.reduce((a,b)=>a+b,0);}}
+            else if(text)info[key]=text;
+          }
+          if(ts)nodeDict[id]={time_series:ts,value:val,info};
+        }
+        for(const e of edgesElems){
+          const s=e.getAttribute('source'),t=e.getAttribute('target');
+          if(s&&t&&nodeDict[s]&&nodeDict[t])edges.push([s,t]);
+        }
+        const G={directed:true,nodes:Object.keys(nodeDict),edges};
+        return {node_dict:nodeDict,edges,G};
+      }
+
+      function render(){
+        list.innerHTML='';
+        for(const [id,entry] of store){
+          const d=document.createElement('div'); d.className='file';
+          d.innerHTML=`<div class='row'><div class='meta'>
+            <span>${entry.file.name}</span><small>${(entry.file.size/1024).toFixed(1)} KB</small>
+          </div><div class='actions'>
+            ${entry.tsKey?`<span class='tag'>ts:${entry.tsKey}</span>`:''}
+            ${entry.htsa?`<span class='tag'>${entry.htsa.method} a=${entry.htsa.a} k=${entry.htsa.k} · ${entry.htsa.strategy}</span>`:''}
+            <button class='icon' data-act='htsa' data-id='${id}'>HTSA</button>
+            <button class='icon danger' data-act='del' data-id='${id}'>Delete</button>
+          </div></div>
+          <pre class='out'>${entry.parsed?JSON.stringify(entry.parsed,null,2):'Waiting...'}</pre>`;
+          list.appendChild(d);
+        }
+      }
+
+      list.onclick=e=>{
+        const b=e.target.closest('button'); if(!b)return;
+        const id=b.dataset.id, act=b.dataset.act, entry=store.get(id);
+        if(!entry)return;
+        if(act==='del'){store.delete(id); render();}
+        if(act==='htsa')openModal(id);
+      };
+    })();
+  </script>
+</body>
+</html>
