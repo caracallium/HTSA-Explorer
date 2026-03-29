@@ -665,7 +665,7 @@
             <button class='icon' data-act='htsa' data-id='${id}'>HTSA</button>
             <button class='icon danger' data-act='del' data-id='${id}'>Delete</button>
           </div></div>
-          <pre class='out'>${entry.parsed?JSON.stringify(entry.parsed,null,2):'Waiting...'}</pre>`;
+          <pre class='out'>${entry.parsed?(()=>{const lines=JSON.stringify(entry.parsed,null,2).split('\n');return lines.slice(0,20).join('\n')+(lines.length>20?'\n...':'');})():'Waiting...'}</pre>`;
           list.appendChild(d);
         }
       }
