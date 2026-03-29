@@ -55,6 +55,11 @@
     <div class="panel">
       <h1>GraphML Drag-and-Drop Upload</h1>
       <p>Drag your <code>.graphml</code> files here. After dropping, you will input the <code>time_series_key</code>.</p>
+      <div style="margin-bottom:14px; display:flex; gap:10px; align-items:center;">
+        <span style="color:var(--muted); font-size:14px;">Preset datasets:</span>
+        <button class="icon" id="load-graph">Region Hierarchy</button>
+        <button class="icon" id="load-stockgraph">Stock Graph</button>
+      </div>
       <div class="upload-row">
         <div id="dropzone" class="dropzone" tabindex="0">
           <strong>Drag files here</strong>
@@ -426,6 +431,28 @@
         const files = [...e.dataTransfer.files];
         handleFiles(files);
       });
+
+      async function loadPreset(datasetKey, filename, defaultTsKey) {
+        const ts = prompt(`Enter time_series_key for ${filename}`, defaultTsKey);
+        if (ts === null) return;
+        const clean = ts.trim();
+        try {
+          const resp = await fetch(`/api/dataset/${datasetKey}`);
+          if (!resp.ok) { alert('Failed to load preset dataset'); return; }
+          const text = await resp.text();
+          const blob = new Blob([text], { type: 'application/xml' });
+          const file = new File([blob], filename, { type: 'application/xml' });
+          const id = uid();
+          store.set(id, { file, tsKey: clean, parsed: null, expanded: false, htsa: null });
+          readAndParse(id);
+          render();
+        } catch(e) {
+          alert('Error loading preset: ' + e);
+        }
+      }
+
+      document.getElementById('load-graph').onclick = () => loadPreset('graph', 'graph copy.graphml', 'time_series');
+      document.getElementById('load-stockgraph').onclick = () => loadPreset('stockgraph', 'stockgraph copy.graphml', 'time_series');
 
       pickBtn.onclick = ()=> filePicker.click();
       filePicker.onchange = e=>{

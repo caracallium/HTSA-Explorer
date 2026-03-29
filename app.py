@@ -801,6 +801,27 @@ def writing_home():
     return render_template("appnewestwriting.html")
 
 
+PRESET_DATASETS = {
+    "graph": "graph copy.graphml",
+    "stockgraph": "stockgraph copy.graphml",
+}
+
+@app.route("/api/dataset/<name>", methods=["GET"])
+def api_dataset(name):
+    filename = PRESET_DATASETS.get(name)
+    if not filename:
+        return jsonify({"ok": False, "error": "dataset not found"}), 404
+    filepath = os.path.join(os.path.dirname(__file__), filename)
+    if not os.path.exists(filepath):
+        return jsonify({"ok": False, "error": "file missing on server"}), 404
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+    from flask import Response
+    return Response(content, mimetype="application/xml", headers={
+        "Content-Disposition": f'attachment; filename="{filename}"'
+    })
+
+
 @app.route("/api/save_svgs", methods=["POST"])
 def api_save_svgs():
     try:
