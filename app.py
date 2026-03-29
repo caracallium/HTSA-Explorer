@@ -802,7 +802,7 @@ def writing_home():
 
 
 PRESET_DATASETS = {
-    "graph": "graph copy.graphml",
+    "acm": "acm copy.graphml",
     "stockgraph": "stockgraph copy.graphml",
 }
 

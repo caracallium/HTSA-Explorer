@@ -53,24 +53,10 @@
 <body>
   <div class="wrap">
     <div class="panel">
-      <h1>GraphML Drag-and-Drop Upload</h1>
-      <p>Drag your <code>.graphml</code> files here. After dropping, you will input the <code>time_series_key</code>.</p>
-      <div style="margin-bottom:14px; display:flex; gap:10px; align-items:center;">
-        <span style="color:var(--muted); font-size:14px;">Preset datasets:</span>
-        <button class="icon" id="load-graph">Region Hierarchy</button>
-        <button class="icon" id="load-stockgraph">Stock Graph</button>
-      </div>
-      <div class="upload-row">
-        <div id="dropzone" class="dropzone" tabindex="0">
-          <strong>Drag files here</strong>
-          <div class="hint">Only <code>.graphml</code> extension is allowed</div>
-        </div>
-        <div>
-          <input type="file" id="filepicker" accept=".graphml" style="display:none" />
-          <button class="icon" id="pick-btn">Choose .graphml</button>
-        </div>
-      </div>
-      <div id="files" class="files"></div>
+      <h1>HTSA Explorer</h1>
+      <p>Choose a preset dataset or upload your own <code>.graphml</code> file, then configure HTSA parameters.</p>
+      <button class="icon" id="open-setup-btn" style="font-size:15px; padding:10px 22px; background:rgba(56,189,248,.15); color:#38bdf8; border:1px solid rgba(56,189,248,.3);">+ New Run</button>
+      <div id="files" class="files" style="margin-top:16px;"></div>
     </div>
   </div>
 
@@ -104,8 +90,23 @@
 
   <div id="modal" class="modal-backdrop">
     <div class="modal">
-      <h2>HTSA</h2>
+      <h2>New HTSA Run</h2>
       <div class="col">
+        <div style="border:1px solid #26324f; border-radius:8px; padding:10px; display:grid; gap:8px;">
+          <div style="font-size:13px; color:var(--muted); margin-bottom:2px;">Dataset</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="icon" id="preset-acm">ACM</button>
+            <button class="icon" id="preset-stock">Stock Graph</button>
+            <span style="color:var(--muted); font-size:13px; align-self:center;">or</span>
+            <input type="file" id="filepicker" accept=".graphml" style="display:none" />
+            <button class="icon" id="pick-btn">Upload .graphml</button>
+          </div>
+          <div id="selected-file-label" style="font-size:13px; color:#38bdf8; min-height:18px;"></div>
+        </div>
+        <div class="row-flex">
+          <label>Time series key:</label>
+          <input id="ts-key-input" type="text" value="d0" style="background:#0a162e; color:var(--fg); border:1px solid #26324f; border-radius:8px; padding:8px; width:120px;">
+        </div>
         <div class="row-flex">
           <label>Method:</label>
           <select id="method"><option value="FDS">FDS</option></select>
@@ -125,14 +126,13 @@
       </div>
       <div class="footer">
         <button class="icon" id="cancel">Cancel</button>
-        <button class="icon" id="confirm">Confirm</button>
+        <button class="icon" id="confirm">Run HTSA</button>
       </div>
     </div>
   </div>
 
   <script>
     (function(){
-      const dropzone = document.getElementById('dropzone');
       const list = document.getElementById('files');
       const modal = document.getElementById('modal');
       const methodSel = document.getElementById('method');
@@ -143,6 +143,9 @@
       const btnConfirm = document.getElementById('confirm');
       const filePicker = document.getElementById('filepicker');
       const pickBtn = document.getElementById('pick-btn');
+      const tsKeyInput = document.getElementById('ts-key-input');
+      const selectedFileLabel = document.getElementById('selected-file-label');
+      const openSetupBtn = document.getElementById('open-setup-btn');
       const toggleGraphBtn = document.getElementById('toggle-graph');
       const graphWrap = document.getElementById('graph-wrap');
       const colsEl = document.getElementById('result-cols');
@@ -155,6 +158,7 @@
       const seriesZoomOutBtn = document.getElementById('series-zoom-out');
       const store = new Map();
       let modalTargetId = null;
+      let pendingFile = null; // file staged in the modal
       const statusBox = document.getElementById('status');
       const graphEl = document.getElementById('graph');
       const seriesPanel = document.getElementById('series-panel');
@@ -167,10 +171,30 @@
 
       const uid = () => crypto.randomUUID?.() || 'f_' + Math.random().toString(36).slice(2);
 
-      function openModal(id){ modalTargetId = id; modal.classList.add('show'); }
-      function closeModal(){ modal.classList.remove('show'); modalTargetId = null; }
+      function openModal(id){
+        modalTargetId = id;
+        // editing existing entry: pre-fill ts key
+        if(id) {
+          const entry = store.get(id);
+          if(entry) {
+            tsKeyInput.value = entry.tsKey || 'd0';
+            selectedFileLabel.textContent = entry.file.name;
+            pendingFile = null;
+          }
+        }
+        modal.classList.add('show');
+      }
+      function openNewModal(){
+        modalTargetId = null;
+        pendingFile = null;
+        tsKeyInput.value = 'd0';
+        selectedFileLabel.textContent = '';
+        modal.classList.add('show');
+      }
+      function closeModal(){ modal.classList.remove('show'); modalTargetId = null; pendingFile = null; }
       btnCancel.onclick = closeModal;
       modal.onclick = e=>{ if(e.target===modal) closeModal(); };
+      openSetupBtn.onclick = openNewModal;
 
       function setStatus(msg){
         if(statusBox){ statusBox.textContent = msg; }
@@ -365,15 +389,52 @@
       }
 
       btnConfirm.onclick = async () => {
-          if (!modalTargetId) return;
-          const entry = store.get(modalTargetId);
-          if (!entry) return;
-
-          // collect selections
           const method = methodSel.value;
           const strategy = strategySel.value;
-          const a = Number(document.getElementById('param-a')?.value ?? 0);
-          const k = Number(document.getElementById('param-k')?.value ?? 1);
+          const a = Number(aInput?.value ?? 0.9);
+          const k = Number(kInput?.value ?? 1);
+          const tsKey = tsKeyInput.value.trim() || 'd0';
+
+          let entry;
+          if (modalTargetId) {
+            // re-run existing entry
+            entry = store.get(modalTargetId);
+            if (!entry) return;
+            entry.tsKey = tsKey;
+          } else {
+            // new entry from modal
+            if (!pendingFile) { alert('Please select a dataset first.'); return; }
+            if (pendingFile.preset) {
+              // load from server
+              let xmlText;
+              try {
+                const resp = await fetch(`/api/dataset/${pendingFile.preset}`);
+                if (!resp.ok) { alert('Failed to load preset dataset'); return; }
+                xmlText = await resp.text();
+              } catch(e) { alert('Error loading preset: ' + e); return; }
+              const blob = new Blob([xmlText], { type: 'application/xml' });
+              const file = new File([blob], pendingFile.filename, { type: 'application/xml' });
+              const id = uid();
+              entry = { file, tsKey, parsed: null, expanded: false, htsa: null };
+              store.set(id, entry);
+              modalTargetId = id;
+              entry.parsed = parseGraphML(xmlText, tsKey);
+            } else {
+              // uploaded file
+              const id = uid();
+              entry = { file: pendingFile.file, tsKey, parsed: null, expanded: false, htsa: null };
+              store.set(id, entry);
+              modalTargetId = id;
+              // parse async then re-run via the code below
+              await new Promise(resolve => {
+                const reader = new FileReader();
+                reader.onload = () => { entry.parsed = parseGraphML(reader.result, tsKey); resolve(); };
+                reader.onerror = () => { entry.parsed = { error: 'read error' }; resolve(); };
+                reader.readAsText(pendingFile.file);
+              });
+            }
+          }
+
           entry.htsa = { method, strategy, a, k };
           currentEntryId = modalTargetId;
 
@@ -425,39 +486,25 @@
       };
 
 
-      function prevent(e){e.preventDefault(); e.stopPropagation();}
-      ['dragenter','dragover','dragleave','drop'].forEach(ev=>dropzone.addEventListener(ev,prevent,false));
-      dropzone.addEventListener('drop', e=>{
-        const files = [...e.dataTransfer.files];
-        handleFiles(files);
-      });
 
-      async function loadPreset(datasetKey, filename, defaultTsKey) {
-        const ts = prompt(`Enter time_series_key for ${filename}`, defaultTsKey);
-        if (ts === null) return;
-        const clean = ts.trim();
-        try {
-          const resp = await fetch(`/api/dataset/${datasetKey}`);
-          if (!resp.ok) { alert('Failed to load preset dataset'); return; }
-          const text = await resp.text();
-          const blob = new Blob([text], { type: 'application/xml' });
-          const file = new File([blob], filename, { type: 'application/xml' });
-          const id = uid();
-          store.set(id, { file, tsKey: clean, parsed: null, expanded: false, htsa: null });
-          readAndParse(id);
-          render();
-        } catch(e) {
-          alert('Error loading preset: ' + e);
-        }
-      }
-
-      document.getElementById('load-graph').onclick = () => loadPreset('graph', 'graph copy.graphml', 'time_series');
-      document.getElementById('load-stockgraph').onclick = () => loadPreset('stockgraph', 'stockgraph copy.graphml', 'time_series');
+      // Preset buttons inside modal
+      document.getElementById('preset-acm').onclick = () => {
+        pendingFile = { preset: 'acm', filename: 'acm copy.graphml' };
+        tsKeyInput.value = 'time_series';
+        selectedFileLabel.textContent = 'acm copy.graphml (preset)';
+      };
+      document.getElementById('preset-stock').onclick = () => {
+        pendingFile = { preset: 'stockgraph', filename: 'stockgraph copy.graphml' };
+        tsKeyInput.value = 'd0';
+        selectedFileLabel.textContent = 'stockgraph copy.graphml (preset)';
+      };
 
       pickBtn.onclick = ()=> filePicker.click();
       filePicker.onchange = e=>{
-        const files=[...e.target.files];
-        handleFiles(files);
+        const f = e.target.files[0];
+        if(!f) return;
+        pendingFile = { file: f };
+        selectedFileLabel.textContent = f.name;
         filePicker.value='';
       };
 
@@ -509,7 +556,7 @@
       function handleFiles(files){
         files.forEach(f=>{
           if(!f.name.toLowerCase().endsWith('.graphml'))return;
-          const id=uid(); const ts=prompt(`Enter time_series_key for ${f.name}`,'time_series');
+          const id=uid(); const ts=prompt(`Enter time_series_key for ${f.name}`,'d0');
           if(ts===null)return;
           const clean=ts.trim();
           store.set(id,{file:f,tsKey:clean,parsed:null,expanded:false,htsa:null});
