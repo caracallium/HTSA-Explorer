@@ -1,0 +1,202 @@
+{
+  "application_runs": [
+    {
+      "application": "ACM topics",
+      "displayed_nodes": 32,
+      "dropped_multi_parent_edges": 0,
+      "edges": 1881,
+      "k": 30,
+      "median_seconds": 0.7157901,
+      "method": "FDS",
+      "objective": 320937.6367679793,
+      "raw_nodes": 2113,
+      "selected_nodes": 53,
+      "series_length_max": 48,
+      "series_length_min": 47,
+      "strategy": "Path-greedy",
+      "used_nodes": 1894
+    },
+    {
+      "application": "Chinese equities",
+      "displayed_nodes": 21,
+      "dropped_multi_parent_edges": 1,
+      "edges": 757,
+      "k": 20,
+      "median_seconds": 0.2982880999999997,
+      "method": "FDS",
+      "objective": 51013542.22972876,
+      "raw_nodes": 760,
+      "selected_nodes": 86,
+      "series_length_max": 242,
+      "series_length_min": 242,
+      "strategy": "Path-greedy",
+      "used_nodes": 760
+    },
+    {
+      "application": "European regional GDP",
+      "displayed_nodes": 16,
+      "dropped_multi_parent_edges": 0,
+      "edges": 1639,
+      "k": 15,
+      "median_seconds": 0.5468109000000005,
+      "method": "FDS",
+      "objective": 338203259.31434745,
+      "raw_nodes": 1701,
+      "selected_nodes": 958,
+      "series_length_max": 8,
+      "series_length_min": 8,
+      "strategy": "Path-greedy",
+      "used_nodes": 1673
+    }
+  ],
+  "protocol": {
+    "application_repetitions": 7,
+    "similarity_repetitions": 3,
+    "strategy_repetitions": 7,
+    "timed_region": "subtree selection only"
+  },
+  "similarity_runs": [
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.016367599999998816,
+      "method": "FDS",
+      "nodes": 50,
+      "objective": 113052.11381106474,
+      "selected_nodes": 43,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.011834299999998521,
+      "method": "Euclidean",
+      "nodes": 50,
+      "objective": 85766.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.02337900000000026,
+      "method": "znorm_euclidean",
+      "nodes": 50,
+      "objective": 92062.57490773241,
+      "selected_nodes": 22,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.4700269000000006,
+      "method": "DTW",
+      "nodes": 50,
+      "objective": 85766.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.09366070000000093,
+      "method": "LCSS",
+      "nodes": 50,
+      "objective": 85766.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 1.0561948,
+      "method": "MSM",
+      "nodes": 50,
+      "objective": 85766.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    }
+  ],
+  "strategy_runs": [
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.004031299999999405,
+      "method": "FDS",
+      "nodes": 20,
+      "objective": 15641.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.0054418000000016065,
+      "method": "FDS",
+      "nodes": 20,
+      "objective": 15641.0,
+      "selected_nodes": 5,
+      "strategy": "Optimal-Search"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.006349999999999412,
+      "method": "FDS",
+      "nodes": 30,
+      "objective": 15641.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.019748899999999736,
+      "method": "FDS",
+      "nodes": 30,
+      "objective": 15715.576538808626,
+      "selected_nodes": 7,
+      "strategy": "Optimal-Search"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.008616500000000471,
+      "method": "FDS",
+      "nodes": 40,
+      "objective": 15641.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.06505779999999994,
+      "method": "FDS",
+      "nodes": 40,
+      "objective": 15715.576538808626,
+      "selected_nodes": 7,
+      "strategy": "Optimal-Search"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.011140400000000383,
+      "method": "FDS",
+      "nodes": 50,
+      "objective": 15641.0,
+      "selected_nodes": 5,
+      "strategy": "Path-greedy"
+    },
+    {
+      "displayed_nodes": 5,
+      "k": 5,
+      "median_seconds": 0.2093082000000006,
+      "method": "FDS",
+      "nodes": 50,
+      "objective": 15715.576538808626,
+      "selected_nodes": 7,
+      "strategy": "Optimal-Search"
+    }
+  ]
+}

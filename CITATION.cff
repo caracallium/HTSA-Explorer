@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use HTSA-Explorer, please cite the software and its companion paper."
+title: "HTSA-Explorer: Interactive Abstraction and Application Analysis of Hierarchical Time Series"
+type: software
+version: 0.1.0
+date-released: 2026-08-04
+license: MIT
+authors:
+  - family-names: Wu
+    given-names: Yihan
+    email: Wuyihan200403@gmail.com
+  - family-names: Zhu
+    given-names: Xuliang
+  - family-names: Li
+    given-names: Guozhong
+  - family-names: Wang
+    given-names: Kai
+  - family-names: Lin
+    given-names: Xuemin
+keywords:
+  - hierarchical time series
+  - graph summarization
+  - interactive analytics
+  - time-series similarity

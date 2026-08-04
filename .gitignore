@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.venv/
+venv/
+.idea/
+.vscode/
+runtime_data/*
+!runtime_data/.gitkeep
+exports/*
+!exports/.gitkeep
+results/*
+!results/.gitkeep
+!results/reference-results.json
