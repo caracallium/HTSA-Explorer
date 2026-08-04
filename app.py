@@ -22,19 +22,23 @@ import logging
 import heapq
 import networkx as nx
 import numpy as np
+
+logger = logging.getLogger(__name__)
+
+
 def to_nx_graph(G_in, node_dict=None):
     """把前端传来的 G 统一转成 networkx.DiGraph。"""
-    print(f"[to_nx_graph] Received G_in: {G_in}")  # 打印输入 G_in 的类型和内容
+    logger.debug("Converting graph input of type %s", type(G_in).__name__)
 
     if isinstance(G_in, (nx.DiGraph, nx.Graph)):
-        print(f"[to_nx_graph] G_in is already a networkx graph, copying.")  # 如果 G_in 是一个 networkx 图
+        logger.debug("Graph input is already a NetworkX graph")
         return G_in.copy()
 
     G = nx.DiGraph()
 
     # 如果 G_in 不是字典类型，直接通过 node_dict 和 edges 重建图
     if not isinstance(G_in, dict):
-        print("[to_nx_graph] G_in is not a dict, using node_dict to create graph.")  # 打印警告
+        logger.debug("Graph input is absent; constructing nodes from node_dict")
         if node_dict:
             G.add_nodes_from(node_dict.keys())  # 通过 node_dict 添加节点
         return G
@@ -42,54 +46,47 @@ def to_nx_graph(G_in, node_dict=None):
     nodes = G_in.get('nodes', [])
     edges = G_in.get('edges', [])
 
-    # 打印节点和边的类型
-    print(f"[to_nx_graph] Nodes: {nodes}")
-    print(f"[to_nx_graph] Edges: {edges}")
+    logger.debug("Graph payload contains %d nodes and %d edges", len(nodes), len(edges))
 
     # 检查 nodes 是否是字典
     if isinstance(nodes, dict):
-        print(f"[to_nx_graph] Nodes is a dictionary.")  # 打印 nodes 的类型
+        logger.debug("Graph nodes are encoded as a dictionary")
         for nid, attrs in nodes.items():
-            print(f"[to_nx_graph] Processing node {nid} with attributes {attrs}")  # 打印每个节点的属性
-
             # 如有 node_dict，合并常用属性（可选）
             if node_dict and nid in node_dict:
                 ts, val, info = node_dict[nid]
                 attrs = {**(attrs or {}), 'time_series': ts, 'value': val, **(info or {})}
-                print(f"[to_nx_graph] Node {nid} updated with node_dict data: {attrs}")  # 打印更新后的节点信息
 
             G.add_node(nid, **(attrs or {}))  # 添加节点到图
 
     elif isinstance(nodes, list):
-        print("[to_nx_graph] Nodes is a list.")  # 打印 nodes 是列表的情况
+        logger.debug("Graph nodes are encoded as a list")
         for nid in nodes:
             attrs = {}
             if node_dict and nid in node_dict:
                 ts, val, info = node_dict[nid]
                 attrs = {'time_series': ts, 'value': val, **(info or {})}
-                print(f"[to_nx_graph] Node {nid} added with attributes from node_dict: {attrs}")  # 打印添加的节点信息
             G.add_node(nid, **attrs)  # 添加节点到图
 
     else:
-        print(f"[graph] unexpected nodes type: {type(nodes)}")  # 打印类型错误的情况
+        logger.warning("Unexpected graph node encoding: %s", type(nodes).__name__)
 
     # 检查 edges 是否是列表
     if isinstance(edges, list):
-        print(f"[to_nx_graph] Edges is a list.")  # 打印 edges 是列表的情况
+        logger.debug("Graph edges are encoded as a list")
         for e in edges:
             if isinstance(e, (list, tuple)) and len(e) >= 2:
-                print(f"[to_nx_graph] Adding edge {e}")  # 打印每个添加的边
                 G.add_edge(e[0], e[1])  # 添加边到图
             else:
-                print(f"[graph] unexpected edge format: {e}")  # 打印边的格式错误
+                logger.warning("Unexpected edge payload: %r", e)
     else:
-        print(f"[graph] unexpected edges type: {type(edges)}")  # 打印边类型错误的情况
+        logger.warning("Unexpected graph edge encoding: %s", type(edges).__name__)
 
     return G
 
 
 
-def oss(G, node_dict, node_x):
+def oss(G, node_dict, node_x, method="FDS", a=0.0):
     BEAM_SIZE = None
     try:
         descendants = nx.descendants(G, node_x)
@@ -103,7 +100,7 @@ def oss(G, node_dict, node_x):
             sim_cache[other_node] = 1.0
         else:
             ts_other = node_dict[other_node][0]
-            sim_cache[other_node] = sim(ts_x, ts_other)
+            sim_cache[other_node] = sim(ts_x, ts_other, method, a=a)
     dp = {}
     def pareto3(table):
         items = []
@@ -203,14 +200,14 @@ def oss(G, node_dict, node_x):
     current_subgraph_nodes = reconstruct(node_x, best_key)
     current_g_value = best_score
     return current_subgraph_nodes, current_g_value
-def ossoss(G, node_dict, k):
+def ossoss(G, node_dict, k, method="FDS", a=0.0):
     G_unused = G.copy()
     alive = {n for n in G_unused.nodes if n in node_dict}
     cache = {}
     stamp = {}
     heap = []
     def recompute_and_push(seed):
-        sub_nodes, g_val = oss(G_unused, node_dict, seed)
+        sub_nodes, g_val = oss(G_unused, node_dict, seed, method=method, a=a)
         if sub_nodes is None:
             sub_nodes = set()
         stamp[seed] = stamp.get(seed, 0) + 1
@@ -255,7 +252,7 @@ def ossoss(G, node_dict, k):
         for s in (affected_ancestors & alive):
             recompute_and_push(s)
     return best_subgraphs, total_g_value
-def VGreedy(G, node_dict, node_x):
+def VGreedy(G, node_dict, node_x, method="FDS", a=0.0):
     try:
         descendants = nx.descendants(G, node_x)
     except Exception:
@@ -264,7 +261,7 @@ def VGreedy(G, node_dict, node_x):
     ts_x = node_dict[node_x][0]
     sim_cache = {}
     for u in target_nodes:
-        sim_cache[u] = 1.0 if u == node_x else sim(ts_x, node_dict[u][0])
+        sim_cache[u] = 1.0 if u == node_x else sim(ts_x, node_dict[u][0], method, a=a)
     current_subgraph_nodes = {node_x}
     current_S_k = [1.0, node_dict[node_x][1], 1]
     current_g_value = current_S_k[0] * current_S_k[1] / current_S_k[2]
@@ -300,7 +297,7 @@ def VGreedy(G, node_dict, node_x):
         current_S_k = best_new_S_k
         current_g_value = best_new_g_value
     return current_subgraph_nodes, current_g_value
-def VVGreedy(G, node_dict, k):
+def VVGreedy(G, node_dict, k, method="FDS", a=0.0):
     used_nodes = set()
     best_subgraphs = []
     total_g_value = 0
@@ -313,7 +310,9 @@ def VVGreedy(G, node_dict, k):
             if node in used_nodes:
                 continue
             total_candidates += 1
-            sub_nodes, g_value = VGreedy(G_unused, node_dict, node)
+            sub_nodes, g_value = VGreedy(
+                G_unused, node_dict, node, method=method, a=a
+            )
             if g_value > best_g_value:
                 best_g_value = g_value
                 best_subgraph = sub_nodes
@@ -327,7 +326,7 @@ def VVGreedy(G, node_dict, k):
                 G_unused.remove_edges_from(list(G_unused.in_edges(n)) + list(G_unused.out_edges(n)))
     return best_subgraphs, total_g_value
 
-def PGreedy(G, node_dict, node_x):
+def PGreedy(G, node_dict, node_x, method="FDS", a=0.0):
     EPS = 1e-12
     try:
         descendants = nx.descendants(G, node_x)
@@ -335,7 +334,14 @@ def PGreedy(G, node_dict, node_x):
         return set(), 0.0
     target_nodes = set(descendants) | {node_x}
     ts_x = node_dict[node_x][0]
-    sim_cache = {n: (1.0 if n == node_x else sim(ts_x, node_dict[n][0])) for n in target_nodes}
+    sim_cache = {
+        n: (
+            1.0
+            if n == node_x
+            else sim(ts_x, node_dict[n][0], method, a=a)
+        )
+        for n in target_nodes
+    }
     parent_map = {}
     for n in descendants:
         p = next(iter(G.predecessors(n)), None)
@@ -405,7 +411,7 @@ def PGreedy(G, node_dict, node_x):
         current_S_k = [best_S_k[0], best_S_k[1], best_S_k[2]]
         current_g_value = best_g
     return current_subgraph_nodes, current_g_value
-def PPGreedy(G, node_dict, k):
+def PPGreedy(G, node_dict, k, method="FDS", a=0.0):
     used_nodes = set()
     best_subgraphs = []
     total_g_value = 0.0
@@ -426,7 +432,9 @@ def PPGreedy(G, node_dict, k):
             elif affected_seeds_next is not None and seed in affected_seeds_next:
                 need_recompute = True
             if need_recompute:
-                sub_nodes, g_value = PGreedy(G_unused, node_dict, seed)
+                sub_nodes, g_value = PGreedy(
+                    G_unused, node_dict, seed, method=method, a=a
+                )
                 cache[seed] = (sub_nodes, g_value)
             else:
                 sub_nodes, g_value = cache[seed]
@@ -609,18 +617,37 @@ def _msm_similarity(ts1, ts2, c=1.0, scale=None, alpha=0.0):
         scale = np.sqrt(max(L, 1.0)) * max(std, 1e-12)
     s = _sim_from_distance(d, scale)
     return _alpha_skew(s, alpha)
+_SIMILARITY_METHOD_ALIASES = {
+    "fds": "FDS",
+    "euclid": "Euclidean",
+    "euclidean": "Euclidean",
+    "znorm-euclidean": "znorm_euclidean",
+    "znorm_euclidean": "znorm_euclidean",
+    "z-euclid": "znorm_euclidean",
+    "z-normalized-euclidean": "znorm_euclidean",
+    "dtw": "DTW",
+    "lcss": "LCSS",
+    "msm": "MSM",
+}
+
+
+def normalize_similarity_method(method):
+    if not isinstance(method, str) or not method.strip():
+        raise ValueError("`method` is required and must be a non-empty string.")
+    key = method.strip().lower().replace(" ", "-")
+    try:
+        return _SIMILARITY_METHOD_ALIASES[key]
+    except KeyError as exc:
+        supported = "FDS, Euclidean, Z-Normalized Euclidean, DTW, LCSS, MSM"
+        raise ValueError(
+            f"Unknown similarity method: {method}. Supported methods: {supported}."
+        ) from exc
+
+
 def sim(ts1, ts2, method, **kwargs):
     alpha = kwargs.pop("alpha", kwargs.pop("a", 0.0))
     _ = kwargs.get("k", None)
-    if not isinstance(method, str) or not method.strip():
-        raise ValueError("`method` is required and must be a non-empty string.")
-    m = method.strip().lower()
-    alias = {
-        "euclid": "euclidean",
-        "znorm-euclidean": "znorm_euclidean",
-        "z-euclid": "znorm_euclidean",
-    }
-    m = alias.get(m, m)
+    m = normalize_similarity_method(method).lower()
     if m == "fds":
         return _fds_similarity(ts1, ts2, alpha=alpha)
     elif m == "euclidean":
@@ -636,6 +663,83 @@ def sim(ts1, ts2, method, **kwargs):
     else:
         raise ValueError(f"Unknown method: {method}")
 
+
+_STRATEGY_ALIASES = {
+    "path-greedy": "Path-greedy",
+    "p-greedy": "Path-greedy",
+    "pgreedy": "Path-greedy",
+    "optimal-search": "Optimal-Search",
+    "optimal-subtree-search": "Optimal-Search",
+    "oss": "Optimal-Search",
+    "v-greedy": "V-greedy",
+    "vertex-greedy": "V-greedy",
+    "vgreedy": "V-greedy",
+}
+
+MAX_OPTIMAL_SEARCH_NODES = 50
+
+
+def normalize_strategy(strategy):
+    if not isinstance(strategy, str) or not strategy.strip():
+        raise ValueError("`strategy` is required and must be a non-empty string.")
+    key = strategy.strip().lower().replace("_", "-").replace(" ", "-")
+    try:
+        return _STRATEGY_ALIASES[key]
+    except KeyError as exc:
+        supported = "Path-greedy, Optimal-Search, V-greedy"
+        raise ValueError(
+            f"Unknown strategy: {strategy}. Supported strategies: {supported}."
+        ) from exc
+
+
+def normalize_hierarchy_to_forest(G, node_dict, method="FDS", a=0.0):
+    """Resolve multiple parents using temporal affinity and stable tie-breaking."""
+    forest = G.copy()
+    dropped_edges = []
+    for node in sorted(forest.nodes, key=str):
+        parents = sorted(forest.predecessors(node), key=str)
+        if len(parents) <= 1:
+            continue
+        scored_parents = []
+        for parent in parents:
+            score = float("-inf")
+            if node in node_dict and parent in node_dict:
+                score = sim(
+                    node_dict[node][0], node_dict[parent][0], method, a=a
+                )
+            scored_parents.append((score, parent))
+        scored_parents.sort(key=lambda item: (-item[0], str(item[1])))
+        keep_parent = scored_parents[0][1]
+        for parent in parents:
+            if parent != keep_parent:
+                forest.remove_edge(parent, node)
+                dropped_edges.append((parent, node))
+    return forest, dropped_edges
+
+
+def run_htsa_strategy(G, node_dict, k, strategy, method="FDS", a=0.0):
+    """Run the selected summarization strategy and report its canonical name."""
+    canonical_strategy = normalize_strategy(strategy)
+    canonical_method = normalize_similarity_method(method)
+    if (
+        canonical_strategy == "Optimal-Search"
+        and G.number_of_nodes() > MAX_OPTIMAL_SEARCH_NODES
+    ):
+        raise ValueError(
+            "Optimal-Search is limited to "
+            f"{MAX_OPTIMAL_SEARCH_NODES} nodes per request; use Path-greedy "
+            "for a larger hierarchy or submit a smaller subtree."
+        )
+    dispatch = {
+        "Path-greedy": PPGreedy,
+        "Optimal-Search": ossoss,
+        "V-greedy": VVGreedy,
+    }
+    result = dispatch[canonical_strategy](
+        G, node_dict, k, method=canonical_method, a=a
+    )
+    return canonical_strategy, canonical_method, result
+
 def build_summary_tree(edges, groups_tuple):
     parent, children, nodes = {}, {}, set()
     for p, c in edges:
@@ -643,7 +747,7 @@ def build_summary_tree(edges, groups_tuple):
         parent[c] = p
         children.setdefault(p, []).append(c)
         children.setdefault(c, [])
-    roots = [u for u in nodes if u not in parent]
+    roots = sorted((u for u in nodes if u not in parent), key=str)
     if len(roots) == 0:
         raise ValueError("no root")
     if len(roots) == 1:
@@ -670,7 +774,7 @@ def build_summary_tree(edges, groups_tuple):
         if isinstance(g, (list, tuple)) and g:
             lst = g[0]
             if isinstance(lst, (set, list, tuple)):
-                group_nodes_list.append(list(lst))
+                group_nodes_list.append(sorted(lst, key=str))
     node_to_group_idx = {}
     for idx, lst in enumerate(group_nodes_list):
         for u in lst:
@@ -681,8 +785,7 @@ def build_summary_tree(edges, groups_tuple):
         candidates = [u for u in lst if parent.get(u) not in s]
         if not candidates:
             raise ValueError(f"group {idx} no root")
-        if len(candidates) > 1:
-            candidates.sort(key=lambda x: depth.get(x, float('inf')))
+        candidates.sort(key=lambda x: (depth.get(x, float('inf')), str(x)))
         group_root[idx] = candidates[0]
     def climb_to_group_root(u):
         v = parent.get(u, None)
@@ -765,8 +868,7 @@ os.makedirs(DATA_DIR, exist_ok=True)
 TUPIAN_DIR = os.path.join(os.path.dirname(__file__), "tupian")
 os.makedirs(TUPIAN_DIR, exist_ok=True)
 
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 # ----------------------------
 # 工具函数（文件保存）
 # ----------------------------
@@ -874,23 +976,44 @@ def api_htsa():
         # 获取请求数据
         data = request.get_json(silent=True, force=True)
         if not data:
-            print("Received empty JSON")  # 使用 print() 打印日志
+            logger.warning("Received empty JSON for /api/htsa")
             return jsonify({"ok": False, "error": "Empty JSON"}), 400
 
         filename = data.get("filename") or "unnamed"
         ts_key = data.get("ts_key") or "time_series"
-        method = data.get("htsa", {}).get("method", "FDS")
-        strategy = data.get("htsa", {}).get("strategy", "V-greedy")
+        htsa_options = data.get("htsa") or {}
+        method = htsa_options.get("method", "FDS")
+        strategy = htsa_options.get("strategy", "Path-greedy")
         try:
-            a = float(data.get("htsa", {}).get("a", 0))
-        except Exception:
-            a = 0.0
-        k = data.get("htsa", {}).get("k", 1)
+            a = float(htsa_options.get("a", 0))
+            if not np.isfinite(a):
+                raise ValueError
+        except (TypeError, ValueError):
+            return jsonify({"ok": False, "error": "a must be a finite number"}), 400
+        try:
+            raw_k = float(htsa_options.get("k", 1))
+            if not np.isfinite(raw_k) or not raw_k.is_integer() or raw_k < 1:
+                raise ValueError
+            k = int(raw_k)
+        except (TypeError, ValueError):
+            return jsonify({"ok": False, "error": "k must be a positive integer"}), 400
+        try:
+            strategy = normalize_strategy(strategy)
+            method = normalize_similarity_method(method)
+        except ValueError as exc:
+            return jsonify({"ok": False, "error": str(exc)}), 400
         raw_node_dict = data.get("node_dict") or {}
         edges = data.get("edges") or []
         raw_G = data.get("G")
 
-        print(f"Received data: filename={filename}, strategy={strategy}, a={a}, k={k}")
+        logger.info(
+            "HTSA request filename=%s strategy=%s method=%s a=%s k=%s",
+            filename,
+            strategy,
+            method,
+            a,
+            k,
+        )
 
         # 兼容前端的 node_dict 结构（dict: {time_series, value, info}）
         node_dict = {}
@@ -914,124 +1037,57 @@ def api_htsa():
                     val = float(np.nansum(ts))
                 except Exception:
                     val = 0.0
+            try:
+                val = float(val)
+                if not np.isfinite(val):
+                    raise ValueError
+            except (TypeError, ValueError):
+                return jsonify({
+                    "ok": False,
+                    "error": f"Node {nid!r} has a non-numeric value"
+                }), 400
             node_dict[nid] = (ts, val, info)
 
         if not node_dict:
             return jsonify({"ok": False, "error": "No valid nodes parsed"}), 400
 
-        # 初始化 sim 函数
-        def calculate_sim(ts1, ts2, method, **kwargs):
-            return sim(ts1, ts2, method, **kwargs)
-        
         G = to_nx_graph(raw_G, node_dict=node_dict)
-        if G.number_of_nodes() == 0 and node_dict:
-            # 再稳一点：用 node_dict + edges 兜底重建
-            G.add_nodes_from(node_dict.keys())
-            for u, v in edges:
-                if u in node_dict and v in node_dict:
-                    G.add_edge(u, v)
+        # Merge the explicit edge list as a fallback when G is absent or sparse.
+        G.add_nodes_from(node_dict.keys())
+        for u, v in edges:
+            if u in node_dict and v in node_dict:
+                G.add_edge(u, v)
 
-        # 根据策略选择对应的算法
-        '''if strategy == "V-greedy":
-            jieguo = VVGreedy(G, node_dict, k)
-        elif strategy == "P-greedy":
-            jieguo = PPGreedy(G, node_dict, k)
-        elif strategy == "OSS":
-            jieguo = ossoss(G, node_dict, k)
-        else:
-            print(f"Unknown strategy: {strategy}")  # 打印错误信息
-            return jsonify({"ok": False, "error": f"Unknown strategy: {strategy}"}), 400'''
-        
-        # 初始化变量
-        used_nodes = set()
-        best_subgraphs = []
-        total_g_value = 0
-        G_unused = G.copy()
+        # Restrict computation to nodes with usable time series. The
+        # summarizers assume a directed forest: acyclic and at most one parent.
+        G = G.subgraph(node_dict.keys()).copy()
+        if G.number_of_nodes() == 0:
+            return jsonify({"ok": False, "error": "No valid graph nodes"}), 400
+        if not nx.is_directed_acyclic_graph(G):
+            return jsonify({"ok": False, "error": "The hierarchy must be acyclic"}), 400
+        G, dropped_parent_edges = normalize_hierarchy_to_forest(
+            G, node_dict, method=method, a=a
+        )
+        valid_edges = list(G.edges())
 
-        for _round in range(k):
-            best_subgraph = None
-            best_g_value = -float('inf')
-            total_candidates = 0
+        try:
+            strategy, method, jieguo = run_htsa_strategy(
+                G, node_dict, k, strategy=strategy, method=method, a=a
+            )
+        except ValueError as exc:
+            return jsonify({"ok": False, "error": str(exc)}), 400
+        best_subgraphs, total_g_value = jieguo
 
-            for j, node in enumerate(node_dict):
-                if node in used_nodes:
-                    continue
-                total_candidates += 1
-
-                # VGreedy 的展开版 (避免 try-except)
-                descendants = nx.descendants(G_unused, node) if node in G_unused else set()
-                if not descendants: 
-                    sub_nodes, g_value = set(), 0.0
-                else:
-                    target_nodes = set(descendants) | {node}
-                    ts_x = node_dict[node][0]
-                    sim_cache = {
-                        u: (1.0 if u == node else sim(ts_x, node_dict[u][0], method, a=a))
-                        for u in target_nodes
-                    }
-                    current_subgraph_nodes = {node}
-                    current_S_k = [1.0, node_dict[node][1], 1]
-                    current_g_value = current_S_k[0] * current_S_k[1] / current_S_k[2]
-                    step = 0
-
-                    while True:
-                        step += 1
-                        frontier = set()
-                        for u in current_subgraph_nodes:
-                            for v in G.successors(u):
-                                if v in target_nodes and v not in current_subgraph_nodes:
-                                    frontier.add(v)
-                        if not frontier:
-                            break
-                        best_new_g_value = float("-inf")
-                        best_new_S_k = None
-                        best_choice = None
-                        for n in frontier:
-                            sim_val = sim_cache[n]
-                            value = node_dict[n][1]
-                            new_S_k = [
-                                current_S_k[0] + sim_val,
-                                current_S_k[1] + value,
-                                current_S_k[2] + 1
-                            ]
-                            new_g_value = new_S_k[0] * new_S_k[1] / new_S_k[2]
-                            if new_g_value > best_new_g_value:
-                                best_new_g_value = new_g_value
-                                best_new_S_k = new_S_k
-                                best_choice = n
-                        if best_choice is None or best_new_g_value <= current_g_value:
-                            break
-                        current_subgraph_nodes.add(best_choice)
-                        current_S_k = best_new_S_k
-                        current_g_value = best_new_g_value
-
-                    sub_nodes, g_value = current_subgraph_nodes, current_g_value
-
-                # 更新最好的子图
-                if g_value > best_g_value:
-                    best_g_value = g_value
-                    best_subgraph = sub_nodes
-
-            if best_subgraph is None:
-                break
-
-            best_subgraphs.append((best_subgraph, best_g_value))
-            used_nodes.update(best_subgraph)
-            total_g_value += best_g_value
-
-            # 更新图，去除最佳子图的边
-            for n in best_subgraph:
-                if G_unused.has_node(n):
-                    G_unused.remove_edges_from(list(G_unused.in_edges(n)) + list(G_unused.out_edges(n)))
-
-        # 最终结果
-        jieguo = (best_subgraphs, total_g_value)
         # 构建总结树，拿到组根列表
-        gprime_edges, gprime_root, group_root_list = build_summary_tree(edges, jieguo)
+        gprime_edges, gprime_root, group_root_list = build_summary_tree(
+            valid_edges, jieguo
+        )
 
-        # 打印总结树的根节点
-        print(f"Summary tree built with root: {gprime_root}")
-        print(gprime_edges)
+        logger.info(
+            "Summary tree built with root=%s and %d edges",
+            gprime_root,
+            len(gprime_edges),
+        )
         #session['gprime_edges'] = gprime_edges
         #session['gprime_root'] = gprime_root
         # 返回结果并渲染到 result.html
@@ -1050,8 +1106,9 @@ def api_htsa():
             #gprime_root=gprime_root
         #)
         # 写出摘要边列表，便于手动检查/下载
-        txt_filename = f"{filename}_summarized_edges.txt"
-        with open(txt_filename, "w", encoding="utf-8") as file:
+        txt_filename = f"{_safe_filename(filename)}_summarized_edges.txt"
+        summary_path = os.path.join(DATA_DIR, txt_filename)
+        with open(summary_path, "w", encoding="utf-8") as file:
             for edge in gprime_edges:
                 file.write(str(edge) + "\n")
 
@@ -1061,7 +1118,7 @@ def api_htsa():
             root_name = group_root_list[i] if i < len(group_root_list) else None
             subgraph_payload.append({
                 "root": root_name,
-                "nodes": [str(x) for x in sg_nodes],
+                "nodes": [str(x) for x in sorted(sg_nodes, key=str)],
                 "g_value": g_val
             })
 
@@ -1071,12 +1128,24 @@ def api_htsa():
             "gprime_root": gprime_root,
             "summary_file": txt_filename,
             "subgraphs": subgraph_payload,
-            "group_roots": group_root_list
+            "group_roots": group_root_list,
+            "strategy": strategy,
+            "method": method,
+            "a": a,
+            "k": k,
+            "ts_key": ts_key,
+            "normalization": {
+                "dropped_multi_parent_edge_count": len(dropped_parent_edges),
+                "dropped_multi_parent_edges": [
+                    [str(parent), str(child)]
+                    for parent, child in dropped_parent_edges
+                ]
+            }
         })
 
 
     except Exception as e:
-        print(f"Error during processing: {str(e)}")  # 打印异常信息
+        logger.exception("Error during HTSA processing")
         return jsonify({"ok": False, "error": str(e)}), 500
 
 if __name__ == "__main__":
