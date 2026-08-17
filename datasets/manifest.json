@@ -17,8 +17,8 @@
     },
     {
       "file": "acm.graphml",
-      "bytes": 819254,
-      "sha256": "AD3BD6494EED18A821034EF64210B7E684C8D88BC6066B6F6EE11B5CC86A7BAE",
+      "bytes": 806582,
+      "sha256": "641FA762A98A44F9A5C71384FD710E6955C4FE9EBAAAC67B6F8EBD371662BB75",
       "series_field": "time_series",
       "source": null,
       "source_url": null,
@@ -32,8 +32,8 @@
     },
     {
       "file": "equities.graphml",
-      "bytes": 2541176,
-      "sha256": "73A288FA026AEE4C9083BF4EA5B205B20C8C182CD96E2A8B6276C846A8DD1E48",
+      "bytes": 2538133,
+      "sha256": "E6A540B7F4F7B9CACF4094306EF56AE98E7E8A76089B717DB80CECC51A990CC9",
       "series_field": "d0",
       "source": null,
       "source_url": null,
