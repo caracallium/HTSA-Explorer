@@ -1067,6 +1067,24 @@ def api_htsa():
             return jsonify({"ok": False, "error": str(exc)}), 400
         best_subgraphs, total_g_value = jieguo
 
+        # KDD Equation (7) defines coverage as the total importance mass of
+        # vertices contained in the selected subtrees.  Keep the raw mass and
+        # expose a normalized fraction for cross-dataset display; node-count
+        # compression is a separate diagnostic.
+        selected_nodes = set()
+        for sg_nodes, _ in best_subgraphs:
+            selected_nodes.update(sg_nodes)
+        selected_importance = float(sum(
+            node_dict[node][1] for node in selected_nodes
+        ))
+        total_importance = float(sum(
+            node_dict[node][1] for node in G.nodes()
+        ))
+        importance_fraction = (
+            selected_importance / total_importance
+            if total_importance > 0 else None
+        )
+
         # Build the summary tree and recover the selected group roots.
         gprime_edges, gprime_root, group_root_list = build_summary_tree(
             valid_edges, jieguo
@@ -1101,6 +1119,18 @@ def api_htsa():
             "summary_file": txt_filename,
             "subgraphs": subgraph_payload,
             "group_roots": group_root_list,
+            "analysis_graph": {
+                "vertices": G.number_of_nodes(),
+                "edges": G.number_of_edges()
+            },
+            "coverage": {
+                "definition": "selected importance / total importance",
+                "selected_importance": selected_importance,
+                "total_importance": total_importance,
+                "importance_fraction": importance_fraction,
+                "selected_vertices": len(selected_nodes),
+                "total_vertices": G.number_of_nodes()
+            },
             "strategy": strategy,
             "method": method,
             "a": a,

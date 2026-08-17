@@ -779,7 +779,8 @@ function parseGraphML(xmlText, tsKey){
     for(const d of qa('data', n)){
       const key = d.getAttribute('key'); const text = (d.textContent || '').trim();
       if(isTS(key)){
-        const arr = text.replace(/\[|\]/g,'').split(/[\s,]+/).map(Number).filter(Number.isFinite);
+        const arr = text.replace(/\[|\]/g,'').split(/[\s,]+/)
+          .filter(token => token.length).map(Number).filter(Number.isFinite);
         if(arr.length){ ts = arr; val = arr.reduce((a,b)=>a+b,0); }
       } else if(text) info[key] = text;
     }
@@ -1011,18 +1012,24 @@ function renderStats(entry){
   const d = entry.summary;
   const nN = p.node_dict ? Object.keys(p.node_dict).length : 0;
   const nE = p.edges ? p.edges.length : 0;
+  const analyzedN = Number(d && d.analysis_graph && d.analysis_graph.vertices);
+  const analyzedE = Number(d && d.analysis_graph && d.analysis_graph.edges);
   const items = [
-    { k:'nodes', v:nN },
-    { k:'edges', v:nE },
+    { k: d ? 'analyzed nodes' : 'nodes', v:Number.isFinite(analyzedN) ? analyzedN : nN },
+    { k: d ? 'analyzed edges' : 'edges', v:Number.isFinite(analyzedE) ? analyzedE : nE },
     { k:'method', v: entry.htsa?.method || '—', cls:'violet' },
     { k:'strategy', v: entry.htsa?.strategy === 'Optimal-Search' ? 'Optimal' : (entry.htsa?.strategy || '—'), cls:'violet' },
     { k:'k subtrees', v: entry.htsa?.k ?? '—', cls:'accent' }
   ];
   if(d){
     const totalG = (d.subgraphs || []).reduce((s, g) => s + (Number(g.g_value) || 0), 0);
-    const covered = (d.subgraphs || []).reduce((s, g) => s + (g.nodes ? g.nodes.length : 0), 0);
+    const importanceFraction = Number(d.coverage && d.coverage.importance_fraction);
     items.push({ k:'Σ g quality', v: fmt(totalG, 2), cls:'green' });
-    items.push({ k:'coverage', v: nN ? Math.round(100 * covered / nN) + '%' : '—', cls:'green' });
+    items.push({
+      k:'importance coverage',
+      v: Number.isFinite(importanceFraction) ? (100 * importanceFraction).toFixed(1) + '%' : '—',
+      cls:'green'
+    });
     items.push({ k:'G′ edges', v:(d.gprime_edges || []).length, cls:'accent' });
   }
   bar.innerHTML = items.map(it =>

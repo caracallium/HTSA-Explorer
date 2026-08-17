@@ -107,6 +107,12 @@ result.raise_for_status()
 print(result.json())
 ```
 
+The response reports coverage according to the KDD definition: the sum of
+importance values in the selected subtrees. `coverage.importance_fraction`
+normalizes that mass by total analyzed importance for cross-dataset display.
+`coverage.selected_vertices` is provided separately and must not be interpreted
+as the coverage metric.
+
 For large hierarchies use `Path-greedy`. `Optimal-Search` is intentionally
 limited to at most 50 analyzable vertices per request.
 

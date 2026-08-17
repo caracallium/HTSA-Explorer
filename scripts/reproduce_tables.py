@@ -154,6 +154,11 @@ def timed_selection(graph, node_dict, strategy, method, k, similarity_setting,
         )
         durations.append(time.perf_counter() - started)
     groups, objective = result
+    selected = set()
+    for nodes, _ in groups:
+        selected.update(nodes)
+    selected_importance = float(sum(node_dict[node][1] for node in selected))
+    total_importance = float(sum(node_dict[node][1] for node in graph.nodes()))
     summary_edges, summary_root, _ = app.build_summary_tree(list(graph.edges()), result)
     displayed = {summary_root}
     for parent, child in summary_edges:
@@ -164,7 +169,13 @@ def timed_selection(graph, node_dict, strategy, method, k, similarity_setting,
         "method": canonical_method,
         "median_seconds": statistics.median(durations),
         "objective": float(objective),
-        "selected_nodes": sum(len(nodes) for nodes, _ in groups),
+        "selected_nodes": len(selected),
+        "selected_importance": selected_importance,
+        "total_importance": total_importance,
+        "importance_coverage_fraction": (
+            selected_importance / total_importance
+            if total_importance > 0 else None
+        ),
         "displayed_nodes": len(displayed),
     }
 

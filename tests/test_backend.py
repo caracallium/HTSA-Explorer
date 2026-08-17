@@ -67,6 +67,7 @@ class StrategyDispatchTests(unittest.TestCase):
             b"european_regional_gdp.graphml', tsKey:'time_series', k:15",
             home.data,
         )
+        self.assertIn(b"filter(token => token.length)", home.data)
 
         d3_bundle = self.client.get("/static/vendor/d3.v7.9.0.min.js")
         self.assertEqual(d3_bundle.status_code, 200)
@@ -93,6 +94,12 @@ class StrategyDispatchTests(unittest.TestCase):
         self.assertTrue(data["ok"])
         self.assertEqual(data["strategy"], "Path-greedy")
         self.assertEqual(data["method"], "FDS")
+        self.assertEqual(data["coverage"]["selected_vertices"], 2)
+        self.assertEqual(data["coverage"]["total_vertices"], 2)
+        self.assertEqual(data["coverage"]["selected_importance"], 5.0)
+        self.assertEqual(data["coverage"]["total_importance"], 5.0)
+        self.assertEqual(data["coverage"]["importance_fraction"], 1.0)
+        self.assertEqual(data["analysis_graph"], {"vertices": 2, "edges": 1})
         dispatcher.assert_called_once()
         self.assertEqual(dispatcher.call_args[1]["method"], "FDS")
         self.assertEqual(dispatcher.call_args[1]["a"], 0.25)
