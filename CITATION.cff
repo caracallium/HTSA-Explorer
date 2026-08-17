@@ -5,6 +5,8 @@ type: software
 version: 0.1.0
 date-released: 2026-08-04
 license: MIT
+repository-code: "https://github.com/caracallium/HTSA-Explorer"
+url: "https://htsa-explorer.onrender.com/"
 authors:
   - family-names: Wu
     given-names: Yihan

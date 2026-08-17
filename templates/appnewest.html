@@ -641,6 +641,12 @@ const METHOD_DESCS = {
   MSM: '<b>Edit distance</b> with move / split / merge operations — a metric, robust for heterogeneous series.'
 };
 
+const PAPER_PRESETS = Object.freeze({
+  acm: { filename:'acm.graphml', tsKey:'time_series', k:30 },
+  stockgraph: { filename:'equities.graphml', tsKey:'d0', k:20 },
+  'regional-gdp': { filename:'european_regional_gdp.graphml', tsKey:'time_series', k:15 }
+});
+
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'f_' + Math.random().toString(36).slice(2));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = (x, d=3) => (typeof x === 'number' && isFinite(x)) ? (Math.abs(x) >= 1000 ? x.toExponential(2) : x.toFixed(d)) : '—';
@@ -699,18 +705,16 @@ $('btn-new-run').onclick = () => openModal(null);
 
 function stageDataset(ds){
   document.querySelectorAll('#ds-seg .opt').forEach(o => o.classList.toggle('sel', o.dataset.ds === ds));
-  if(ds === 'acm'){
-    pendingDataset = { preset:'acm', filename:'acm.graphml' };
-    $('ts-key-input').value = 'time_series';
-    $('file-label').textContent = 'acm.graphml (preset)';
-  } else if(ds === 'stockgraph'){
-    pendingDataset = { preset:'stockgraph', filename:'equities.graphml' };
-    $('ts-key-input').value = 'd0';
-    $('file-label').textContent = 'equities.graphml (preset)';
-  } else if(ds === 'regional-gdp'){
-    pendingDataset = { preset:'regional-gdp', filename:'european_regional_gdp.graphml' };
-    $('ts-key-input').value = 'time_series';
-    $('file-label').textContent = 'european_regional_gdp.graphml (preset)';
+  const paperPreset = PAPER_PRESETS[ds];
+  if(paperPreset){
+    pendingDataset = { preset:ds, filename:paperPreset.filename };
+    $('ts-key-input').value = paperPreset.tsKey;
+    $('method').value = 'FDS';
+    setStrategy('Path-greedy');
+    $('param-k').value = paperPreset.k;
+    $('file-label').textContent = paperPreset.filename +
+      ' · paper preset: FDS / Path-greedy / k=' + paperPreset.k;
+    updateMethodDesc();
   } else {
     $('filepicker').click();
   }

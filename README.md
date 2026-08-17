@@ -10,6 +10,11 @@ This repository is the local archival candidate accompanying the manuscript
 *HTSA-Explorer: Interactive Abstraction and Application Analysis of
 Hierarchical Time Series*.
 
+Public demonstration: <https://htsa-explorer.onrender.com/>. The demonstration
+uses an on-demand hosting tier, so the first request after inactivity can be
+slower than subsequent requests. For reproducibility, use the local workflow
+below.
+
 ## Quick start
 
 The supported reference environment is Windows 11 with Python 3.12.13,
@@ -34,6 +39,14 @@ python app.py
 Open `http://127.0.0.1:5000`. The ACM, equity, and European regional GDP
 examples can be launched directly from the home screen. Any compatible GraphML
 hierarchy can also be uploaded.
+
+The three home-screen presets use the manuscript configurations:
+
+| Preset | Similarity | Strategy | Budget |
+| --- | --- | --- | ---: |
+| ACM hierarchy | FDS | Path-greedy | 30 |
+| Equity hierarchy | FDS | Path-greedy | 20 |
+| European regional GDP | FDS | Path-greedy | 15 |
 
 The client vendors D3 7.9.0 under `static/vendor`, so the analytical interface
 does not require a JavaScript CDN at runtime.
@@ -135,6 +148,7 @@ and persistent storage. See `SECURITY.md`.
 Citation metadata are provided in `CITATION.cff`. Source code is released under
 the MIT License. D3 and all datasets are governed separately; see
 `datasets/README.md`, `datasets/manifest.json`, and `THIRD_PARTY_NOTICES.md`.
+The complete author list and contact details are in `AUTHORS.md`.
 All three datasets are included in this repository with project-author
 authorization confirmed on 2026-08-17. That confirmation does not place the
 datasets under MIT or grant downstream reuse rights; the ACM and equity source

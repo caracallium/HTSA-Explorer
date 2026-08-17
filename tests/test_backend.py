@@ -57,6 +57,16 @@ class StrategyDispatchTests(unittest.TestCase):
         self.assertEqual(home.status_code, 200)
         self.assertIn(b"HTSA-Explorer", home.data)
         self.assertIn(b"Regional GDP", home.data)
+        self.assertIn(
+            b"acm.graphml', tsKey:'time_series', k:30", home.data
+        )
+        self.assertIn(
+            b"equities.graphml', tsKey:'d0', k:20", home.data
+        )
+        self.assertIn(
+            b"european_regional_gdp.graphml', tsKey:'time_series', k:15",
+            home.data,
+        )
 
         d3_bundle = self.client.get("/static/vendor/d3.v7.9.0.min.js")
         self.assertEqual(d3_bundle.status_code, 200)
