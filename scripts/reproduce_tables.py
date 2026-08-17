@@ -8,9 +8,12 @@ before the timed region, matching the manuscript protocol.
 from __future__ import print_function
 
 import argparse
+import hashlib
+import importlib.metadata
 import json
 import math
 import os
+import platform
 import re
 import statistics
 import sys
@@ -32,6 +35,39 @@ DATASETS = {
     "Chinese equities": ("equities.graphml", "d0", 20),
     "European regional GDP": ("european_regional_gdp.graphml", "time_series", 15),
 }
+
+
+def sha256_file(path):
+    """Return the SHA-256 checksum of one binary input file."""
+    digest = hashlib.sha256()
+    with open(path, "rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest().upper()
+
+
+def environment_record():
+    """Record the runtime needed to interpret benchmark timings."""
+    return {
+        "python": platform.python_version(),
+        "platform": platform.platform(),
+        "packages": {
+            name: importlib.metadata.version(name)
+            for name in ("Flask", "networkx", "numpy")
+        },
+    }
+
+
+def input_records():
+    """Record exactly which dataset bytes produced the tables."""
+    records = {}
+    for filename, _, _ in DATASETS.values():
+        path = os.path.join(REPO_ROOT, "datasets", filename)
+        records[filename] = {
+            "bytes": os.path.getsize(path),
+            "sha256": sha256_file(path),
+        }
+    return records
 
 
 def parse_series(value):
@@ -205,6 +241,8 @@ def main():
         measure_repetitions = 3
 
     report = {
+        "environment": environment_record(),
+        "inputs": input_records(),
         "protocol": {
             "application_repetitions": app_repetitions,
             "strategy_repetitions": strategy_repetitions,

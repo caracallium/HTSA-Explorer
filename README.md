@@ -12,9 +12,9 @@ Hierarchical Time Series*.
 
 ## Quick start
 
-The reference environment is Windows 11 with Python 3.6.5, Flask 1.0.2,
-NetworkX 2.1, and NumPy 1.19.5. These are the versions used for the reported
-backend measurements.
+The supported reference environment is Windows 11 with Python 3.12.13,
+Flask 3.1.2, NetworkX 3.5, and NumPy 2.2.6. These are the versions used for
+the reported backend measurements. Python 3.6 is no longer supported.
 
 With Conda:
 
@@ -24,7 +24,7 @@ conda activate htsa-explorer
 python app.py
 ```
 
-With an existing Python 3.6 environment:
+With an existing Python 3.12 environment:
 
 ```text
 python -m pip install -r requirements.txt
@@ -66,9 +66,10 @@ python scripts/reproduce_tables.py
 
 The script writes machine-readable output to `results/reproduction.json` and
 prints the same records to the terminal. The checked-in
-`results/reference-results.json` records one complete reference run. GraphML
-parsing and forest normalization are excluded from the timed region, matching
-the paper; elapsed times remain machine dependent.
+`results/reference-results.json` records one complete Python 3.12 reference
+run, including package versions and input checksums. GraphML parsing and forest
+normalization are excluded from the timed region, matching the paper; elapsed
+times remain machine dependent.
 
 ## Programmatic use
 
@@ -132,5 +133,8 @@ and persistent storage. See `SECURITY.md`.
 ## Citation and license
 
 Citation metadata are provided in `CITATION.cff`. Source code is released under
-the MIT License. Bundled datasets and D3 are excluded from that grant; see
-`datasets/README.md` and `THIRD_PARTY_NOTICES.md`.
+the MIT License. D3 and all datasets are governed separately; see
+`datasets/README.md`, `datasets/manifest.json`, and `THIRD_PARTY_NOTICES.md`.
+Only the Eurostat-derived regional GDP file is cleared for a public release.
+The ACM and equity files must not be redistributed until their missing source
+and permission records are supplied.

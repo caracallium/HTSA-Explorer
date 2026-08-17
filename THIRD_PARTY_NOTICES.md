@@ -6,3 +6,8 @@ D3 is distributed under the ISC License; the complete license text is stored in
 
 Python dependencies are listed in `requirements.txt` and remain subject to
 their respective licenses.
+
+The regional GDP GraphML file is an adaptation of Eurostat data and must retain
+the attribution and modification notice in `datasets/README.md`. The ACM and
+equity GraphML files are not cleared for public redistribution; their exact
+blockers are recorded in `datasets/manifest.json`.

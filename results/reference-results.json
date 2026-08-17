@@ -6,9 +6,9 @@
       "dropped_multi_parent_edges": 0,
       "edges": 1881,
       "k": 30,
-      "median_seconds": 0.7157901,
+      "median_seconds": 0.24436460001743399,
       "method": "FDS",
-      "objective": 320937.6367679793,
+      "objective": 320937.63676797925,
       "raw_nodes": 2113,
       "selected_nodes": 53,
       "series_length_max": 48,
@@ -22,9 +22,9 @@
       "dropped_multi_parent_edges": 1,
       "edges": 757,
       "k": 20,
-      "median_seconds": 0.2982880999999997,
+      "median_seconds": 0.11925150000024587,
       "method": "FDS",
-      "objective": 51013542.22972876,
+      "objective": 51013542.22972877,
       "raw_nodes": 760,
       "selected_nodes": 86,
       "series_length_max": 242,
@@ -38,9 +38,9 @@
       "dropped_multi_parent_edges": 0,
       "edges": 1639,
       "k": 15,
-      "median_seconds": 0.5468109000000005,
+      "median_seconds": 0.18226540001342073,
       "method": "FDS",
-      "objective": 338203259.31434745,
+      "objective": 338203259.3143474,
       "raw_nodes": 1701,
       "selected_nodes": 958,
       "series_length_max": 8,
@@ -49,6 +49,29 @@
       "used_nodes": 1673
     }
   ],
+  "environment": {
+    "packages": {
+      "Flask": "3.1.2",
+      "networkx": "3.5",
+      "numpy": "2.2.6"
+    },
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13"
+  },
+  "inputs": {
+    "acm.graphml": {
+      "bytes": 819254,
+      "sha256": "AD3BD6494EED18A821034EF64210B7E684C8D88BC6066B6F6EE11B5CC86A7BAE"
+    },
+    "equities.graphml": {
+      "bytes": 2541176,
+      "sha256": "73A288FA026AEE4C9083BF4EA5B205B20C8C182CD96E2A8B6276C846A8DD1E48"
+    },
+    "european_regional_gdp.graphml": {
+      "bytes": 311347,
+      "sha256": "9C0E45FFC4D24952212675C9865B16A7F940693B3965754FFDF664955316275E"
+    }
+  },
   "protocol": {
     "application_repetitions": 7,
     "similarity_repetitions": 3,
@@ -59,17 +82,17 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.016367599999998816,
+      "median_seconds": 0.009020600002259016,
       "method": "FDS",
       "nodes": 50,
-      "objective": 113052.11381106474,
+      "objective": 113052.1138110647,
       "selected_nodes": 43,
       "strategy": "Path-greedy"
     },
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.011834299999998521,
+      "median_seconds": 0.003036000009160489,
       "method": "Euclidean",
       "nodes": 50,
       "objective": 85766.0,
@@ -79,7 +102,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.02337900000000026,
+      "median_seconds": 0.0052408999763429165,
       "method": "znorm_euclidean",
       "nodes": 50,
       "objective": 92062.57490773241,
@@ -89,7 +112,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.4700269000000006,
+      "median_seconds": 0.15954779999447055,
       "method": "DTW",
       "nodes": 50,
       "objective": 85766.0,
@@ -99,7 +122,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.09366070000000093,
+      "median_seconds": 0.02935190001153387,
       "method": "LCSS",
       "nodes": 50,
       "objective": 85766.0,
@@ -109,7 +132,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 1.0561948,
+      "median_seconds": 0.3666621000156738,
       "method": "MSM",
       "nodes": 50,
       "objective": 85766.0,
@@ -121,7 +144,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.004031299999999405,
+      "median_seconds": 0.0011623000027611852,
       "method": "FDS",
       "nodes": 20,
       "objective": 15641.0,
@@ -131,7 +154,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.0054418000000016065,
+      "median_seconds": 0.002271000004839152,
       "method": "FDS",
       "nodes": 20,
       "objective": 15641.0,
@@ -141,7 +164,7 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.006349999999999412,
+      "median_seconds": 0.00198090000776574,
       "method": "FDS",
       "nodes": 30,
       "objective": 15641.0,
@@ -151,17 +174,17 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.019748899999999736,
+      "median_seconds": 0.00878600002033636,
       "method": "FDS",
       "nodes": 30,
-      "objective": 15715.576538808626,
+      "objective": 15715.576538808624,
       "selected_nodes": 7,
       "strategy": "Optimal-Search"
     },
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.008616500000000471,
+      "median_seconds": 0.0027466000174172223,
       "method": "FDS",
       "nodes": 40,
       "objective": 15641.0,
@@ -171,17 +194,17 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.06505779999999994,
+      "median_seconds": 0.038275099999736995,
       "method": "FDS",
       "nodes": 40,
-      "objective": 15715.576538808626,
+      "objective": 15715.576538808624,
       "selected_nodes": 7,
       "strategy": "Optimal-Search"
     },
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.011140400000000383,
+      "median_seconds": 0.0038247000193223357,
       "method": "FDS",
       "nodes": 50,
       "objective": 15641.0,
@@ -191,10 +214,10 @@
     {
       "displayed_nodes": 5,
       "k": 5,
-      "median_seconds": 0.2093082000000006,
+      "median_seconds": 0.12633290002122521,
       "method": "FDS",
       "nodes": 50,
-      "objective": 15715.576538808626,
+      "objective": 15715.576538808624,
       "selected_nodes": 7,
       "strategy": "Optimal-Search"
     }

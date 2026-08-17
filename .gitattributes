@@ -11,3 +11,5 @@
 *.sh text eol=lf
 *.yml text eol=lf
 *.ps1 text eol=crlf
+datasets/acm.graphml export-ignore
+datasets/equities.graphml export-ignore

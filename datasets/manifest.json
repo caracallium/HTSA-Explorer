@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-08-17",
+  "datasets": [
+    {
+      "file": "european_regional_gdp.graphml",
+      "bytes": 311347,
+      "sha256": "9C0E45FFC4D24952212675C9865B16A7F940693B3965754FFDF664955316275E",
+      "series_field": "time_series",
+      "source": "Eurostat Data Browser: nama_10r_2gdp and nama_10r_3gdp",
+      "source_url": "https://ec.europa.eu/eurostat/databrowser/",
+      "accessed": "2026-08-04",
+      "transformation": "GDP observations for 2014-2021 and NUTS labels adapted into a parent-child GraphML forest.",
+      "reuse_basis": "Eurostat copyright notice and European Commission reuse policy; reuse authorized with source acknowledgement and modification notice.",
+      "reuse_url": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "public_release": true
+    },
+    {
+      "file": "acm.graphml",
+      "bytes": 819254,
+      "sha256": "AD3BD6494EED18A821034EF64210B7E684C8D88BC6066B6F6EE11B5CC86A7BAE",
+      "series_field": "time_series",
+      "source": null,
+      "source_url": null,
+      "accessed": null,
+      "transformation": null,
+      "reuse_basis": null,
+      "public_release": false,
+      "blocker": "Publication-count source, acquisition method, access date, and redistribution permission are missing."
+    },
+    {
+      "file": "equities.graphml",
+      "bytes": 2541176,
+      "sha256": "73A288FA026AEE4C9083BF4EA5B205B20C8C182CD96E2A8B6276C846A8DD1E48",
+      "series_field": "d0",
+      "source": null,
+      "source_url": null,
+      "accessed": null,
+      "transformation": null,
+      "reuse_basis": null,
+      "public_release": false,
+      "blocker": "Market-data provider, acquisition method, access date, and redistribution permission are missing."
+    }
+  ]
+}
