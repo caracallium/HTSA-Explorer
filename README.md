@@ -51,6 +51,17 @@ The three home-screen presets use the manuscript configurations:
 The client vendors D3 7.9.0 under `static/vendor`, so the analytical interface
 does not require a JavaScript CDN at runtime.
 
+For a production-style local launch on Windows, use the threaded Waitress
+entry point:
+
+```text
+powershell -ExecutionPolicy Bypass -File scripts/run_production.ps1
+```
+
+On Linux/macOS, `scripts/run_production.sh` starts Gunicorn with the checked-in
+configuration (two worker processes and four threads per worker by default).
+The same WSGI entry point is used by `Procfile` and `render.yaml`.
+
 ## Run the tests
 
 ```text
@@ -59,8 +70,8 @@ python -m unittest discover -s tests -v
 
 The test suite checks browser and health routes, bundled dataset access,
 request validation, both public selection strategies, all six similarity
-methods, deterministic multi-parent normalization, and the bounded exact-search
-guard.
+methods, deterministic multi-parent normalization, exact-search resource-guard
+fallback, and non-overwriting audit records.
 
 ## Reproduce the computational tables
 
@@ -113,19 +124,35 @@ normalizes that mass by total analyzed importance for cross-dataset display.
 `coverage.selected_vertices` is provided separately and must not be interpreted
 as the coverage metric.
 
-For large hierarchies use `Path-greedy`. `Optimal-Search` is intentionally
-limited to at most 50 analyzable vertices per request.
+For large hierarchies use `Path-greedy`. Exact `Optimal-Search` uses a
+deployment resource guard because its Pareto frontier can grow rapidly. The
+interactive default is 50 analyzable vertices; when a larger request selects
+`Optimal-Search`, the API executes `Path-greedy` and records both the requested
+and executed strategies in `execution`. Set `optimal_overflow` to `error` for
+strict API behavior. Operators can change `HTSA_OPTIMAL_MAX_NODES`, or set it
+to `0` for an unguarded controlled run.
+
+Each successful request receives a UUID and normalized-input SHA-256 digest.
+The service writes a unique JSON audit record and summary-edge file under
+`runtime_data/`; repeated runs do not overwrite one another. The browser also
+stores the twelve most recent completed runs in IndexedDB, restores them after
+page reload or browser restart, and exports a self-contained run record as
+JSON. Uploaded inputs and run records remain local to that browser profile and
+deployment unless the user exports them.
 
 ## Repository layout
 
 ```text
 app.py                       Flask service and abstraction algorithms
+wsgi.py                      Production WSGI entry point
+gunicorn.conf.py             Multiworker/multithread server configuration
+render.yaml / Procfile       Reproducible hosted-deployment entry points
 templates/appnewest.html     Single-page analytical client
 static/vendor/               Pinned local D3 bundle and license
 datasets/                    Three GraphML application datasets
 scripts/reproduce_tables.py  Computational reproduction entry point
 tests/                       Backend, route, and algorithm tests
-runtime_data/                Generated summary-edge audit files (ignored)
+runtime_data/                Unique JSON and summary-edge audit files (ignored)
 exports/                     Browser SVG exports (ignored)
 results/                     Reference and generated reproduction outputs
 ```
@@ -142,12 +169,22 @@ results/                     Reference and generated reproduction outputs
 - A node's default importance is the sum of its parsed observations; API users
   may supply a nonnegative `value` field instead.
 
-## Deployment boundary
+## Deployment and resource controls
 
-The default server binds to `127.0.0.1:5000` with debugging disabled. Set
-`HTSA_HOST`, `HTSA_PORT`, or `HTSA_DEBUG=1` to change local behavior. A public
-deployment should add authentication, request isolation, rate limits, HTTPS,
-and persistent storage. See `SECURITY.md`.
+`python app.py` is the local development entry point and binds to
+`127.0.0.1:5000` with debugging disabled. Production deployments use
+`wsgi:app`: Gunicorn on Unix-like systems and Waitress on Windows. The checked-in
+Gunicorn defaults provide two worker processes, four threads per worker,
+worker recycling, and a 180-second request timeout. Request bodies default to
+64 MiB. Configure these controls with `HTSA_WEB_WORKERS`, `HTSA_WEB_THREADS`,
+`HTSA_REQUEST_TIMEOUT_SECONDS`, and `HTSA_MAX_REQUEST_BYTES`.
+
+`HTSA_RUNTIME_DIR` selects the server audit-record directory. Browser history
+uses IndexedDB and therefore survives page reloads without sending records to
+an external database. A public multiuser deployment that requires shared or
+cross-device experiment management should attach a durable database or object
+store and add authentication, authorization, rate limits, and process isolation
+for untrusted uploads. See `SECURITY.md`.
 
 ## Citation and license
 

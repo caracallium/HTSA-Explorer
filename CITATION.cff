@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use HTSA-Explorer, please cite the software and its companion paper."
 title: "HTSA-Explorer: Interactive Abstraction and Application Analysis of Hierarchical Time Series"
 type: software
-version: 0.1.0
-date-released: 2026-08-04
+version: 0.2.0
+date-released: 2026-08-17
 license: MIT
 repository-code: "https://github.com/caracallium/HTSA-Explorer"
 url: "https://htsa-explorer.onrender.com/"

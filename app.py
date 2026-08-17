@@ -5,7 +5,9 @@ import os
 import re
 import json
 import uuid
-from datetime import datetime
+import time
+import hashlib
+from datetime import datetime, timezone
 from flask import Flask, Response, jsonify, render_template, request
 import logging
 #from utils import ossoss, VVGreedy, PPGreedy, sim, build_summary_tree
@@ -670,6 +672,39 @@ _STRATEGY_ALIASES = {
 MAX_OPTIMAL_SEARCH_NODES = 50
 
 
+class OptimalSearchLimitError(ValueError):
+    """Raised when exact search exceeds a deployment resource guard."""
+
+
+def optimal_search_node_limit():
+    """Return the configurable exact-search guard; zero disables the guard."""
+    raw_limit = os.environ.get(
+        "HTSA_OPTIMAL_MAX_NODES", str(MAX_OPTIMAL_SEARCH_NODES)
+    )
+    try:
+        limit = int(raw_limit)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("HTSA_OPTIMAL_MAX_NODES must be an integer") from exc
+    return None if limit <= 0 else limit
+
+
+def normalize_optimal_overflow_policy(policy):
+    """Normalize behavior when exact search exceeds its resource guard."""
+    key = str(policy or "path-greedy").strip().lower().replace("_", "-")
+    aliases = {
+        "fallback": "path-greedy",
+        "path-greedy": "path-greedy",
+        "error": "error",
+        "reject": "error",
+    }
+    try:
+        return aliases[key]
+    except KeyError as exc:
+        raise ValueError(
+            "optimal_overflow must be `path-greedy` or `error`"
+        ) from exc
+
+
 def normalize_strategy(strategy):
     if not isinstance(strategy, str) or not strategy.strip():
         raise ValueError("`strategy` is required and must be a non-empty string.")
@@ -708,19 +743,50 @@ def normalize_hierarchy_to_forest(G, node_dict, method="FDS", a=0.0):
     return forest, dropped_edges
 
 
-def run_htsa_strategy(G, node_dict, k, strategy, method="FDS", a=0.0):
-    """Run the selected summarization strategy and report its canonical name."""
-    canonical_strategy = normalize_strategy(strategy)
+def run_htsa_strategy(
+    G,
+    node_dict,
+    k,
+    strategy,
+    method="FDS",
+    a=0.0,
+    optimal_overflow="error",
+):
+    """Run a strategy and return transparent resource-guard metadata."""
+    requested_strategy = normalize_strategy(strategy)
+    canonical_strategy = requested_strategy
     canonical_method = normalize_similarity_method(method)
+    overflow_policy = normalize_optimal_overflow_policy(optimal_overflow)
+    node_limit = optimal_search_node_limit()
+    execution = {
+        "requested_strategy": requested_strategy,
+        "executed_strategy": requested_strategy,
+        "fallback_applied": False,
+        "optimal_search_node_limit": node_limit,
+        "optimal_overflow_policy": overflow_policy,
+        "reason": None,
+    }
     if (
-        canonical_strategy == "Optimal-Search"
-        and G.number_of_nodes() > MAX_OPTIMAL_SEARCH_NODES
+        requested_strategy == "Optimal-Search"
+        and node_limit is not None
+        and G.number_of_nodes() > node_limit
     ):
-        raise ValueError(
-            "Optimal-Search is limited to "
-            f"{MAX_OPTIMAL_SEARCH_NODES} nodes per request; use Path-greedy "
-            "for a larger hierarchy or submit a smaller subtree."
+        reason = (
+            f"Optimal-Search received {G.number_of_nodes()} nodes, exceeding "
+            f"the configured interactive guard of {node_limit}."
         )
+        if overflow_policy == "error":
+            raise OptimalSearchLimitError(
+                reason
+                + " Set HTSA_OPTIMAL_MAX_NODES=0 for an unguarded controlled "
+                "run, raise the limit, or use Path-greedy."
+            )
+        canonical_strategy = "Path-greedy"
+        execution.update({
+            "executed_strategy": canonical_strategy,
+            "fallback_applied": True,
+            "reason": reason,
+        })
     dispatch = {
         "Path-greedy": PPGreedy,
         "Optimal-Search": ossoss,
@@ -729,7 +795,7 @@ def run_htsa_strategy(G, node_dict, k, strategy, method="FDS", a=0.0):
     result = dispatch[canonical_strategy](
         G, node_dict, k, method=canonical_method, a=a
     )
-    return canonical_strategy, canonical_method, result
+    return canonical_strategy, canonical_method, result, execution
 
 def build_summary_tree(edges, groups_tuple):
     parent, children, nodes = {}, {}, set()
@@ -848,12 +914,18 @@ def build_summary_tree(edges, groups_tuple):
     return gprime_edges, gprime_root, group_root_list
 
 # Flask application and writable runtime directories.
+APP_VERSION = "0.2.0"
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config["JSON_AS_ASCII"] = False
+app.config["MAX_CONTENT_LENGTH"] = int(
+    os.environ.get("HTSA_MAX_REQUEST_BYTES", str(64 * 1024 * 1024))
+)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATASET_DIR = os.path.join(BASE_DIR, "datasets")
-DATA_DIR = os.path.join(BASE_DIR, "runtime_data")
+DATA_DIR = os.environ.get(
+    "HTSA_RUNTIME_DIR", os.path.join(BASE_DIR, "runtime_data")
+)
 os.makedirs(DATA_DIR, exist_ok=True)
 TUPIAN_DIR = os.path.join(BASE_DIR, "exports")
 os.makedirs(TUPIAN_DIR, exist_ok=True)
@@ -870,11 +942,13 @@ def _safe_filename(name: str) -> str:
     return name[:120] or "unnamed"
 
 
-def _save_record_to_file(record: dict, original_filename: str) -> str:
+def _save_record_to_file(
+    record: dict, original_filename: str, run_id: str | None = None
+) -> str:
     """Persist a run record as JSON and return its path."""
-    ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     safe_name = _safe_filename(original_filename or "unnamed")
-    uid = uuid.uuid4().hex[:8]
+    uid = (run_id or uuid.uuid4().hex)[:12]
     save_path = os.path.join(DATA_DIR, f"{ts}_{safe_name}_{uid}.json")
     with open(save_path, "w", encoding="utf-8") as f:
         json.dump(record, f, ensure_ascii=False, indent=2)
@@ -889,7 +963,26 @@ def home():
 
 @app.route("/api/health", methods=["GET"])
 def api_health():
-    return jsonify({"ok": True, "service": "HTSA-Explorer"})
+    return jsonify({
+        "ok": True,
+        "service": "HTSA-Explorer",
+        "version": APP_VERSION,
+        "capabilities": {
+            "browser_history": "IndexedDB",
+            "server_audit_records": True,
+            "optimal_search_node_limit": optimal_search_node_limit(),
+            "optimal_search_overflow": "path-greedy",
+        },
+    })
+
+
+@app.after_request
+def add_security_headers(response):
+    """Set low-risk baseline headers for local and hosted deployments."""
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    response.headers.setdefault("Referrer-Policy", "no-referrer")
+    return response
 
 
 PRESET_DATASETS = {
@@ -961,6 +1054,9 @@ def api_save_svgs():
 
 @app.route("/api/htsa", methods=["POST"])
 def api_htsa():
+    request_started = time.perf_counter()
+    created_at = datetime.now(timezone.utc).isoformat()
+    run_id = uuid.uuid4().hex
     try:
         # Parse and validate the request before running an algorithm.
         data = request.get_json(silent=True, force=True)
@@ -973,6 +1069,9 @@ def api_htsa():
         htsa_options = data.get("htsa") or {}
         method = htsa_options.get("method", "FDS")
         strategy = htsa_options.get("strategy", "Path-greedy")
+        optimal_overflow = htsa_options.get(
+            "optimal_overflow", "path-greedy"
+        )
         try:
             a = float(htsa_options.get("a", 0))
             if not np.isfinite(a):
@@ -989,6 +1088,9 @@ def api_htsa():
         try:
             strategy = normalize_strategy(strategy)
             method = normalize_similarity_method(method)
+            optimal_overflow = normalize_optimal_overflow_policy(
+                optimal_overflow
+            )
         except ValueError as exc:
             return jsonify({"ok": False, "error": str(exc)}), 400
         raw_node_dict = data.get("node_dict") or {}
@@ -1059,10 +1161,44 @@ def api_htsa():
         )
         valid_edges = list(G.edges())
 
+        normalized_input = {
+            "ts_key": ts_key,
+            "nodes": [
+                [str(node), node_dict[node][0], node_dict[node][1], node_dict[node][2]]
+                for node in sorted(G.nodes(), key=str)
+            ],
+            "edges": [
+                [str(parent), str(child)]
+                for parent, child in sorted(valid_edges, key=lambda edge: (str(edge[0]), str(edge[1])))
+            ],
+        }
+        analysis_input_sha256 = hashlib.sha256(
+            json.dumps(
+                normalized_input,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+                default=str,
+            ).encode("utf-8")
+        ).hexdigest().upper()
+
         try:
-            strategy, method, jieguo = run_htsa_strategy(
-                G, node_dict, k, strategy=strategy, method=method, a=a
+            strategy, method, jieguo, execution = run_htsa_strategy(
+                G,
+                node_dict,
+                k,
+                strategy=strategy,
+                method=method,
+                a=a,
+                optimal_overflow=optimal_overflow,
             )
+        except OptimalSearchLimitError as exc:
+            return jsonify({
+                "ok": False,
+                "error": str(exc),
+                "error_code": "optimal_search_resource_guard",
+                "optimal_search_node_limit": optimal_search_node_limit(),
+            }), 422
         except ValueError as exc:
             return jsonify({"ok": False, "error": str(exc)}), 400
         best_subgraphs, total_g_value = jieguo
@@ -1096,7 +1232,10 @@ def api_htsa():
             len(gprime_edges),
         )
         # Persist summary edges for auditing and reproducibility.
-        txt_filename = f"{_safe_filename(filename)}_summarized_edges.txt"
+        txt_filename = (
+            f"{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}_"
+            f"{_safe_filename(filename)}_{run_id[:12]}_summary_edges.txt"
+        )
         summary_path = os.path.join(DATA_DIR, txt_filename)
         with open(summary_path, "w", encoding="utf-8") as file:
             for edge in gprime_edges:
@@ -1112,7 +1251,7 @@ def api_htsa():
                 "g_value": g_val
             })
 
-        return jsonify({
+        response_payload = {
             "ok": True,
             "gprime_edges": gprime_edges,
             "gprime_root": gprime_root,
@@ -1132,6 +1271,8 @@ def api_htsa():
                 "total_vertices": G.number_of_nodes()
             },
             "strategy": strategy,
+            "requested_strategy": execution["requested_strategy"],
+            "execution": execution,
             "method": method,
             "a": a,
             "k": k,
@@ -1142,8 +1283,42 @@ def api_htsa():
                     [str(parent), str(child)]
                     for parent, child in dropped_parent_edges
                 ]
-            }
-        })
+            },
+            "audit": {
+                "run_id": run_id,
+                "created_at": created_at,
+                "software_version": APP_VERSION,
+                "analysis_input_sha256": analysis_input_sha256,
+                "runtime_seconds": time.perf_counter() - request_started,
+            },
+        }
+
+        audit_record = {
+            "schema_version": 1,
+            "run_id": run_id,
+            "created_at": created_at,
+            "software_version": APP_VERSION,
+            "request": {
+                "filename": filename,
+                "size": data.get("size"),
+                "ts_key": ts_key,
+                "htsa": {
+                    "method": method,
+                    "requested_strategy": execution["requested_strategy"],
+                    "executed_strategy": execution["executed_strategy"],
+                    "optimal_overflow": optimal_overflow,
+                    "a": a,
+                    "k": k,
+                },
+                "analysis_input_sha256": analysis_input_sha256,
+            },
+            "response": response_payload,
+        }
+        record_path = _save_record_to_file(
+            audit_record, filename, run_id=run_id
+        )
+        response_payload["audit"]["record_file"] = os.path.basename(record_path)
+        return jsonify(response_payload)
 
 
     except Exception as e:

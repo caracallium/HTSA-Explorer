@@ -480,7 +480,7 @@ select:focus,input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,2
     </div>
 
     <div class="runs" id="runs-wrap" hidden>
-      <div class="cap">RUN HISTORY</div>
+      <div class="cap">RUN HISTORY · SAVED IN THIS BROWSER</div>
       <div id="runs"></div>
     </div>
   </section>
@@ -494,6 +494,7 @@ select:focus,input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,2
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 11A8 8 0 105 6.3M20 4v7h-7"/></svg>
         Re-run
       </button>
+      <button class="btn small" id="btn-export-json" title="Download a reproducibility record as JSON">Run JSON</button>
     </div>
 
     <div class="statsbar" id="statsbar"></div>
@@ -584,7 +585,7 @@ select:focus,input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,2
         </button>
         <button class="opt" data-strat="Optimal-Search">
           <div class="t">Optimal-Search</div>
-          <div class="d">exact DP + Pareto pruning — ≤ 50 nodes</div>
+          <div class="d">exact on small inputs · guarded fallback on larger inputs</div>
         </button>
       </div>
     </div>
@@ -650,6 +651,130 @@ const PAPER_PRESETS = Object.freeze({
 const uid = () => (crypto.randomUUID ? crypto.randomUUID() : 'f_' + Math.random().toString(36).slice(2));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = (x, d=3) => (typeof x === 'number' && isFinite(x)) ? (Math.abs(x) >= 1000 ? x.toExponential(2) : x.toFixed(d)) : '—';
+
+/* ============================== persistent run store ============================== */
+const RUN_DB_NAME = 'htsa-explorer';
+const RUN_DB_VERSION = 1;
+const RUN_STORE_NAME = 'runs';
+const MAX_PERSISTED_RUNS = 12;
+let runDbPromise = null;
+
+function openRunDb(){
+  if(!('indexedDB' in window)) return Promise.reject(new Error('IndexedDB is unavailable'));
+  if(runDbPromise) return runDbPromise;
+  runDbPromise = new Promise((resolve, reject) => {
+    const req = indexedDB.open(RUN_DB_NAME, RUN_DB_VERSION);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if(!db.objectStoreNames.contains(RUN_STORE_NAME)){
+        const runs = db.createObjectStore(RUN_STORE_NAME, { keyPath:'id' });
+        runs.createIndex('updatedAt', 'updatedAt');
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error || new Error('Could not open run history'));
+  });
+  return runDbPromise;
+}
+
+function transactionDone(tx){
+  return new Promise((resolve, reject) => {
+    tx.oncomplete = resolve;
+    tx.onerror = () => reject(tx.error || new Error('Run-history transaction failed'));
+    tx.onabort = () => reject(tx.error || new Error('Run-history transaction was aborted'));
+  });
+}
+
+async function trimPersistedRuns(db){
+  const readTx = db.transaction(RUN_STORE_NAME, 'readonly');
+  const req = readTx.objectStore(RUN_STORE_NAME).getAll();
+  const records = await new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+  await transactionDone(readTx);
+  records.sort((a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')));
+  const stale = records.slice(MAX_PERSISTED_RUNS);
+  if(!stale.length) return;
+  const writeTx = db.transaction(RUN_STORE_NAME, 'readwrite');
+  stale.forEach(record => {
+    writeTx.objectStore(RUN_STORE_NAME).delete(record.id);
+    store.delete(record.id);
+  });
+  await transactionDone(writeTx);
+}
+
+async function persistRun(id, entry){
+  try{
+    const db = await openRunDb();
+    entry.updatedAt = new Date().toISOString();
+    entry.createdAt = entry.createdAt || entry.updatedAt;
+    const persisted = { ...entry, id };
+    delete persisted.rawXml; // the File/Blob and parsed graph are already stored
+    const tx = db.transaction(RUN_STORE_NAME, 'readwrite');
+    tx.objectStore(RUN_STORE_NAME).put(persisted);
+    await transactionDone(tx);
+    await trimPersistedRuns(db);
+    return true;
+  }catch(err){
+    console.warn('Run history could not be persisted', err);
+    toast('Run completed, but persistent browser history is unavailable', true);
+    return false;
+  }
+}
+
+async function deletePersistedRun(id){
+  try{
+    const db = await openRunDb();
+    const tx = db.transaction(RUN_STORE_NAME, 'readwrite');
+    tx.objectStore(RUN_STORE_NAME).delete(id);
+    await transactionDone(tx);
+  }catch(err){ console.warn('Persisted run could not be deleted', err); }
+}
+
+async function hydratePersistedRuns(){
+  try{
+    const db = await openRunDb();
+    const tx = db.transaction(RUN_STORE_NAME, 'readonly');
+    const req = tx.objectStore(RUN_STORE_NAME).getAll();
+    const records = await new Promise((resolve, reject) => {
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => reject(req.error);
+    });
+    await transactionDone(tx);
+    records.sort((a, b) => String(b.updatedAt || '').localeCompare(String(a.updatedAt || '')));
+    records.forEach(record => {
+      if(record.summary && !record.colors){
+        record.colors = (record.summary.subgraphs || []).map((_, i) => PALETTE[i % PALETTE.length]);
+      }
+      store.set(record.id, record);
+    });
+    renderRuns();
+  }catch(err){ console.warn('Persistent run history is unavailable', err); }
+}
+
+function exportRunJson(id, entry){
+  if(!entry || !entry.summary){ toast('No completed run to export', true); return; }
+  const record = {
+    schema_version: 1,
+    exported_at: new Date().toISOString(),
+    browser_run_id: id,
+    input: {
+      filename: entry.file?.name || 'dataset',
+      size_bytes: entry.file?.size ?? null,
+      time_series_key: entry.tsKey,
+      analysis_input_sha256: entry.summary.audit?.analysis_input_sha256 || null
+    },
+    request: entry.htsa,
+    response: entry.summary
+  };
+  const blob = new Blob([JSON.stringify(record, null, 2)], { type:'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'htsa-run-' + (entry.summary.audit?.run_id || id) + '.json';
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
 
 /* ============================== toast ============================== */
 let toastTimer = null;
@@ -827,7 +952,7 @@ $('btn-run').onclick = async () => {
     if(!pendingDataset){ toast('Select a dataset first', true); return; }
     id = uid();
     if(pendingDataset.preset){
-      entry = { file:null, presetName:pendingDataset.preset, tsKey, parsed:null, htsa:null, summary:null };
+      entry = { file:null, presetName:pendingDataset.preset, tsKey, parsed:null, htsa:null, summary:null, createdAt:new Date().toISOString() };
       let xmlText;
       try{
         const resp = await fetch('/api/dataset/' + pendingDataset.preset);
@@ -837,12 +962,12 @@ $('btn-run').onclick = async () => {
       entry.file = new File([new Blob([xmlText], {type:'application/xml'})], pendingDataset.filename, {type:'application/xml'});
       entry.rawXml = xmlText;
     } else {
-      entry = { file:pendingDataset.file, tsKey, parsed:null, htsa:null, summary:null };
+      entry = { file:pendingDataset.file, tsKey, parsed:null, htsa:null, summary:null, createdAt:new Date().toISOString() };
     }
     store.set(id, entry);
   }
   entry.tsKey = tsKey;
-  entry.htsa = { method, strategy, a, k };
+  entry.htsa = { method, strategy, a, k, optimal_overflow:'path-greedy' };
 
   const runBtn = $('btn-run');
   runBtn.disabled = true;
@@ -904,6 +1029,10 @@ $('btn-run').onclick = async () => {
     entry.colors = (data.subgraphs || []).map((_, i) => PALETTE[i % PALETTE.length]);
     const dropped = Number(data.normalization?.dropped_multi_parent_edge_count || 0);
     if(dropped) toast(dropped + ' multi-parent edge(s) resolved by temporal affinity');
+    if(data.execution?.fallback_applied){
+      toast('Optimal-Search guard applied; this run executed Path-greedy');
+    }
+    await persistRun(id, entry);
     stopLoading();
     renderResults(entry);
   }catch(err){
@@ -932,16 +1061,19 @@ function renderRuns(){
       '<span class="fsize">' + (e.file ? (e.file.size/1024).toFixed(1) + ' KB' : '') + '</span>' +
       '<span class="chip gray">' + nN + ' nodes · ' + nE + ' edges</span>' +
       (e.htsa ? '<span class="chip violet">' + esc(e.htsa.method) + '</span>' +
-                '<span class="chip">' + esc(e.htsa.strategy) + '</span>' +
+                '<span class="chip">' + esc(e.summary?.strategy || e.htsa.strategy) + '</span>' +
                 '<span class="chip amber">k=' + e.htsa.k + '</span>' : '') +
+      (e.summary?.execution?.fallback_applied ? '<span class="chip amber">requested Optimal</span>' : '') +
       (e.summary ? '<span class="chip green">✓ ' + (e.summary.subgraphs||[]).length + ' subtrees</span>' : '') +
       '<span class="spacer"></span>' +
       (e.summary ? '<button class="btn small" data-act="view">View</button>' : '') +
+      (e.summary ? '<button class="btn small" data-act="json">Export JSON</button>' : '') +
       '<button class="btn small" data-act="run">Run</button>' +
       '<button class="btn small danger" data-act="del">Delete</button>';
     div.querySelectorAll('button').forEach(b => b.onclick = () => {
       const act = b.dataset.act;
-      if(act === 'del'){ store.delete(id); renderRuns(); }
+      if(act === 'del'){ store.delete(id); deletePersistedRun(id); renderRuns(); }
+      if(act === 'json'){ exportRunJson(id, e); }
       if(act === 'run'){ openModal(id); }
       if(act === 'view'){ currentId = id; view = {mode:'global', sg:null}; showResults(); renderResults(store.get(id)); }
     });
@@ -1018,7 +1150,7 @@ function renderStats(entry){
     { k: d ? 'analyzed nodes' : 'nodes', v:Number.isFinite(analyzedN) ? analyzedN : nN },
     { k: d ? 'analyzed edges' : 'edges', v:Number.isFinite(analyzedE) ? analyzedE : nE },
     { k:'method', v: entry.htsa?.method || '—', cls:'violet' },
-    { k:'strategy', v: entry.htsa?.strategy === 'Optimal-Search' ? 'Optimal' : (entry.htsa?.strategy || '—'), cls:'violet' },
+    { k:'strategy', v: d?.strategy || entry.htsa?.strategy || '—', cls:'violet' },
     { k:'k subtrees', v: entry.htsa?.k ?? '—', cls:'accent' }
   ];
   if(d){
@@ -1284,6 +1416,10 @@ $('btn-export').onclick = () => {
   a.click();
   URL.revokeObjectURL(a.href);
 };
+$('btn-export-json').onclick = () => {
+  if(!currentId) return toast('No completed run to export', true);
+  exportRunJson(currentId, store.get(currentId));
+};
 
 /* ---------- tooltip ---------- */
 function showNodeTooltip(ev, entry, name, grp){
@@ -1489,6 +1625,7 @@ addEventListener('resize', () => {
 /* init */
 updateMethodDesc();
 showHome();
+hydratePersistedRuns();
 })();
 </script>
 </body>

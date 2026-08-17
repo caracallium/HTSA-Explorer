@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: htsa-explorer
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --config gunicorn.conf.py wsgi:app
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.13
+      - key: HTSA_WEB_WORKERS
+        value: 2
+      - key: HTSA_WEB_THREADS
+        value: 4
+      - key: HTSA_OPTIMAL_MAX_NODES
+        value: 50

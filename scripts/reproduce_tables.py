@@ -149,7 +149,7 @@ def timed_selection(graph, node_dict, strategy, method, k, similarity_setting,
     result = None
     for _ in range(repetitions):
         started = time.perf_counter()
-        canonical_strategy, canonical_method, result = app.run_htsa_strategy(
+        canonical_strategy, canonical_method, result, _ = app.run_htsa_strategy(
             graph, node_dict, k, strategy=strategy, method=method, a=similarity_setting
         )
         durations.append(time.perf_counter() - started)

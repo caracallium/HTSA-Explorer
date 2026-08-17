@@ -1,4 +1,6 @@
 import math
+import json
+import os
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -53,6 +55,10 @@ class StrategyDispatchTests(unittest.TestCase):
         health = self.client.get("/api/health")
         self.assertEqual(health.status_code, 200)
         self.assertTrue(health.get_json()["ok"])
+        self.assertEqual(
+            health.get_json()["capabilities"]["browser_history"],
+            "IndexedDB",
+        )
         home = self.client.get("/")
         self.assertEqual(home.status_code, 200)
         self.assertIn(b"HTSA-Explorer", home.data)
@@ -68,6 +74,8 @@ class StrategyDispatchTests(unittest.TestCase):
             home.data,
         )
         self.assertIn(b"filter(token => token.length)", home.data)
+        self.assertIn(b"indexedDB.open", home.data)
+        self.assertIn(b"Export JSON", home.data)
 
         d3_bundle = self.client.get("/static/vendor/d3.v7.9.0.min.js")
         self.assertEqual(d3_bundle.status_code, 200)
@@ -93,6 +101,8 @@ class StrategyDispatchTests(unittest.TestCase):
         data = response.get_json()
         self.assertTrue(data["ok"])
         self.assertEqual(data["strategy"], "Path-greedy")
+        self.assertEqual(data["requested_strategy"], "Path-greedy")
+        self.assertFalse(data["execution"]["fallback_applied"])
         self.assertEqual(data["method"], "FDS")
         self.assertEqual(data["coverage"]["selected_vertices"], 2)
         self.assertEqual(data["coverage"]["total_vertices"], 2)
@@ -100,6 +110,8 @@ class StrategyDispatchTests(unittest.TestCase):
         self.assertEqual(data["coverage"]["total_importance"], 5.0)
         self.assertEqual(data["coverage"]["importance_fraction"], 1.0)
         self.assertEqual(data["analysis_graph"], {"vertices": 2, "edges": 1})
+        self.assertEqual(len(data["audit"]["analysis_input_sha256"]), 64)
+        self.assertTrue(data["audit"]["record_file"].endswith(".json"))
         dispatcher.assert_called_once()
         self.assertEqual(dispatcher.call_args[1]["method"], "FDS")
         self.assertEqual(dispatcher.call_args[1]["a"], 0.25)
@@ -143,7 +155,7 @@ class StrategyDispatchTests(unittest.TestCase):
                     self.assertEqual(data["strategy"], strategy)
                     self.assertGreaterEqual(len(data["subgraphs"]), 1)
 
-    def test_optimal_search_rejects_oversized_request(self):
+    def test_optimal_search_guard_can_reject_oversized_request(self):
         graph = nx.path_graph(
             app_module.MAX_OPTIMAL_SEARCH_NODES + 1,
             create_using=nx.DiGraph(),
@@ -151,7 +163,7 @@ class StrategyDispatchTests(unittest.TestCase):
         node_dict = {
             node: ([1, 2, 3], 1.0, {}) for node in graph.nodes
         }
-        with self.assertRaisesRegex(ValueError, "limited to"):
+        with self.assertRaisesRegex(ValueError, "configured interactive guard"):
             app_module.run_htsa_strategy(
                 graph,
                 node_dict,
@@ -159,6 +171,63 @@ class StrategyDispatchTests(unittest.TestCase):
                 strategy="Optimal-Search",
                 method="FDS",
             )
+
+    def test_api_falls_back_transparently_for_oversized_optimal_search(self):
+        payload = sample_payload(strategy="Optimal-Search")
+        node_count = app_module.MAX_OPTIMAL_SEARCH_NODES + 1
+        payload["node_dict"] = {
+            str(i): {"time_series": [1, 2, 3], "value": 1}
+            for i in range(node_count)
+        }
+        payload["edges"] = [
+            [str(i), str(i + 1)] for i in range(node_count - 1)
+        ]
+        payload["G"] = {
+            "nodes": list(payload["node_dict"]),
+            "edges": payload["edges"],
+        }
+        result = [({str(i) for i in range(node_count)}, 2.5)], 2.5
+        summary = ([['S_0', 'S_1']], 'S_0', ['0'])
+        with tempfile.TemporaryDirectory() as temp_dir, patch.object(
+            app_module, "DATA_DIR", temp_dir
+        ), patch.object(
+            app_module, "PPGreedy", return_value=result
+        ) as fallback, patch.object(
+            app_module, "build_summary_tree", return_value=summary
+        ):
+            response = self.client.post("/api/htsa", json=payload)
+            data = response.get_json()
+            record_path = os.path.join(temp_dir, data["audit"]["record_file"])
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data["requested_strategy"], "Optimal-Search")
+        self.assertEqual(data["strategy"], "Path-greedy")
+        self.assertTrue(data["execution"]["fallback_applied"])
+        fallback.assert_called_once()
+        self.assertTrue(os.path.basename(record_path).endswith(".json"))
+
+    def test_server_writes_non_overwriting_audit_records(self):
+        result = [({"root", "child"}, 2.5)], 2.5
+        summary = ([['S_root', 'S_child']], 'S_root', ['root'])
+        with tempfile.TemporaryDirectory() as temp_dir, patch.object(
+            app_module, "DATA_DIR", temp_dir
+        ), patch.object(
+            app_module, "PPGreedy", return_value=result
+        ), patch.object(
+            app_module, "build_summary_tree", return_value=summary
+        ):
+            first = self.client.post("/api/htsa", json=sample_payload()).get_json()
+            second = self.client.post("/api/htsa", json=sample_payload()).get_json()
+            record_names = sorted(
+                name for name in os.listdir(temp_dir) if name.endswith(".json")
+            )
+            with open(os.path.join(temp_dir, record_names[0]), encoding="utf-8") as stream:
+                saved = json.load(stream)
+
+        self.assertEqual(len(record_names), 2)
+        self.assertNotEqual(first["audit"]["run_id"], second["audit"]["run_id"])
+        self.assertEqual(saved["schema_version"], 1)
+        self.assertIn("analysis_input_sha256", saved["request"])
 
 
 class SimilarityPropagationTests(unittest.TestCase):
