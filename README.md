@@ -135,6 +135,7 @@ and persistent storage. See `SECURITY.md`.
 Citation metadata are provided in `CITATION.cff`. Source code is released under
 the MIT License. D3 and all datasets are governed separately; see
 `datasets/README.md`, `datasets/manifest.json`, and `THIRD_PARTY_NOTICES.md`.
-Only the Eurostat-derived regional GDP file is cleared for a public release.
-The ACM and equity files must not be redistributed until their missing source
-and permission records are supplied.
+All three datasets are included in this repository with project-author
+authorization confirmed on 2026-08-17. That confirmation does not place the
+datasets under MIT or grant downstream reuse rights; the ACM and equity source
+terms still need to be documented.

@@ -9,5 +9,6 @@ their respective licenses.
 
 The regional GDP GraphML file is an adaptation of Eurostat data and must retain
 the attribution and modification notice in `datasets/README.md`. The ACM and
-equity GraphML files are not cleared for public redistribution; their exact
-blockers are recorded in `datasets/manifest.json`.
+equity GraphML files are included with project-author authorization confirmed
+on 2026-08-17, but no downstream reuse license or complete upstream provenance
+is recorded for them. See `datasets/manifest.json`.

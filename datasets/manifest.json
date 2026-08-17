@@ -25,8 +25,10 @@
       "accessed": null,
       "transformation": null,
       "reuse_basis": null,
-      "public_release": false,
-      "blocker": "Publication-count source, acquisition method, access date, and redistribution permission are missing."
+      "repository_upload_authorized": true,
+      "authorization_record": "Project author confirmed repository upload authorization on 2026-08-17.",
+      "public_release": true,
+      "downstream_reuse": "No license grant recorded; upstream publication-count source and terms remain missing."
     },
     {
       "file": "equities.graphml",
@@ -38,8 +40,10 @@
       "accessed": null,
       "transformation": null,
       "reuse_basis": null,
-      "public_release": false,
-      "blocker": "Market-data provider, acquisition method, access date, and redistribution permission are missing."
+      "repository_upload_authorized": true,
+      "authorization_record": "Project author confirmed repository upload authorization on 2026-08-17.",
+      "public_release": true,
+      "downstream_reuse": "No license grant recorded; market-data provider, acquisition method, and terms remain missing."
     }
   ]
 }
