@@ -20,30 +20,34 @@
       "bytes": 806582,
       "sha256": "641FA762A98A44F9A5C71384FD710E6955C4FE9EBAAAC67B6F8EBD371662BB75",
       "series_field": "time_series",
-      "source": null,
-      "source_url": null,
-      "accessed": null,
-      "transformation": null,
-      "reuse_basis": null,
+      "source": "ACM Computing Classification System taxonomy and public ACM Digital Library publication records",
+      "source_url": "https://dl.acm.org/ccs",
+      "source_period": "Monthly publication counts over the 48-month 2019-2022 study window (47 or 48 finite observations per analyzed vertex)",
+      "accessed": "Original access date not retained; provenance recorded 2026-08-17",
+      "transformation": "ACM CCS labels and hierarchy were combined with monthly publication counts per field and serialized as GraphML.",
+      "reuse_basis": "Project-author academic research release authorization with ACM CCS attribution; reuse remains subject to applicable ACM source terms and is separate from the software MIT license.",
+      "reuse_url": "https://www.acm.org/publications/class-2012",
       "repository_upload_authorized": true,
       "authorization_record": "Project author confirmed repository upload authorization on 2026-08-17.",
       "public_release": true,
-      "downstream_reuse": "No license grant recorded; upstream publication-count source and terms remain missing."
+      "downstream_reuse": "Academic research reuse permitted with attribution under project-author authorization, subject to applicable ACM source terms."
     },
     {
       "file": "equities.graphml",
       "bytes": 2538133,
       "sha256": "E6A540B7F4F7B9CACF4094306EF56AE98E7E8A76089B717DB80CECC51A990CC9",
       "series_field": "d0",
-      "source": null,
-      "source_url": null,
-      "accessed": null,
-      "transformation": null,
-      "reuse_basis": null,
+      "source": "AKShare open-source Python financial-data interface using public-source Chinese market data",
+      "source_url": "https://akshare.akfamily.xyz/introduction.html",
+      "source_period": "Daily Chinese equity series, 2023 (242 observations per vertex)",
+      "accessed": "Original access date and AKShare version not retained; provenance recorded 2026-08-17",
+      "transformation": "Daily Chinese equity series acquired through AKShare were organized by exchange and industry into a depth-5 hierarchy and serialized as GraphML.",
+      "reuse_basis": "AKShare client code is MIT licensed; AKShare documents public data sources and restricts its interface and related data to non-commercial academic research. Project-author public research release authorization was confirmed 2026-08-17.",
+      "reuse_url": "https://akshare.akfamily.xyz/special.html",
       "repository_upload_authorized": true,
       "authorization_record": "Project author confirmed repository upload authorization on 2026-08-17.",
       "public_release": true,
-      "downstream_reuse": "No license grant recorded; market-data provider, acquisition method, and terms remain missing."
+      "downstream_reuse": "Non-commercial academic research reuse permitted with attribution under project-author authorization, subject to AKShare and underlying-source conditions."
     }
   ]
 }

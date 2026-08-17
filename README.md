@@ -193,6 +193,11 @@ the MIT License. D3 and all datasets are governed separately; see
 `datasets/README.md`, `datasets/manifest.json`, and `THIRD_PARTY_NOTICES.md`.
 The complete author list and contact details are in `AUTHORS.md`.
 All three datasets are included in this repository with project-author
-authorization confirmed on 2026-08-17. That confirmation does not place the
-datasets under MIT or grant downstream reuse rights; the ACM and equity source
-terms still need to be documented.
+authorization confirmed on 2026-08-17 for academic reproduction and research
+reuse. They are not covered by the software's MIT license: the regional GDP
+snapshot requires Eurostat attribution, the ACM snapshot requires ACM source
+attribution and compliance with ACM terms, and the equity snapshot is
+non-commercial research data acquired through AKShare and remains subject to
+AKShare and underlying-source conditions. The exact provenance, transformation,
+and reuse notices are recorded in `datasets/README.md` and
+`datasets/manifest.json`.
