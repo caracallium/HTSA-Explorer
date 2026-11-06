@@ -914,7 +914,7 @@ def build_summary_tree(edges, groups_tuple):
     return gprime_edges, gprime_root, group_root_list
 
 # Flask application and writable runtime directories.
-APP_VERSION = "0.2.0"
+APP_VERSION = "0.2.1"
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config["JSON_AS_ASCII"] = False
 app.config["MAX_CONTENT_LENGTH"] = int(

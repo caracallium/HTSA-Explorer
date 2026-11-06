@@ -1154,9 +1154,7 @@ function renderStats(entry){
     { k:'k subtrees', v: entry.htsa?.k ?? '—', cls:'accent' }
   ];
   if(d){
-    const totalG = (d.subgraphs || []).reduce((s, g) => s + (Number(g.g_value) || 0), 0);
     const importanceFraction = Number(d.coverage && d.coverage.importance_fraction);
-    items.push({ k:'Σ g quality', v: fmt(totalG, 2), cls:'green' });
     items.push({
       k:'importance coverage',
       v: Number.isFinite(importanceFraction) ? (100 * importanceFraction).toFixed(1) + '%' : '—',

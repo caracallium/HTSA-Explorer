@@ -51,6 +51,11 @@ The three home-screen presets use the manuscript configurations:
 The client vendors D3 7.9.0 under `static/vendor`, so the analytical interface
 does not require a JavaScript CDN at runtime.
 
+The results statistics show analyzed graph size, similarity measure, executed
+strategy, subtree budget, importance coverage, and summary-edge count. The
+aggregate score is hidden from this display; individual subtree scores and
+their ranking remain available in the leaderboard.
+
 For a production-style local launch on Windows, use the threaded Waitress
 entry point:
 
