@@ -1,0 +1,343 @@
+{
+  "a": 0.9,
+  "analysis_graph": {
+    "edges": 756,
+    "vertices": 759
+  },
+  "audit": {
+    "analysis_input_sha256": "0D4E868CB4DB798890AE24A61B6D9A256FA980028B2D797D49D687E80AACA7E7",
+    "created_at": "2026-11-26T03:22:47.496695+00:00",
+    "record_file": "20261126T032248Z_equities.graphml_5242c1ee6f4d.json",
+    "run_id": "5242c1ee6f4d47e89bc4e234fee960cc",
+    "runtime_seconds": 1.0801940000383183,
+    "software_version": "0.3.0"
+  },
+  "coverage": {
+    "definition": "selected importance / total importance",
+    "importance_fraction": 0.8451915957290795,
+    "selected_importance": 254656412.0493647,
+    "selected_vertices": 69,
+    "total_importance": 301300218.0052357,
+    "total_vertices": 759
+  },
+  "execution": {
+    "executed_strategy": "Path-greedy",
+    "fallback_applied": false,
+    "optimal_overflow_policy": "path-greedy",
+    "optimal_search_node_limit": 50,
+    "reason": null,
+    "requested_strategy": "Path-greedy"
+  },
+  "gprime_edges": [
+    [
+      "unimportant0",
+      "S_SSE_Composite_Index"
+    ],
+    [
+      "unimportant0",
+      "S_SZSE_Fundamental_200_Index"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Cons_Staples"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Info_technology"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Health_Care"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Materials"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Cons_Disc"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Financials"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Communication_Services"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Industrials"
+    ],
+    [
+      "S_SSE_Composite_Index",
+      "S_SSE_Utilities"
+    ],
+    [
+      "S_SSE_Communication_Services",
+      "S_Communications_and_Networks"
+    ],
+    [
+      "S_SSE_Cons_Disc",
+      "S_Automobiles_and_Tires"
+    ],
+    [
+      "S_SSE_Cons_Disc",
+      "S_Home_Appliances_and_Digital"
+    ],
+    [
+      "S_SSE_Health_Care",
+      "S_Pharmaceutical_Platforms"
+    ],
+    [
+      "S_SSE_Info_technology",
+      "S_Software_Platforms"
+    ],
+    [
+      "S_SZSE_Fundamental_200_Index",
+      "S_BYD_Company_Limited"
+    ],
+    [
+      "S_SSE_Cons_Staples",
+      "S_Eastroc_Beverage_Group_Co_Ltd"
+    ],
+    [
+      "S_SSE_Materials",
+      "S_Chemicals_and_New_Materials"
+    ],
+    [
+      "S_SSE_Materials",
+      "S_Biopharmaceuticals"
+    ]
+  ],
+  "gprime_root": "unimportant0",
+  "group_roots": [
+    "SSE_Composite_Index",
+    "SSE_Cons_Staples",
+    "SSE_Info_technology",
+    "SZSE_Fundamental_200_Index",
+    "SSE_Health_Care",
+    "SSE_Materials",
+    "SSE_Cons_Disc",
+    "Communications_and_Networks",
+    "SSE_Financials",
+    "SSE_Communication_Services",
+    "Automobiles_and_Tires",
+    "Pharmaceutical_Platforms",
+    "Software_Platforms",
+    "SSE_Industrials",
+    "BYD_Company_Limited",
+    "SSE_Utilities",
+    "Eastroc_Beverage_Group_Co_Ltd",
+    "Chemicals_and_New_Materials",
+    "Biopharmaceuticals",
+    "Home_Appliances_and_Digital"
+  ],
+  "k": 20,
+  "method": "FDS",
+  "normalization": {
+    "dropped_multi_parent_edge_count": 1,
+    "dropped_multi_parent_edges": [
+      [
+        "SSE_Health_Care",
+        "Biopharmaceuticals"
+      ]
+    ]
+  },
+  "ok": true,
+  "requested_strategy": "Path-greedy",
+  "strategy": "Path-greedy",
+  "subgraphs": [
+    {
+      "g_value": 68519352.51837492,
+      "nodes": [
+        "SSE_Composite_Index"
+      ],
+      "root": "SSE_Composite_Index"
+    },
+    {
+      "g_value": 55927215.78113787,
+      "nodes": [
+        "Alcoholic_Beverages",
+        "Condiments_and_Dairy",
+        "Hebei_Hengshui_Laobaigan_Liquor_Co_Ltd",
+        "Kweichow_Moutai_Co_Ltd",
+        "SSE_Cons_Staples",
+        "Shanxi_Xinghuacun_Fen_Wine_Factory_Co_Ltd",
+        "Tsingtao_Brewery_Co_Ltd"
+      ],
+      "root": "SSE_Cons_Staples"
+    },
+    {
+      "g_value": 18384076.02053939,
+      "nodes": [
+        "Advanced_Computing",
+        "Cambricon_Technologies_Corporation_Limited",
+        "Chip_Design",
+        "Hygon_Information_Technology_Co_Ltd",
+        "Piotech_Inc",
+        "SSE_Info_technology",
+        "Semiconductor_Manufacturing"
+      ],
+      "root": "SSE_Info_technology"
+    },
+    {
+      "g_value": 15557097.180770144,
+      "nodes": [
+        "Anhui_Zhongding_Sealing_Parts_Co_Ltd",
+        "Contemporary_Amperex_Technology_Co_Ltd",
+        "Guangdong_Hongda_Holdings_Group_Co_Ltd",
+        "Guangxi_Liugong_Machinery_Co_Ltd",
+        "Guangzhou_Tinci_Materials_Technology_Co_Ltd",
+        "Hengdian_Group_DMEGC_Magnetics_Co_Ltd",
+        "Hithink_RoyalFlush_Information_Network_Co_Ltd",
+        "JL_MAG_RARE_EARTH_CO_LTD",
+        "Jiangsu_HopeRun_Software_Co_Ltd",
+        "Kuang_Chi_Technologies_Co_Ltd",
+        "Ruijie_Networks_Co_Ltd",
+        "SZSE_Downstream",
+        "SZSE_Fundamental_200_Index",
+        "SZSE_Midstream",
+        "SZSE_Upstream",
+        "Shenzhen_Kedali_Industry_Co_Ltd",
+        "Youngy_Co_Ltd",
+        "ZHEJIANG_SHUANGHUAN_DRIVELINE_CO_LTD",
+        "Zhefu_Holding_Group_Co_Ltd",
+        "Zhejiang_Wanfeng_Auto_Wheel_CO_LTD"
+      ],
+      "root": "SZSE_Fundamental_200_Index"
+    },
+    {
+      "g_value": 8031333.903146447,
+      "nodes": [
+        "Chemical_Pharmaceuticals",
+        "Medical_Devices",
+        "SSE_Health_Care",
+        "Traditional_Chinese_Medicine_and_Herbal_Medicine",
+        "Zhangzhou_Pientzehuang_Pharmaceutical_Co_Ltd",
+        "Zhejiang_Jiuzhou_Pharmaceutical_Co_Ltd"
+      ],
+      "root": "SSE_Health_Care"
+    },
+    {
+      "g_value": 4842740.5876971455,
+      "nodes": [
+        "SSE_Materials",
+        "Steel_and_Nonferrous_Metals"
+      ],
+      "root": "SSE_Materials"
+    },
+    {
+      "g_value": 4283095.498121775,
+      "nodes": [
+        "SSE_Cons_Disc"
+      ],
+      "root": "SSE_Cons_Disc"
+    },
+    {
+      "g_value": 3192861.1486679157,
+      "nodes": [
+        "China_Mobile_Limited",
+        "Communications_and_Networks"
+      ],
+      "root": "Communications_and_Networks"
+    },
+    {
+      "g_value": 3007146.0658954135,
+      "nodes": [
+        "Integrated_Financial_Holdings",
+        "Large_Banks",
+        "Ping_An_Insurance_Group_Company_of_China_Ltd",
+        "SSE_Financials"
+      ],
+      "root": "SSE_Financials"
+    },
+    {
+      "g_value": 2946141.258420933,
+      "nodes": [
+        "SSE_Communication_Services"
+      ],
+      "root": "SSE_Communication_Services"
+    },
+    {
+      "g_value": 2543012.7582848887,
+      "nodes": [
+        "Automobiles_and_Tires",
+        "Chongqing_Sokon_Industry_Group_Stock_Co_Ltd",
+        "Fuyao_Glass_Industry_Group_Co_Ltd"
+      ],
+      "root": "Automobiles_and_Tires"
+    },
+    {
+      "g_value": 2237908.2402743082,
+      "nodes": [
+        "Pharmaceutical_Platforms",
+        "WuXi_AppTec_Co_Ltd"
+      ],
+      "root": "Pharmaceutical_Platforms"
+    },
+    {
+      "g_value": 2123251.0498278863,
+      "nodes": [
+        "Beijing_Kingsoft_Office_Software_Inc",
+        "Software_Platforms"
+      ],
+      "root": "Software_Platforms"
+    },
+    {
+      "g_value": 1882123.7841993016,
+      "nodes": [
+        "SSE_Industrials"
+      ],
+      "root": "SSE_Industrials"
+    },
+    {
+      "g_value": 1685042.7202399997,
+      "nodes": [
+        "BYD_Company_Limited"
+      ],
+      "root": "BYD_Company_Limited"
+    },
+    {
+      "g_value": 1523146.8773809196,
+      "nodes": [
+        "Electric_Power_Energy",
+        "SSE_Utilities"
+      ],
+      "root": "SSE_Utilities"
+    },
+    {
+      "g_value": 1502562.3045,
+      "nodes": [
+        "Eastroc_Beverage_Group_Co_Ltd"
+      ],
+      "root": "Eastroc_Beverage_Group_Co_Ltd"
+    },
+    {
+      "g_value": 1496221.538194477,
+      "nodes": [
+        "Chemicals_and_New_Materials",
+        "Wanhua_Chemical_Group_Co_Ltd"
+      ],
+      "root": "Chemicals_and_New_Materials"
+    },
+    {
+      "g_value": 1475110.673739446,
+      "nodes": [
+        "BeiGene_Ltd",
+        "Biopharmaceuticals"
+      ],
+      "root": "Biopharmaceuticals"
+    },
+    {
+      "g_value": 1410788.0274763873,
+      "nodes": [
+        "Beijing_Roborock_Technology_Co_Ltd",
+        "Home_Appliances_and_Digital"
+      ],
+      "root": "Home_Appliances_and_Digital"
+    }
+  ],
+  "summary_file": "20261126T032248Z_equities.graphml_5242c1ee6f4d_summary_edges.txt",
+  "ts_key": "d0"
+}

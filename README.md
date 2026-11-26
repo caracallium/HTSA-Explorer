@@ -48,6 +48,47 @@ The three home-screen presets use the manuscript configurations:
 | Equity hierarchy | FDS | Path-greedy | 20 |
 | European regional GDP | FDS | Path-greedy | 15 |
 
+The stock preset loads the latest validated daily dataset, accumulating
+observations from January 2023. The original 2023 equity snapshot remains in
+`datasets/equities.graphml` for reproducing the paper. The scripts below continue
+to use that frozen snapshot. Page labels, descriptions, controls, and the
+FDS / Path-greedy / k=20 configuration are unchanged.
+
+## Daily equity updates
+
+The `Refresh equity dataset` GitHub Actions workflow runs each day at 18:35
+Asia/Shanghai. It calls the pinned AKShare Python library, rebuilds the GraphML
+input from January 2023 through the latest complete market session, and runs
+the existing HTSA endpoint. A complete, validated release is committed under
+`datasets/live/`; the connected Render deployment picks up the commit.
+The workflow can also be run manually from the repository's Actions tab.
+
+To run the same task locally with Python 3.12:
+
+```text
+python -m pip install -r requirements-refresh.txt
+python scripts/refresh_equities.py
+```
+
+Before 18:00 Shanghai time, the default end date is the previous calendar day,
+so an intraday bar is never published as a completed session. The market's
+actual trading dates determine the released end date. Weekends and holidays
+produce no data commit when the input is unchanged. A failed fetch or failed
+HTSA run leaves the preceding complete release intact.
+
+`GET /api/dataset/stockgraph/status` reports the active data period, provider,
+checksums, and release type. Starting a new stock preset fetches that release;
+saved browser runs retain their original inputs. With no live release present,
+the service uses the frozen 2023 snapshot. A corrupt or partial live release
+returns an error.
+
+The updater uses unadjusted daily **opening prices**, retaining each original
+series' fixed scale and the original industry hierarchy. Known delisted
+securities are excluded from current analysis with an explicit metadata record.
+Missing sessions within an otherwise valid security history are aligned using
+the preceding observed price; the metadata records those sessions and each
+security's actual last observation. See `datasets/live/README.md` for details.
+
 The client vendors D3 7.9.0 under `static/vendor`, so the analytical interface
 does not require a JavaScript CDN at runtime.
 
@@ -155,6 +196,9 @@ render.yaml / Procfile       Reproducible hosted-deployment entry points
 templates/appnewest.html     Single-page analytical client
 static/vendor/               Pinned local D3 bundle and license
 datasets/                    Three GraphML application datasets
+datasets/equity_sources.json  Verified stock/index identities and fixed scales
+datasets/live/               Latest validated equity dataset and HTSA result
+scripts/refresh_equities.py  Daily AKShare data refresh and existing HTSA run
 scripts/reproduce_tables.py  Computational reproduction entry point
 tests/                       Backend, route, and algorithm tests
 runtime_data/                Unique JSON and summary-edge audit files (ignored)

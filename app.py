@@ -914,7 +914,7 @@ def build_summary_tree(edges, groups_tuple):
     return gprime_edges, gprime_root, group_root_list
 
 # Flask application and writable runtime directories.
-APP_VERSION = "0.2.1"
+APP_VERSION = "0.3.0"
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config["JSON_AS_ASCII"] = False
 app.config["MAX_CONTENT_LENGTH"] = int(
@@ -991,11 +991,159 @@ PRESET_DATASETS = {
     "regional-gdp": "european_regional_gdp.graphml",
 }
 
+
+def _load_equity_release():
+    """Read one complete live release, or the original research snapshot."""
+    live_dir = os.path.join(DATASET_DIR, "live")
+    names = ("manifest.json", "equities.graphml", "latest-run.json")
+    paths = {name: os.path.join(live_dir, name) for name in names}
+    if not any(os.path.lexists(path) for path in paths.values()):
+        with open(os.path.join(DATASET_DIR, "equities.graphml"), "rb") as stream:
+            graphml = stream.read()
+        return graphml, {
+            "schema_version": 1,
+            "dataset": "stockgraph",
+            "release": "frozen-2023",
+            "period": "2023",
+            "observations": 242,
+            "node_count": 760,
+            "edge_count": 758,
+            "provider": {"library": "akshare", "version": None},
+            "graphml": {
+                "file": "equities.graphml",
+                "sha256": hashlib.sha256(graphml).hexdigest(),
+                "bytes": len(graphml),
+            },
+        }
+
+    if not all(os.path.isfile(path) for path in paths.values()):
+        raise ValueError("incomplete live equity release")
+    try:
+        with open(paths["manifest.json"], "r", encoding="utf-8") as stream:
+            manifest = json.load(stream)
+        with open(paths["equities.graphml"], "rb") as stream:
+            graphml = stream.read()
+        with open(paths["latest-run.json"], "rb") as stream:
+            run_data = stream.read()
+    except (OSError, ValueError) as exc:
+        raise ValueError("unreadable live equity release") from exc
+
+    if not isinstance(manifest, dict):
+        raise ValueError("invalid live equity manifest")
+    if (type(manifest.get("schema_version")) is not int
+            or manifest["schema_version"] != 1 or manifest.get("dataset") != "stockgraph"):
+        raise ValueError("unsupported live equity manifest")
+    for key in ("observations", "node_count", "edge_count"):
+        if type(manifest.get(key)) is not int or manifest[key] <= 0:
+            raise ValueError("invalid live equity counts")
+    dates = []
+    for key in ("start_date", "end_date"):
+        value = manifest.get(key)
+        if not isinstance(value, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            raise ValueError("invalid live equity dates")
+        dates.append(datetime.strptime(value, "%Y-%m-%d").date())
+    if dates[0] > dates[1]:
+        raise ValueError("reversed live equity dates")
+    generated_at = manifest.get("generated_at")
+    if not isinstance(generated_at, str):
+        raise ValueError("missing live equity generation time")
+    datetime.fromisoformat(generated_at.replace("Z", "+00:00"))
+    provider = manifest.get("provider")
+    if (not isinstance(provider, dict) or provider.get("library") != "akshare"
+            or not isinstance(provider.get("version"), str) or not provider["version"]):
+        raise ValueError("invalid live equity provider")
+
+    verified_files = {}
+    for key, filename, content in (
+        ("graphml", "equities.graphml", graphml),
+        ("run", "latest-run.json", run_data),
+    ):
+        record = manifest.get(key)
+        if not isinstance(record, dict) or record.get("file") != filename:
+            raise ValueError("invalid live equity filename")
+        digest = hashlib.sha256(content).hexdigest()
+        if record.get("sha256") != digest:
+            raise ValueError("live equity checksum mismatch")
+        if key == "graphml" and (
+                type(record.get("bytes")) is not int or record["bytes"] != len(content)):
+            raise ValueError("live equity byte count mismatch")
+        verified_files[key] = {"file": filename, "sha256": digest}
+        if key == "graphml":
+            verified_files[key]["bytes"] = len(content)
+    try:
+        run = json.loads(run_data)
+    except (UnicodeError, ValueError) as exc:
+        raise ValueError("invalid live equity run JSON") from exc
+    if not isinstance(run, dict):
+        raise ValueError("invalid live equity run record")
+
+    # Return only public release metadata, never arbitrary manifest fields.
+    metadata = {
+        key: manifest[key]
+        for key in (
+            "schema_version", "dataset", "start_date", "end_date", "observations",
+            "node_count", "edge_count", "generated_at",
+        )
+    }
+    metadata.update(verified_files)
+    metadata["provider"] = {"library": "akshare", "version": provider["version"]}
+    metadata["release"] = "live"
+    return graphml, metadata
+
+
+def _equity_release_headers(metadata):
+    headers = {
+        "Cache-Control": "no-store",
+        "X-HTSA-Dataset-Release": metadata["release"],
+        "X-HTSA-Dataset-Source": metadata["provider"]["library"],
+        "X-HTSA-Dataset-SHA256": metadata["graphml"]["sha256"],
+    }
+    if metadata["release"] == "live":
+        headers["X-HTSA-Dataset-Start-Date"] = metadata["start_date"]
+        headers["X-HTSA-Dataset-End-Date"] = metadata["end_date"]
+    else:
+        headers["X-HTSA-Dataset-Period"] = metadata["period"]
+    return headers
+
+
+def _equity_release_error(exc):
+    if isinstance(exc, FileNotFoundError):
+        message, status = "file missing on server", 404
+    else:
+        logger.warning("Equity release rejected: %s", exc)
+        message, status = "live equity release is unavailable or invalid", 503
+    response = jsonify({"ok": False, "error": message})
+    response.status_code = status
+    response.headers["Cache-Control"] = "no-store"
+    return response
+
+
+@app.route("/api/dataset/<name>/status", methods=["GET"])
+def api_dataset_status(name):
+    if name != "stockgraph":
+        return jsonify({"ok": False, "error": "dataset status not found"}), 404
+    try:
+        _, metadata = _load_equity_release()
+    except (OSError, ValueError) as exc:
+        return _equity_release_error(exc)
+    response = jsonify({"ok": True, **metadata})
+    response.headers.update(_equity_release_headers(metadata))
+    return response
+
+
 @app.route("/api/dataset/<name>", methods=["GET"])
 def api_dataset(name):
     filename = PRESET_DATASETS.get(name)
     if not filename:
         return jsonify({"ok": False, "error": "dataset not found"}), 404
+    if name == "stockgraph":
+        try:
+            content, metadata = _load_equity_release()
+        except (OSError, ValueError) as exc:
+            return _equity_release_error(exc)
+        headers = _equity_release_headers(metadata)
+        headers["Content-Disposition"] = 'attachment; filename="equities.graphml"'
+        return Response(content, mimetype="application/xml", headers=headers)
     filepath = os.path.join(DATASET_DIR, filename)
     if not os.path.exists(filepath):
         return jsonify({"ok": False, "error": "file missing on server"}), 404

@@ -1,0 +1,6398 @@
+{
+  "baseline_sha256": "e6a540b7f4f7b9cacf4094306ef56ae98e7e8a76089b717db80cecc51a990cc9",
+  "verified_on": "2026-11-25",
+  "start_date": "2023-01-03",
+  "end_date": "2023-12-29",
+  "observations": 242,
+  "series": [
+    {
+      "id": "SSE_Composite_Index",
+      "symbol": "sh000001",
+      "kind": "index",
+      "scale": 21.20680334,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://akshare.akfamily.xyz/data/index/index.html"
+    },
+    {
+      "id": "SZSE_Fundamental_200_Index",
+      "symbol": "sz399703",
+      "kind": "index",
+      "scale": 2.0259406782771254,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/289_399701_Index_Methodology_cn.pdf"
+    },
+    {
+      "id": "BSE_50_Component_Index",
+      "symbol": "bj899050",
+      "kind": "index",
+      "scale": 1.0,
+      "compared_observations": 242,
+      "max_absolute_error": 0.010000000000104592,
+      "identity_source": "https://www.bse.cn/uploads/6/file/public/202211/20221120115441_f8xaps28xy.pdf"
+    },
+    {
+      "id": "SSE_Energy",
+      "symbol": "sh000032",
+      "kind": "index",
+      "scale": 0.7229029399146839,
+      "compared_observations": 242,
+      "max_absolute_error": 2.0463630789890885e-12,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Materials",
+      "symbol": "sh000033",
+      "kind": "index",
+      "scale": 1.5622036385776543,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Industrials",
+      "symbol": "sh000034",
+      "kind": "index",
+      "scale": 0.9238972213774291,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Cons_Disc",
+      "symbol": "sh000035",
+      "kind": "index",
+      "scale": 1.7045177025943254,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Cons_Staples",
+      "symbol": "sh000036",
+      "kind": "index",
+      "scale": 2.5750671305474087,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Health_Care",
+      "symbol": "sh000037",
+      "kind": "index",
+      "scale": 1.1929351294208623,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Financials",
+      "symbol": "sh000038",
+      "kind": "index",
+      "scale": 0.4496693977349982,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-05-29/510650_20260529_ZXMR.pdf"
+    },
+    {
+      "id": "SSE_Info_technology",
+      "symbol": "sh000039",
+      "kind": "index",
+      "scale": 1.6875865193811184,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Communication_Services",
+      "symbol": "sh000040",
+      "kind": "index",
+      "scale": 0.8374284111336713,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "SSE_Utilities",
+      "symbol": "sh000041",
+      "kind": "index",
+      "scale": 0.4294592442515281,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://www.sse.com.cn/market/sseindex/indexlist/indexdetails/indexmethods/c1/000037_000032-000041hbook_CN.pdf"
+    },
+    {
+      "id": "Tianjin_712_Communication_and_Broadcasting_Co_Ltd",
+      "symbol": "sh603712",
+      "kind": "stock",
+      "scale": 1.476,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "QuantumCTek_Co_Ltd",
+      "symbol": "sh688027",
+      "kind": "stock",
+      "scale": 2.561,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Willfar_Information_Technology_Co_Ltd",
+      "symbol": "sh688100",
+      "kind": "stock",
+      "scale": 0.915,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JCET_Group_Co_Ltd",
+      "symbol": "sh600584",
+      "kind": "stock",
+      "scale": 2.525,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Advanced_Micro_Fabrication_Equipment_Inc_China",
+      "symbol": "sh688012",
+      "kind": "stock",
+      "scale": 4.327,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Piotech_Inc",
+      "symbol": "sh688072",
+      "kind": "stock",
+      "scale": 1.148,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ACM_Research_Shanghai_Inc",
+      "symbol": "sh688082",
+      "kind": "stock",
+      "scale": 0.486,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hwatsing_Technology_Co_Ltd",
+      "symbol": "sh688120",
+      "kind": "stock",
+      "scale": 1.238,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "National_Silicon_Industry_Group_Co_Ltd",
+      "symbol": "sh688126",
+      "kind": "stock",
+      "scale": 1.516,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_YanDong_MicroElectronic_Co_Ltd",
+      "symbol": "sh688172",
+      "kind": "stock",
+      "scale": 0.234,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SICC_CO_LTD",
+      "symbol": "sh688234",
+      "kind": "stock",
+      "scale": 0.527,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "The_Peoples_Insurance_Company_Group_of_China_Limited",
+      "symbol": "sh601319",
+      "kind": "stock",
+      "scale": 0.584,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Pacific_Insurance_Group_Co_Ltd",
+      "symbol": "sh601601",
+      "kind": "stock",
+      "scale": 2.645,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Life_Insurance_Company_Limited",
+      "symbol": "sh601628",
+      "kind": "stock",
+      "scale": 1.566,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_Jiangsu_Co_Ltd",
+      "symbol": "sh600919",
+      "kind": "stock",
+      "scale": 3.862,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BANK_OF_HANGZHOU_CO_LTD",
+      "symbol": "sh600926",
+      "kind": "stock",
+      "scale": 1.441,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_Nanjing_Co_Ltd",
+      "symbol": "sh601009",
+      "kind": "stock",
+      "scale": 1.445,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_Beijing_Co_Ltd",
+      "symbol": "sh601169",
+      "kind": "stock",
+      "scale": 2.299,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_Shanghai_Co_Ltd",
+      "symbol": "sh601229",
+      "kind": "stock",
+      "scale": 2.672,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chinese_Universe_Publishing_And_Media_Co_Ltd",
+      "symbol": "sh600373",
+      "kind": "stock",
+      "scale": 1.273,
+      "compared_observations": 239,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-12-18",
+        "2023-12-19",
+        "2023-12-20"
+      ]
+    },
+    {
+      "id": "Shandong_Publishing_and_Media_Co_Ltd",
+      "symbol": "sh601019",
+      "kind": "stock",
+      "scale": 1.062,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_South_Publishing_and_Media_Group_Co_Ltd",
+      "symbol": "sh601098",
+      "kind": "stock",
+      "scale": 1.772,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Xinhua_Media_Co_Ltd",
+      "symbol": "sh601801",
+      "kind": "stock",
+      "scale": 0.71,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xinhua_Winshare_Publishing_and_Media_Co_Ltd",
+      "symbol": "sh601811",
+      "kind": "stock",
+      "scale": 0.316,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Science_Publishing_and_Media_Ltd",
+      "symbol": "sh601858",
+      "kind": "stock",
+      "scale": 0.505,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Southern_Publishing_and_Media_Company_Limited",
+      "symbol": "sh601900",
+      "kind": "stock",
+      "scale": 1.02,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Publishing_and_Media_Co_Ltd",
+      "symbol": "sh601921",
+      "kind": "stock",
+      "scale": 0.609,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Publishing_and_Media_Holdings_Co_Ltd",
+      "symbol": "sh601949",
+      "kind": "stock",
+      "scale": 0.625,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Pudong_Development_Bank_Co_Ltd",
+      "symbol": "sh600000",
+      "kind": "stock",
+      "scale": 3.331,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hua_Xia_Bank_Co_Ltd",
+      "symbol": "sh600015",
+      "kind": "stock",
+      "scale": 1.198,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Minsheng_Banking_Corp_Ltd",
+      "symbol": "sh600016",
+      "kind": "stock",
+      "scale": 2.558,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Industrial_Bank",
+      "symbol": "sh601166",
+      "kind": "stock",
+      "scale": 7.857,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Agricultural_Bank_of_China_Co_Ltd",
+      "symbol": "sh601288",
+      "kind": "stock",
+      "scale": 4.479,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_Communications_Co_LTD",
+      "symbol": "sh601328",
+      "kind": "stock",
+      "scale": 4.554,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Industrial_and_Commercial_Bank_of_China_Ltd",
+      "symbol": "sh601398",
+      "kind": "stock",
+      "scale": 6.361,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "POSTAL_SAVINGS_BANK_OF_CHINA_CO_LTD",
+      "symbol": "sh601658",
+      "kind": "stock",
+      "scale": 1.472,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Everbright_Bank_Co_Ltd",
+      "symbol": "sh601818",
+      "kind": "stock",
+      "scale": 1.817,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bank_of_China_Ltd",
+      "symbol": "sh601988",
+      "kind": "stock",
+      "scale": 3.017,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Citic_Bank_Corporation_Limited",
+      "symbol": "sh601998",
+      "kind": "stock",
+      "scale": 0.732,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Poly_Developments_and_Holdings_Group_Co_Ltd",
+      "symbol": "sh600048",
+      "kind": "stock",
+      "scale": 1.556,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huaneng_Power_International_Inc",
+      "symbol": "sh600011",
+      "kind": "stock",
+      "scale": 5.013,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Electric_Power_Co_Ltd",
+      "symbol": "sh600021",
+      "kind": "stock",
+      "scale": 2.002,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Zheneng_Electric_Power_Co_Ltd",
+      "symbol": "sh600023",
+      "kind": "stock",
+      "scale": 3.361,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HuanengLancang_River_Hydropower_Inc",
+      "symbol": "sh600025",
+      "kind": "stock",
+      "scale": 2.736,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huadian_Power_International_Corporation_Ltd",
+      "symbol": "sh600027",
+      "kind": "stock",
+      "scale": 3.093,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Development_Group_Incorporated",
+      "symbol": "sh600098",
+      "kind": "stock",
+      "scale": 1.08,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Three_Gorges_Water_Conservancy_and_Electric_Power_Co_Ltd",
+      "symbol": "sh600116",
+      "kind": "stock",
+      "scale": 1.117,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangxi_Guiguan_Electric_Power_Co_Ltd",
+      "symbol": "sh600236",
+      "kind": "stock",
+      "scale": 1.172,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Fuling_Electric_Power_Industrial_Co_Ltd",
+      "symbol": "sh600452",
+      "kind": "stock",
+      "scale": 1.389,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "FUJIAN_FUNENG_CO_LTD",
+      "symbol": "sh600483",
+      "kind": "stock",
+      "scale": 1.695,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BEIJING_JINGNENG_POWER_CO_LTD",
+      "symbol": "sh600578",
+      "kind": "stock",
+      "scale": 1.298,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenergy_Co_Ltd",
+      "symbol": "sh600642",
+      "kind": "stock",
+      "scale": 2.748,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Chuantou_Energy_Co_Ltd",
+      "symbol": "sh600674",
+      "kind": "stock",
+      "scale": 5.272,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GD_Power_Development_Co_Ltd",
+      "symbol": "sh600795",
+      "kind": "stock",
+      "scale": 6.344,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Mengdian_Huaneng_Thermal_Power_Corp_Ltd",
+      "symbol": "sh600863",
+      "kind": "stock",
+      "scale": 2.072,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SDIC_Power_Holdings_Co_Ltd",
+      "symbol": "sh600886",
+      "kind": "stock",
+      "scale": 5.755,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Yangtze_Power_Co_Ltd",
+      "symbol": "sh600900",
+      "kind": "stock",
+      "scale": 16.734,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Datang_International_Power_Generation_Co_Ltd",
+      "symbol": "sh601991",
+      "kind": "stock",
+      "scale": 1.835,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Joyson_Electronic_Corp",
+      "symbol": "sh600699",
+      "kind": "stock",
+      "scale": 1.5,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Lifan_Industry_Group_Co_Ltd",
+      "symbol": "sh601777",
+      "kind": "stock",
+      "scale": 1.483,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Changzhou_Xingyu_Automotive_Lighting_Systems_Co_Ltd",
+      "symbol": "sh601799",
+      "kind": "stock",
+      "scale": 1.753,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Xusheng_Group_Co_Ltd",
+      "symbol": "sh603305",
+      "kind": "stock",
+      "scale": 0.445,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "KEBODA_TECHNOLOGY_Co_Ltd",
+      "symbol": "sh603786",
+      "kind": "stock",
+      "scale": 0.405,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bright_Dairy_and_Food_Co_Ltd",
+      "symbol": "sh600597",
+      "kind": "stock",
+      "scale": 0.725,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jonjee_Hi_Tech_Industrial_and_Commercial_Holding_Co_Ltd",
+      "symbol": "sh600872",
+      "kind": "stock",
+      "scale": 1.539,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Yili_Industrial_Group_Co_Ltd",
+      "symbol": "sh600887",
+      "kind": "stock",
+      "scale": 15.642,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "QIANHE_CONDIMENT_AND_FOOD_CO_LTD",
+      "symbol": "sh603027",
+      "kind": "stock",
+      "scale": 0.737,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Foshan_Haitian_Flavouring_and_Food_Company_Ltd",
+      "symbol": "sh603288",
+      "kind": "stock",
+      "scale": 8.904,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Teway_Food_Group_Co_Ltd",
+      "symbol": "sh603317",
+      "kind": "stock",
+      "scale": 0.456,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Baotou_Steel_Union_Co_Ltd",
+      "symbol": "sh600010",
+      "kind": "stock",
+      "scale": 2.674,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Baoshan_Iron_and_Steel_Co_Ltd",
+      "symbol": "sh600019",
+      "kind": "stock",
+      "scale": 4.095,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Northern_Rare_Earth_Group_High_Tech_Co_Ltd",
+      "symbol": "sh600111",
+      "kind": "stock",
+      "scale": 4.012,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Nanshan_Aluminium_Co_Ltd",
+      "symbol": "sh600219",
+      "kind": "stock",
+      "scale": 1.731,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Nanjing_Iron_and_Steel_Co_Ltd",
+      "symbol": "sh600282",
+      "kind": "stock",
+      "scale": 0.725,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangxi_Copper_Co_Ltd",
+      "symbol": "sh600362",
+      "kind": "stock",
+      "scale": 1.503,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhongjin_Gold_Co_Ltd",
+      "symbol": "sh600489",
+      "kind": "stock",
+      "scale": 2.699,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Chihong_Zinc_and_Germanium_Co_Ltd",
+      "symbol": "sh600497",
+      "kind": "stock",
+      "scale": 1.056,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Gold_Mining_Co_Ltd",
+      "symbol": "sh600547",
+      "kind": "stock",
+      "scale": 3.728,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xiamen_Tungsten_Co_Ltd",
+      "symbol": "sh600549",
+      "kind": "stock",
+      "scale": 1.188,
+      "compared_observations": 242,
+      "max_absolute_error": 3.552713678800501e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chifeng_Jilong_Gold_Mining_Co_Ltd",
+      "symbol": "sh600988",
+      "kind": "stock",
+      "scale": 2.976,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Western_Mining_Co_Ltd",
+      "symbol": "sh601168",
+      "kind": "stock",
+      "scale": 1.747,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Baiyin_Nonferrous_Group_Co_Ltd",
+      "symbol": "sh601212",
+      "kind": "stock",
+      "scale": 0.546,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Aluminum_Corporation_of_China_Limited",
+      "symbol": "sh601600",
+      "kind": "stock",
+      "scale": 3.454,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zijin_Mining_Group_Co_Ltd",
+      "symbol": "sh601899",
+      "kind": "stock",
+      "scale": 16.723,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jinduicheng_Molybdenum_Co_Ltd",
+      "symbol": "sh601958",
+      "kind": "stock",
+      "scale": 0.646,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ZHEJIANG_HUAYOU_COBALT_CO_LTD",
+      "symbol": "sh603799",
+      "kind": "stock",
+      "scale": 3.132,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Molybdenum_Co_Ltd",
+      "symbol": "sh603993",
+      "kind": "stock",
+      "scale": 3.396,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Road_and_Bridge_Co_Ltd",
+      "symbol": "sh600039",
+      "kind": "stock",
+      "scale": 1.131,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_National_Chemical_Engineering_Co_Ltd",
+      "symbol": "sh601117",
+      "kind": "stock",
+      "scale": 1.378,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Railway_Construction_Co_Ltd",
+      "symbol": "sh601186",
+      "kind": "stock",
+      "scale": 1.789,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Railway_Group_Limited",
+      "symbol": "sh601390",
+      "kind": "stock",
+      "scale": 2.822,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Metallurgical_Corporation_of_China_Co_Ltd",
+      "symbol": "sh601618",
+      "kind": "stock",
+      "scale": 1.027,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_State_Construction_Engineering_Co_Ltd",
+      "symbol": "sh601668",
+      "kind": "stock",
+      "scale": 5.706,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Power_Construction_Corporation_of_China_Ltd",
+      "symbol": "sh601669",
+      "kind": "stock",
+      "scale": 2.024,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Communications_Construction_Company_Limited",
+      "symbol": "sh601800",
+      "kind": "stock",
+      "scale": 1.567,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Energy_Engineering_Corporation_Limited",
+      "symbol": "sh601868",
+      "kind": "stock",
+      "scale": 1.421,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Capital_Eco_Environment_Protection_GroupCo_Ltd",
+      "symbol": "sh600008",
+      "kind": "stock",
+      "scale": 2.215,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Water_Group_Co_Ltd",
+      "symbol": "sh601158",
+      "kind": "stock",
+      "scale": 0.443,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hengtong_Optic_Electric_Co_Ltd",
+      "symbol": "sh600487",
+      "kind": "stock",
+      "scale": 5.252,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fiberhome_Telecommunication_Technologies_Co_Ltd",
+      "symbol": "sh600498",
+      "kind": "stock",
+      "scale": 2.621,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Zhongtian_Technologies_Co_Ltd",
+      "symbol": "sh600522",
+      "kind": "stock",
+      "scale": 6.559,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yangtze_Optical_Fibre_and_Cable_Joint_Stock_Limited_Company",
+      "symbol": "sh601869",
+      "kind": "stock",
+      "scale": 0.692,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Quectel_Wireless_Solutions_Co_Ltd",
+      "symbol": "sh603236",
+      "kind": "stock",
+      "scale": 2.386,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_National_Nuclear_Power_Co_Ltd",
+      "symbol": "sh601985",
+      "kind": "stock",
+      "scale": 12.085,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Yuntianhua_Co_Ltd",
+      "symbol": "sh600096",
+      "kind": "stock",
+      "scale": 1.952,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hubei_Xingfa_Chemicals_Group_Co_Ltd",
+      "symbol": "sh600141",
+      "kind": "stock",
+      "scale": 1.074,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kingfa_Sci_and_Tech_Co_Ltd",
+      "symbol": "sh600143",
+      "kind": "stock",
+      "scale": 1.572,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Ju_Hua_Co_Ltd",
+      "symbol": "sh600160",
+      "kind": "stock",
+      "scale": 2.335,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHINA_JUSHI_CO_LTD",
+      "symbol": "sh600176",
+      "kind": "stock",
+      "scale": 1.918,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wanhua_Chemical_Group_Co_Ltd",
+      "symbol": "sh600309",
+      "kind": "stock",
+      "scale": 6.982,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hengli_Petrochemical_Co_Ltd",
+      "symbol": "sh600346",
+      "kind": "stock",
+      "scale": 2.198,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Longsheng_Group_Co_Ltd",
+      "symbol": "sh600352",
+      "kind": "stock",
+      "scale": 1.74,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Innovation_New_Material_Technology_Co_Ltd",
+      "symbol": "sh600361",
+      "kind": "stock",
+      "scale": 0.315,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Haohua_Chemical_Science_and_Technology_Corp_Ltd",
+      "symbol": "sh600378",
+      "kind": "stock",
+      "scale": 0.673,
+      "compared_observations": 232,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-02-01",
+        "2023-02-02",
+        "2023-02-03",
+        "2023-02-06",
+        "2023-02-07",
+        "2023-02-08",
+        "2023-02-09",
+        "2023-02-10",
+        "2023-02-13",
+        "2023-02-14"
+      ]
+    },
+    {
+      "id": "Shandong_Hualu_Hengsheng_Chemical_Co_Ltd",
+      "symbol": "sh600426",
+      "kind": "stock",
+      "scale": 2.063,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Yangnong_Chemical_Co_Ltd",
+      "symbol": "sh600486",
+      "kind": "stock",
+      "scale": 0.856,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fangda_Carbon_New_Material_Co_Ltd",
+      "symbol": "sh600516",
+      "kind": "stock",
+      "scale": 0.886,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Junzheng_Energy_and_Chemical_Group_Co_Ltd",
+      "symbol": "sh601216",
+      "kind": "stock",
+      "scale": 1.245,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tongkun_Group_Co_Ltd",
+      "symbol": "sh601233",
+      "kind": "stock",
+      "scale": 1.25,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhuzhou_Kibing_Group_Co_Ltd",
+      "symbol": "sh601636",
+      "kind": "stock",
+      "scale": 0.593,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xinfengming_Group_Co_Ltd",
+      "symbol": "sh603225",
+      "kind": "stock",
+      "scale": 0.448,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HOSHINE_SILICON_INDUSTRY_CO_LTD",
+      "symbol": "sh603260",
+      "kind": "stock",
+      "scale": 1.233,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Sanmei_Chemical_Industry_Co_Ltd",
+      "symbol": "sh603379",
+      "kind": "stock",
+      "scale": 0.733,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Red_Avenue_New_Materials_Group_Co_Ltd",
+      "symbol": "sh603650",
+      "kind": "stock",
+      "scale": 0.522,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JIANGSU_PACIFIC_QUARTZ_CO_LTD",
+      "symbol": "sh603688",
+      "kind": "stock",
+      "scale": 0.596,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SKSHU_Paint_Co_Ltd",
+      "symbol": "sh603737",
+      "kind": "stock",
+      "scale": 0.695,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fujian_Kuncai_Material_Technology_Co_Ltd",
+      "symbol": "sh603826",
+      "kind": "stock",
+      "scale": 0.271,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Western_Superconducting_Technologies_Co_Ltd",
+      "symbol": "sh688122",
+      "kind": "stock",
+      "scale": 1.452,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhongfu_Shenying_Carbon_Fiber_Co_Ltd",
+      "symbol": "sh688295",
+      "kind": "stock",
+      "scale": 0.136,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHINA_RESOURCES_DOUBLE_CRANE_PHARMACEUTICAL_CO_LTD",
+      "symbol": "sh600062",
+      "kind": "stock",
+      "scale": 0.753,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Humanwell_Healthcare_Group_Co_Ltd",
+      "symbol": "sh600079",
+      "kind": "stock",
+      "scale": 2.29,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Fosun_Pharmaceutical_Group_Co_Ltd",
+      "symbol": "sh600196",
+      "kind": "stock",
+      "scale": 2.858,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Hengrui_Medicine_Co_Ltd",
+      "symbol": "sh600276",
+      "kind": "stock",
+      "scale": 15.682,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Joincare_Pharmaceutical_Group_Industry_Co_Ltd",
+      "symbol": "sh600380",
+      "kind": "stock",
+      "scale": 1.145,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Shyndec_Pharmaceutical_Co_Ltd",
+      "symbol": "sh600420",
+      "kind": "stock",
+      "scale": 0.659,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Huahai_Pharmaceutical_Co_Ltd",
+      "symbol": "sh600521",
+      "kind": "stock",
+      "scale": 1.213,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HUBEI_JUMPCAN_PHARMACEUTICAL_CO_LTD",
+      "symbol": "sh600566",
+      "kind": "stock",
+      "scale": 0.931,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tonghua_Dongbao_Pharmaceutical_Co_Ltd",
+      "symbol": "sh600867",
+      "kind": "stock",
+      "scale": 0.963,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Gan_and_Lee_Pharmaceuticals",
+      "symbol": "sh603087",
+      "kind": "stock",
+      "scale": 1.652,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Jiuzhou_Pharmaceutical_Co_Ltd",
+      "symbol": "sh603456",
+      "kind": "stock",
+      "scale": 0.707,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Nanjing_King_Friend_Biochemical_Pharmaceutical_Co_Ltd",
+      "symbol": "sh603707",
+      "kind": "stock",
+      "scale": 0.472,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ZHEJIANGCFMOTOPOWERCO_LTD",
+      "symbol": "sh603129",
+      "kind": "stock",
+      "scale": 1.396,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AIMA_TECHNOLOGY_GROUP_CO_LTD",
+      "symbol": "sh603529",
+      "kind": "stock",
+      "scale": 1.031,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Loncin_Motor_Co_Ltd",
+      "symbol": "sh603766",
+      "kind": "stock",
+      "scale": 1.183,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hisense_Visual_Technology_Co_Ltd",
+      "symbol": "sh600060",
+      "kind": "stock",
+      "scale": 1.726,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Haier_Smart_Home_Co_Ltd",
+      "symbol": "sh600690",
+      "kind": "stock",
+      "scale": 8.61,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Changhong_Electric_Co_Ltd",
+      "symbol": "sh600839",
+      "kind": "stock",
+      "scale": 3.589,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kingclean_Electric_Co_Ltd",
+      "symbol": "sh603355",
+      "kind": "stock",
+      "scale": 0.225,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ecovacs_Robotics_Co_Ltd",
+      "symbol": "sh603486",
+      "kind": "stock",
+      "scale": 1.097,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Flyco_Electrical_Appliance_Co_Ltd",
+      "symbol": "sh603868",
+      "kind": "stock",
+      "scale": 0.157,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Roborock_Technology_Co_Ltd",
+      "symbol": "sh688169",
+      "kind": "stock",
+      "scale": 2.646,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GONGNIU_GROUP_CO_LTD",
+      "symbol": "sh603195",
+      "kind": "stock",
+      "scale": 1.278,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Opple_Lighting_Co_LTD",
+      "symbol": "sh603515",
+      "kind": "stock",
+      "scale": 0.174,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jason_Furniture_Hangzhou_Co_Ltd",
+      "symbol": "sh603816",
+      "kind": "stock",
+      "scale": 1.138,
+      "compared_observations": 238,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-11-06",
+        "2023-11-07",
+        "2023-11-08",
+        "2023-11-09"
+      ]
+    },
+    {
+      "id": "Oppein_Home_Group_Inc",
+      "symbol": "sh603833",
+      "kind": "stock",
+      "scale": 1.118,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Conch_Cement_Co_Ltd",
+      "symbol": "sh600585",
+      "kind": "stock",
+      "scale": 3.934,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huaxin_Cement_Co_Ltd",
+      "symbol": "sh600801",
+      "kind": "stock",
+      "scale": 0.55,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_International_Airport_Co_Ltd",
+      "symbol": "sh600009",
+      "kind": "stock",
+      "scale": 1.988,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_International_Port_Group_Co_Ltd",
+      "symbol": "sh600018",
+      "kind": "stock",
+      "scale": 0.757,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "COSCO_SHIPPING_Energy_Transportation_Co_Ltd",
+      "symbol": "sh600026",
+      "kind": "stock",
+      "scale": 0.712,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Southern_Airlines_Co_Ltd",
+      "symbol": "sh600029",
+      "kind": "stock",
+      "scale": 1.508,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhengzhou_Yutong_Bus_Co_Ltd",
+      "symbol": "sh600066",
+      "kind": "stock",
+      "scale": 1.772,
+      "compared_observations": 241,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-04-17"
+      ]
+    },
+    {
+      "id": "China_Eastern_Airlines_Co_Ltd",
+      "symbol": "sh600115",
+      "kind": "stock",
+      "scale": 1.572,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "YTO_Express_Group_Co_Ltd",
+      "symbol": "sh600233",
+      "kind": "stock",
+      "scale": 1.122,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Expressway_Co_Ltd",
+      "symbol": "sh600377",
+      "kind": "stock",
+      "scale": 0.376,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Daqin_Railway_Co_Ltd",
+      "symbol": "sh601006",
+      "kind": "stock",
+      "scale": 3.254,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Port_Co_Ltd",
+      "symbol": "sh601018",
+      "kind": "stock",
+      "scale": 0.69,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Spring_Airlines_Co_Ltd",
+      "symbol": "sh601021",
+      "kind": "stock",
+      "scale": 1.307,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Air_China_Ltd",
+      "symbol": "sh601111",
+      "kind": "stock",
+      "scale": 1.319,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Qingdao_Port_International_Co_Ltd",
+      "symbol": "sh601298",
+      "kind": "stock",
+      "scale": 0.303,
+      "compared_observations": 239,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-06-28",
+        "2023-06-29",
+        "2023-06-30"
+      ]
+    },
+    {
+      "id": "Beijing_Shanghai_High_Speed_Railway_Co_Ltd",
+      "symbol": "sh601816",
+      "kind": "stock",
+      "scale": 8.521,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Merchants_Energy_Shipping_Co_Ltd",
+      "symbol": "sh601872",
+      "kind": "stock",
+      "scale": 0.949,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "COSCO_SHIPPING_Holdings_Co_Ltd",
+      "symbol": "sh601919",
+      "kind": "stock",
+      "scale": 4.561,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Youngor_Group_Co_Ltd",
+      "symbol": "sh600177",
+      "kind": "stock",
+      "scale": 1.602,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BTG_Hotels_Group_Co_Ltd",
+      "symbol": "sh600258",
+      "kind": "stock",
+      "scale": 0.888,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Heilan_Home_Co_Ltd",
+      "symbol": "sh600398",
+      "kind": "stock",
+      "scale": 1.845,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Jin_Jiang_International_Hotels_Co_Ltd",
+      "symbol": "sh600754",
+      "kind": "stock",
+      "scale": 1.019,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jihua_Group_Co_Ltd",
+      "symbol": "sh601718",
+      "kind": "stock",
+      "scale": 0.629,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Lao_Feng_Xiang_Co_Ltd",
+      "symbol": "sh600612",
+      "kind": "stock",
+      "scale": 0.563,
+      "compared_observations": 242,
+      "max_absolute_error": 7.105427357601002e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANGHAI_YUYUAN_TOURIST_MART_GROUP_CO_LTD",
+      "symbol": "sh600655",
+      "kind": "stock",
+      "scale": 1.013,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Bailian_Group_Co_Ltd",
+      "symbol": "sh600827",
+      "kind": "stock",
+      "scale": 0.709,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wangfujing_Group_Co_Ltd",
+      "symbol": "sh600859",
+      "kind": "stock",
+      "scale": 1.023,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_National_Gold_Group_Gold_Jewellery_Co_Ltd",
+      "symbol": "sh600916",
+      "kind": "stock",
+      "scale": 0.64,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Tourism_Group_Duty_Free_Corporation_Limited",
+      "symbol": "sh601888",
+      "kind": "stock",
+      "scale": 5.728,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yonghui_Superstores_Co_Ltd",
+      "symbol": "sh601933",
+      "kind": "stock",
+      "scale": 2.167,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Meheco_Co_Ltd",
+      "symbol": "sh600056",
+      "kind": "stock",
+      "scale": 0.728,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_National_Medicines_Corp_Ltd",
+      "symbol": "sh600511",
+      "kind": "stock",
+      "scale": 1.05,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Liaoning_Cheng_Da_Co_Ltd",
+      "symbol": "sh600739",
+      "kind": "stock",
+      "scale": 0.881,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jointown_Pharmaceutical_Group_Co_Ltd",
+      "symbol": "sh600998",
+      "kind": "stock",
+      "scale": 1.31,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Pharmaceuticals_Holding_Co_Ltd",
+      "symbol": "sh601607",
+      "kind": "stock",
+      "scale": 1.922,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "DaShenLin_Pharmaceutical_Group_Co_Ltd",
+      "symbol": "sh603233",
+      "kind": "stock",
+      "scale": 0.828,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Laobaixing_Pharmacy_Chain_Joint_Stock_Company",
+      "symbol": "sh603883",
+      "kind": "stock",
+      "scale": 0.736,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yifeng_Pharmacy_Chain_Co_Ltd",
+      "symbol": "sh603939",
+      "kind": "stock",
+      "scale": 1.653,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Lanhua_Science_Tech_Venture_Co_Ltd",
+      "symbol": "sh600123",
+      "kind": "stock",
+      "scale": 0.901,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yankuang_Energy_Group_Company_Limited",
+      "symbol": "sh600188",
+      "kind": "stock",
+      "scale": 3.266,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shan_Xi_Hua_Yang_Group_New_Energy_Co_Ltd",
+      "symbol": "sh600348",
+      "kind": "stock",
+      "scale": 1.768,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guizhou_Panjiang_Refined_Coal_Co_Ltd",
+      "symbol": "sh600395",
+      "kind": "stock",
+      "scale": 0.729,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Coal_International_Energy_Group_Co_Ltd",
+      "symbol": "sh600546",
+      "kind": "stock",
+      "scale": 1.405,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Hengyuan_Coal_Industry_and_Electricity_Power_Co_Ltd",
+      "symbol": "sh600971",
+      "kind": "stock",
+      "scale": 0.626,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huaibei_Mining_Holdings_Co_Ltd",
+      "symbol": "sh600985",
+      "kind": "stock",
+      "scale": 1.912,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kailuan_Energy_Chemical_Co_Ltd",
+      "symbol": "sh600997",
+      "kind": "stock",
+      "scale": 0.574,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jinneng_Holding_Shanxi_Coal_Industry_Co_Ltd",
+      "symbol": "sh601001",
+      "kind": "stock",
+      "scale": 1.386,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Haohua_Energy_Resource_Co_Ltd",
+      "symbol": "sh601101",
+      "kind": "stock",
+      "scale": 0.622,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shaanxi_Coal_Industry_Company_Limited",
+      "symbol": "sh601225",
+      "kind": "stock",
+      "scale": 11.124,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Pingdingshan_Tianan_Coal_Mining_Co_Ltd",
+      "symbol": "sh601666",
+      "kind": "stock",
+      "scale": 1.827,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Luan_Environmental_Energy_Development_Co_Ltd",
+      "symbol": "sh601699",
+      "kind": "stock",
+      "scale": 1.955,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SDIC_Xinji_Energy_Co_Ltd",
+      "symbol": "sh601918",
+      "kind": "stock",
+      "scale": 1.556,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Eerduosi_Resources_Co_Ltd",
+      "symbol": "sh600295",
+      "kind": "stock",
+      "scale": 0.366,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningxia_Baofeng_Energy_Group_Co_Ltd",
+      "symbol": "sh600989",
+      "kind": "stock",
+      "scale": 2.401,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Petroleum_Engineering_Corporation",
+      "symbol": "sh600339",
+      "kind": "stock",
+      "scale": 0.767,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Offshore_Oil_Engineering_Co_Ltd",
+      "symbol": "sh600583",
+      "kind": "stock",
+      "scale": 1.756,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinopec_Oilfield_Service_Corporation",
+      "symbol": "sh600871",
+      "kind": "stock",
+      "scale": 1.121,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CNOOC_Energy_Technology_and_Services_Limited",
+      "symbol": "sh600968",
+      "kind": "stock",
+      "scale": 1.208,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Oilfield_Services_Limited",
+      "symbol": "sh601808",
+      "kind": "stock",
+      "scale": 1.181,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Brewery_Co_Ltd",
+      "symbol": "sh600132",
+      "kind": "stock",
+      "scale": 1.78,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kweichow_Moutai_Co_Ltd",
+      "symbol": "sh600519",
+      "kind": "stock",
+      "scale": 15.43,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hebei_Hengshui_Laobaigan_Liquor_Co_Ltd",
+      "symbol": "sh600559",
+      "kind": "stock",
+      "scale": 1.618,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tsingtao_Brewery_Co_Ltd",
+      "symbol": "sh600600",
+      "kind": "stock",
+      "scale": 3.359,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shede_Spirits_Co_Ltd",
+      "symbol": "sh600702",
+      "kind": "stock",
+      "scale": 1.685,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Swellfun_Co_Ltd",
+      "symbol": "sh600779",
+      "kind": "stock",
+      "scale": 1.131,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Xinghuacun_Fen_Wine_Factory_Co_Ltd",
+      "symbol": "sh600809",
+      "kind": "stock",
+      "scale": 12.682,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hebei_Yangyuan_ZhiHui_Beverage_Co_Ltd",
+      "symbol": "sh603156",
+      "kind": "stock",
+      "scale": 1.565,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ANHUI_YINGJIA_DISTILLERY_CO_LTD",
+      "symbol": "sh603198",
+      "kind": "stock",
+      "scale": 1.342,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Kings_Luck_Brewery_Joint_Stock_Co_Ltd",
+      "symbol": "sh603369",
+      "kind": "stock",
+      "scale": 4.543,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Kouzi_Distillery_Co_Ltd",
+      "symbol": "sh603589",
+      "kind": "stock",
+      "scale": 1.632,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Eastroc_Beverage_Group_Co_Ltd",
+      "symbol": "sh605499",
+      "kind": "stock",
+      "scale": 7.575,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Heilongjiang_Agriculture_Co_Ltd",
+      "symbol": "sh600598",
+      "kind": "stock",
+      "scale": 1.359,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "COFCO_SUGAR_HOLDING_CO_LTD",
+      "symbol": "sh600737",
+      "kind": "stock",
+      "scale": 1.265,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Hainan_Rubber_Industry_Group_Co_Ltd",
+      "symbol": "sh601118",
+      "kind": "stock",
+      "scale": 0.981,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Provincial_Agricultural_Reclamation_and_Development_Co_Ltd",
+      "symbol": "sh601952",
+      "kind": "stock",
+      "scale": 0.683,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Shennong_Agricultural_Industry_Group_Co_LTD",
+      "symbol": "sh605296",
+      "kind": "stock",
+      "scale": 0.273,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_China_Commodities_City_Group_Co_Ltd",
+      "symbol": "sh600415",
+      "kind": "stock",
+      "scale": 2.092,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huadian_Energy_Co_Ltd",
+      "symbol": "sh600726",
+      "kind": "stock",
+      "scale": 0.398,
+      "compared_observations": 241,
+      "max_absolute_error": 2.220446049250313e-16,
+      "legacy_zero_sessions": [
+        "2023-06-12"
+      ]
+    },
+    {
+      "id": "Xinjiang_Xintai_Natural_Gas_Co_Ltd",
+      "symbol": "sh603393",
+      "kind": "stock",
+      "scale": 1.056,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SAIC_Motor_Co_Ltd",
+      "symbol": "sh600104",
+      "kind": "stock",
+      "scale": 6.959,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fuyao_Glass_Industry_Group_Co_Ltd",
+      "symbol": "sh600660",
+      "kind": "stock",
+      "scale": 8.619,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BAIC_BluePark_New_Energy_Technology_Co_Ltd",
+      "symbol": "sh600733",
+      "kind": "stock",
+      "scale": 2.287,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HUAYU_Automotive_Systems_Company_Limited",
+      "symbol": "sh600741",
+      "kind": "stock",
+      "scale": 2.597,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "IKD_Co_Ltd",
+      "symbol": "sh600933",
+      "kind": "stock",
+      "scale": 0.601,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sailun_Group_Co_Ltd",
+      "symbol": "sh601058",
+      "kind": "stock",
+      "scale": 2.975,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Sokon_Industry_Group_Stock_Co_Ltd",
+      "symbol": "sh601127",
+      "kind": "stock",
+      "scale": 9.847,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TRIANGLE_TYRE_CO_LTD",
+      "symbol": "sh601163",
+      "kind": "stock",
+      "scale": 0.401,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Automobile_Group_Co_Ltd",
+      "symbol": "sh601238",
+      "kind": "stock",
+      "scale": 1.643,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Great_Wall_Motor_Co_Ltd",
+      "symbol": "sh601633",
+      "kind": "stock",
+      "scale": 2.603,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Tuopu_Group_Co_Ltd",
+      "symbol": "sh601689",
+      "kind": "stock",
+      "scale": 3.261,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Linglong_Tyre_Co_Ltd",
+      "symbol": "sh601966",
+      "kind": "stock",
+      "scale": 0.964,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Xinquan_Automotive_Trim_Co_Ltd",
+      "symbol": "sh603179",
+      "kind": "stock",
+      "scale": 1.271,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huada_Automotive_Technology_Co_Ltd",
+      "symbol": "sh603358",
+      "kind": "stock",
+      "scale": 0.567,
+      "compared_observations": 237,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-12-19",
+        "2023-12-20",
+        "2023-12-21",
+        "2023-12-22",
+        "2023-12-25"
+      ]
+    },
+    {
+      "id": "Bethel_Automotive_Safety_Systems_Co_Ltd",
+      "symbol": "sh603596",
+      "kind": "stock",
+      "scale": 2.264,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANGHAI_DAIMAY_AUTOMOTIVE_INTERIOR_CO_LTD",
+      "symbol": "sh603730",
+      "kind": "stock",
+      "scale": 0.245,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Jifeng_Auto_Parts_Co_Ltd",
+      "symbol": "sh603997",
+      "kind": "stock",
+      "scale": 0.725,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Jahwa_United_Co_Ltd",
+      "symbol": "sh600315",
+      "kind": "stock",
+      "scale": 1.002,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Proya_Cosmetics_Co_Ltd",
+      "symbol": "sh603605",
+      "kind": "stock",
+      "scale": 2.891,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_National_Software_and_Service_Co_Ltd",
+      "symbol": "sh600536",
+      "kind": "stock",
+      "scale": 1.425,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hundsun_Technologies_Inc",
+      "symbol": "sh600570",
+      "kind": "stock",
+      "scale": 2.075,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yonyou_Network_Technology_Co_Ltd",
+      "symbol": "sh600588",
+      "kind": "stock",
+      "scale": 1.578,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Baosight_Software_Co_Ltd",
+      "symbol": "sh600845",
+      "kind": "stock",
+      "scale": 1.222,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Kingsoft_Office_Software_Inc",
+      "symbol": "sh688111",
+      "kind": "stock",
+      "scale": 3.577,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Angel_Yeast_Co_Ltd",
+      "symbol": "sh600298",
+      "kind": "stock",
+      "scale": 2.728,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bluestar_Adisseo_Company",
+      "symbol": "sh600299",
+      "kind": "stock",
+      "scale": 0.492,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Meihua_Holdings_Group_Co_Ltd",
+      "symbol": "sh600873",
+      "kind": "stock",
+      "scale": 2.787,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Bloomage_Biotechnology_Corporation_Limited",
+      "symbol": "sh688363",
+      "kind": "stock",
+      "scale": 1.198,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Tiantan_Biological_Products_Co_Ltd",
+      "symbol": "sh600161",
+      "kind": "stock",
+      "scale": 2.175,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Hebang_Biotechnology_Co_Ltd",
+      "symbol": "sh603077",
+      "kind": "stock",
+      "scale": 0.711,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BEIJING_WANTAI_BIOLOGICAL_PHARMACY_ENTERPRISE_CO_LTD",
+      "symbol": "sh603392",
+      "kind": "stock",
+      "scale": 2.384,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Cathay_Biotech_Inc",
+      "symbol": "sh688065",
+      "kind": "stock",
+      "scale": 1.276,
+      "compared_observations": 238,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-06-16",
+        "2023-06-19",
+        "2023-06-20",
+        "2023-06-21"
+      ]
+    },
+    {
+      "id": "Shanghai_Junshi_Biosciences_Co_Ltd",
+      "symbol": "sh688180",
+      "kind": "stock",
+      "scale": 1.559,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Dizal_Jiangsu_Pharmaceutical_Co_Ltd",
+      "symbol": "sh688192",
+      "kind": "stock",
+      "scale": 0.767,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BeiGene_Ltd",
+      "symbol": "sh688235",
+      "kind": "stock",
+      "scale": 2.886,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Changchun_BCHT_Biotechnology_Co",
+      "symbol": "sh688276",
+      "kind": "stock",
+      "scale": 0.245,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xiamen_Amoytop_Biotech_Co_LTD",
+      "symbol": "sh688278",
+      "kind": "stock",
+      "scale": 1.161,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "RemeGen_Co_Ltd",
+      "symbol": "sh688331",
+      "kind": "stock",
+      "scale": 0.863,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinocelltech_Group_Limited",
+      "symbol": "sh688520",
+      "kind": "stock",
+      "scale": 0.468,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Allist_Pharmaceuticals_Co_Ltd",
+      "symbol": "sh688578",
+      "kind": "stock",
+      "scale": 1.887,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GUANGDONG_HEC_TECHNOLOGY_HOLDING_CO_LTD",
+      "symbol": "sh600673",
+      "kind": "stock",
+      "scale": 0.994,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Petroleum_and_Chemical_Corporation",
+      "symbol": "sh600028",
+      "kind": "stock",
+      "scale": 12.352,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinopec_Shanghai_Petrochemical_Co_Ltd",
+      "symbol": "sh600688",
+      "kind": "stock",
+      "scale": 0.951,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CNOOC_Limited",
+      "symbol": "sh600938",
+      "kind": "stock",
+      "scale": 7.836,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "PetroChina_Co_Ltd",
+      "symbol": "sh601857",
+      "kind": "stock",
+      "scale": 13.551,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "FU_JIAN_ANJOY_FOODS_CO_LTD",
+      "symbol": "sh603345",
+      "kind": "stock",
+      "scale": 1.995,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhe_Jiang_Daily_Digital_Culture_Group_Co_Ltd",
+      "symbol": "sh600633",
+      "kind": "stock",
+      "scale": 1.849,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "People_cn_CO_LTD",
+      "symbol": "sh603000",
+      "kind": "stock",
+      "scale": 1.891,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "G_bits_Network_Technology_Xiamen_Co_Ltd",
+      "symbol": "sh603444",
+      "kind": "stock",
+      "scale": 1.784,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "XINHUANETCO_LTD",
+      "symbol": "sh603888",
+      "kind": "stock",
+      "scale": 0.802,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ENN_Ecological_Holdings_Co_Ltd",
+      "symbol": "sh600803",
+      "kind": "stock",
+      "scale": 2.922,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Gas_Co_Ltd",
+      "symbol": "sh601139",
+      "kind": "stock",
+      "scale": 0.876,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangxi_Jovo_Energy_Co_Ltd",
+      "symbol": "sh605090",
+      "kind": "stock",
+      "scale": 1.28,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_United_Network_Communications_Co_Ltd",
+      "symbol": "sh600050",
+      "kind": "stock",
+      "scale": 14.608,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "State_Grid_Information_and_Communication_Co_Ltd",
+      "symbol": "sh600131",
+      "kind": "stock",
+      "scale": 1.877,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "INESA_Intelligent_Tech_Inc",
+      "symbol": "sh600602",
+      "kind": "stock",
+      "scale": 2.614,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Mobile_Limited",
+      "symbol": "sh600941",
+      "kind": "stock",
+      "scale": 15.786,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Broadcasting_Cable_Information_Network_Corporation_Limited",
+      "symbol": "sh600959",
+      "kind": "stock",
+      "scale": 1.429,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Satellite_Communications_Co_Ltd",
+      "symbol": "sh601698",
+      "kind": "stock",
+      "scale": 2.071,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Telecom_Corporation_Limited",
+      "symbol": "sh601728",
+      "kind": "stock",
+      "scale": 17.24,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CICT_Mobile_Communication_Technology_Co_Ltd",
+      "symbol": "sh688387",
+      "kind": "stock",
+      "scale": 1.254,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "N_360_Security_Technology_Inc",
+      "symbol": "sh601360",
+      "kind": "stock",
+      "scale": 1.889,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Qi_An_Xin_Technology_Group_Inc",
+      "symbol": "sh688561",
+      "kind": "stock",
+      "scale": 0.445,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Dawning_Information_Industry_Co_Ltd",
+      "symbol": "sh603019",
+      "kind": "stock",
+      "scale": 4.888,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hygon_Information_Technology_Co_Ltd",
+      "symbol": "sh688041",
+      "kind": "stock",
+      "scale": 7.289,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Loongson_Technology_Corporation_Limited",
+      "symbol": "sh688047",
+      "kind": "stock",
+      "scale": 1.098,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Cambricon_Technologies_Corporation_Limited",
+      "symbol": "sh688256",
+      "kind": "stock",
+      "scale": 7.748,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_Silan_Microelectronics_Co_Ltd",
+      "symbol": "sh600460",
+      "kind": "stock",
+      "scale": 1.538,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sanan_Optoelectronics_Co_Ltd",
+      "symbol": "sh600703",
+      "kind": "stock",
+      "scale": 2.265,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Huiding_Technology_Co_Ltd",
+      "symbol": "sh603160",
+      "kind": "stock",
+      "scale": 1.019,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "StarPower_Semiconductor_Ltd",
+      "symbol": "sh603290",
+      "kind": "stock",
+      "scale": 0.521,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Will_Semiconductor_CO_Ltd_Shanghai",
+      "symbol": "sh603501",
+      "kind": "stock",
+      "scale": 5.91,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fuzhou_Rockchip_Electronics_Co_Ltd",
+      "symbol": "sh603893",
+      "kind": "stock",
+      "scale": 1.881,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GigaDevice_Semiconductor_Beijing_Inc",
+      "symbol": "sh603986",
+      "kind": "stock",
+      "scale": 4.509,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Montage_Technology_Co_Ltd",
+      "symbol": "sh688008",
+      "kind": "stock",
+      "scale": 4.631,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Amlogic_Shanghai_Co_Ltd",
+      "symbol": "sh688099",
+      "kind": "stock",
+      "scale": 1.276,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Vanchip_Tianjin_Technology_Co_Ltd",
+      "symbol": "sh688153",
+      "kind": "stock",
+      "scale": 0.142,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Smartsens_Technology_Shanghai_Co_Ltd",
+      "symbol": "sh688213",
+      "kind": "stock",
+      "scale": 1.471,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ASR_Microelectronics_Co_Ltd",
+      "symbol": "sh688220",
+      "kind": "stock",
+      "scale": 1.06,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Resources_Microelectronics_Limited",
+      "symbol": "sh688396",
+      "kind": "stock",
+      "scale": 1.287,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Biwin_Storage_Technology_Co_Ltd",
+      "symbol": "sh688525",
+      "kind": "stock",
+      "scale": 0.91,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GalaxyCore_Inc",
+      "symbol": "sh688728",
+      "kind": "stock",
+      "scale": 0.568,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tongwei_Co_Ltd",
+      "symbol": "sh600438",
+      "kind": "stock",
+      "scale": 2.193,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Longi_Green_Energy_Technology_Co_Ltd",
+      "symbol": "sh601012",
+      "kind": "stock",
+      "scale": 4.436,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Flat_Glass_Group_CO_LTD",
+      "symbol": "sh601865",
+      "kind": "stock",
+      "scale": 0.569,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HANGZHOU_FIRST_PV_MATERIAL_Co_LTD",
+      "symbol": "sh603806",
+      "kind": "stock",
+      "scale": 0.637,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ningbo_Deye_Technology_Co_Ltd",
+      "symbol": "sh605117",
+      "kind": "stock",
+      "scale": 1.108,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jinko_Solar_Co_Ltd",
+      "symbol": "sh688223",
+      "kind": "stock",
+      "scale": 1.092,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "XinJiang_Daqo_New_Energy_Co_Ltd",
+      "symbol": "sh688303",
+      "kind": "stock",
+      "scale": 0.57,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Trina_Solar_Co_Ltd",
+      "symbol": "sh688599",
+      "kind": "stock",
+      "scale": 0.711,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Provincial_New_Energy_Investment_Group_Co_Ltd",
+      "symbol": "sh600032",
+      "kind": "stock",
+      "scale": 0.863,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Three_Gorges_Renewables_Group_Co_Ltd",
+      "symbol": "sh600905",
+      "kind": "stock",
+      "scale": 9.702,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Suntien_Green_Energy_Corporation_Limited",
+      "symbol": "sh600956",
+      "kind": "stock",
+      "scale": 0.365,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Southern_Power_Grid_Energy_Storage_Co_Ltd",
+      "symbol": "sh600995",
+      "kind": "stock",
+      "scale": 1.488,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CECEP_Wind_Power_Corporation",
+      "symbol": "sh601016",
+      "kind": "stock",
+      "scale": 1.774,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Linyang_Energy_Co_Ltd",
+      "symbol": "sh601222",
+      "kind": "stock",
+      "scale": 1.271,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tsinghua_Tongfang_Co_Ltd",
+      "symbol": "sh600100",
+      "kind": "stock",
+      "scale": 0.861,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Irico_Display_Devices_Co_Ltd",
+      "symbol": "sh600707",
+      "kind": "stock",
+      "scale": 0.507,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wingtech_Technology_Co_Ltd",
+      "symbol": "sh600745",
+      "kind": "stock",
+      "scale": 1.591,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Foxconn_Industrial_Internet_Co_Ltd",
+      "symbol": "sh601138",
+      "kind": "stock",
+      "scale": 3.786,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Everdisplay_Optronics_Shanghai_Co_Ltd",
+      "symbol": "sh688538",
+      "kind": "stock",
+      "scale": 0.477,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TOPCHOICE_MEDICAL_CORPORATION",
+      "symbol": "sh600763",
+      "kind": "stock",
+      "scale": 1.207,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Pharmaceutical_Glass_Co_Ltd",
+      "symbol": "sh600529",
+      "kind": "stock",
+      "scale": 1.414,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Autobio_Diagnostics_Co_Ltd",
+      "symbol": "sh603658",
+      "kind": "stock",
+      "scale": 0.86,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Kingmed_Diagnostics_Group_Co_Ltd",
+      "symbol": "sh603882",
+      "kind": "stock",
+      "scale": 0.777,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Eyebright_Medical_Technology_Beijing_Co_Ltd",
+      "symbol": "sh688050",
+      "kind": "stock",
+      "scale": 1.007,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_United_Imaging_Healthcare_Co_Ltd",
+      "symbol": "sh688271",
+      "kind": "stock",
+      "scale": 5.26,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "iRay_Group",
+      "symbol": "sh688301",
+      "kind": "stock",
+      "scale": 0.831,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "APT_Medical_Inc",
+      "symbol": "sh688617",
+      "kind": "stock",
+      "scale": 2.335,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WuXi_AppTec_Co_Ltd",
+      "symbol": "sh603259",
+      "kind": "stock",
+      "scale": 14.212,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "MGI_Tech_Co_Ltd",
+      "symbol": "sh688114",
+      "kind": "stock",
+      "scale": 1.595,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CITIC_Securities_Co_Ltd",
+      "symbol": "sh600030",
+      "kind": "stock",
+      "scale": 6.337,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Merchants_Securities_Co_Ltd",
+      "symbol": "sh600999",
+      "kind": "stock",
+      "scale": 1.58,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Securities_Co_Ltd",
+      "symbol": "sh601066",
+      "kind": "stock",
+      "scale": 0.782,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GUOTAI_HAITONG_SECURITIES_CO_LTD",
+      "symbol": "sh601211",
+      "kind": "stock",
+      "scale": 4.817,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huatai_Securities_Co_Ltd",
+      "symbol": "sh601688",
+      "kind": "stock",
+      "scale": 2.126,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Galaxy_Securities_Co_Ltd",
+      "symbol": "sh601881",
+      "kind": "stock",
+      "scale": 0.88,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_International_Capital_Corporation_Limited",
+      "symbol": "sh601995",
+      "kind": "stock",
+      "scale": 0.995,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shengyi_Technology_Co_Ltd",
+      "symbol": "sh600183",
+      "kind": "stock",
+      "scale": 1.557,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xiamen_Faratronic_Co_Ltd",
+      "symbol": "sh600563",
+      "kind": "stock",
+      "scale": 0.741,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Universal_Scientific_Industrial_Shanghai_Co_Ltd",
+      "symbol": "sh601231",
+      "kind": "stock",
+      "scale": 0.479,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Kinwong_Electronic_Co_Ltd",
+      "symbol": "sh603228",
+      "kind": "stock",
+      "scale": 0.548,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHENZHEN_TRANSSION_HOLDINGS_CO_LTD",
+      "symbol": "sh688036",
+      "kind": "stock",
+      "scale": 1.803,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_EZVIZ_Network_Co_Ltd",
+      "symbol": "sh688475",
+      "kind": "stock",
+      "scale": 0.288,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Tongrentang_Co_Ltd",
+      "symbol": "sh600085",
+      "kind": "stock",
+      "scale": 2.401,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Taiji_Industry_Group_Co_Ltd",
+      "symbol": "sh600129",
+      "kind": "stock",
+      "scale": 0.771,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tianjin_Pharmaceutical_Da_Ren_Tang_Group_Corporation_Limited",
+      "symbol": "sh600329",
+      "kind": "stock",
+      "scale": 0.808,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GUANGZHOU_BAIYUNSHAN_PHARMACEUTICAL_HOLDINGS_COMPANY_LIMITED",
+      "symbol": "sh600332",
+      "kind": "stock",
+      "scale": 1.784,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kunming_Pharmaceutical_Corp",
+      "symbol": "sh600422",
+      "kind": "stock",
+      "scale": 0.779,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhangzhou_Pientzehuang_Pharmaceutical_Co_Ltd",
+      "symbol": "sh600436",
+      "kind": "stock",
+      "scale": 5.949,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TASLY_PHARMACEUTICAL_GROUP_CO_LTD",
+      "symbol": "sh600535",
+      "kind": "stock",
+      "scale": 1.309,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangzhong_Pharmaceutical_Co_Ltd",
+      "symbol": "sh600750",
+      "kind": "stock",
+      "scale": 0.831,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANDONG_BUCHANG_PHARMACEUTICALS_CO_LTD",
+      "symbol": "sh603858",
+      "kind": "stock",
+      "scale": 0.838,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sany_Heavy_Industry_Co_Ltd",
+      "symbol": "sh600031",
+      "kind": "stock",
+      "scale": 5.578,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TBEA_Co_Ltd",
+      "symbol": "sh600089",
+      "kind": "stock",
+      "scale": 2.9,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_CSSC_Holdings_Limited",
+      "symbol": "sh600150",
+      "kind": "stock",
+      "scale": 3.259,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AVIC_Airborne_Systems_Co_Ltd",
+      "symbol": "sh600372",
+      "kind": "stock",
+      "scale": 1.303,
+      "compared_observations": 235,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-02-08",
+        "2023-02-09",
+        "2023-02-10",
+        "2023-02-13",
+        "2023-02-14",
+        "2023-02-15",
+        "2023-02-16"
+      ]
+    },
+    {
+      "id": "NARI_Technology_Co_Ltd",
+      "symbol": "sh600406",
+      "kind": "stock",
+      "scale": 4.428,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Shipbuilding_Industry_Group_Power_Co_Ltd",
+      "symbol": "sh600482",
+      "kind": "stock",
+      "scale": 1.184,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AVIC_SHENYANG_AIRCRAFT_COMPANY_LIMITED",
+      "symbol": "sh600760",
+      "kind": "stock",
+      "scale": 2.341,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Dongfang_Electric_Corporation_Limited",
+      "symbol": "sh600875",
+      "kind": "stock",
+      "scale": 0.924,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AVIC_AVIATION_ENGINE_CORPORATION_PLC",
+      "symbol": "sh600893",
+      "kind": "stock",
+      "scale": 2.176,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Hengli_Hydraulic_CO_Ltd",
+      "symbol": "sh601100",
+      "kind": "stock",
+      "scale": 1.987,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Electric_Group_Co_Ltd",
+      "symbol": "sh601727",
+      "kind": "stock",
+      "scale": 1.834,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CRRC_Corporation_Limited",
+      "symbol": "sh601766",
+      "kind": "stock",
+      "scale": 4.251,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Chint_Electrics_Co_Ltd",
+      "symbol": "sh601877",
+      "kind": "stock",
+      "scale": 1.191,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Shipbuilding_Industry_Co_Ltd",
+      "symbol": "sh601989",
+      "kind": "stock",
+      "scale": 2.361,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Railway_Signal_and_Communication_Corporation_Limited",
+      "symbol": "sh688009",
+      "kind": "stock",
+      "scale": 0.655,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_Oriental_Pearl_Media_Co_Ltd",
+      "symbol": "sh600637",
+      "kind": "stock",
+      "scale": 2.564,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHINA_FILM_CO_LTD",
+      "symbol": "sh600977",
+      "kind": "stock",
+      "scale": 1.314,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANGHAI_FILM_CO_LTD",
+      "symbol": "sh601595",
+      "kind": "stock",
+      "scale": 1.014,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Phoenix_Publishing_and_Media_Co_Ltd",
+      "symbol": "sh601928",
+      "kind": "stock",
+      "scale": 1.548,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Merchants_Bank_Co_Ltd",
+      "symbol": "sh600036",
+      "kind": "stock",
+      "scale": 13.054,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ping_An_Insurance_Group_Company_of_China_Ltd",
+      "symbol": "sh601318",
+      "kind": "stock",
+      "scale": 13.982,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WINTIME_ENERGY_GROUP_CO_LTD",
+      "symbol": "sh600157",
+      "kind": "stock",
+      "scale": 4.455,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GUANGHUI_ENERGY_CO_LTD",
+      "symbol": "sh600256",
+      "kind": "stock",
+      "scale": 3.982,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Shenhua_Energy_Co_Ltd",
+      "symbol": "sh601088",
+      "kind": "stock",
+      "scale": 15.926,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Coal_Energy_Co_Ltd",
+      "symbol": "sh601898",
+      "kind": "stock",
+      "scale": 2.777,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SZSE_Upstream",
+      "symbol": "sz399704",
+      "kind": "index",
+      "scale": 1.0,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://akshare.akfamily.xyz/data/index/index.html"
+    },
+    {
+      "id": "SZSE_Midstream",
+      "symbol": "sz399705",
+      "kind": "index",
+      "scale": 1.0,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://akshare.akfamily.xyz/data/index/index.html"
+    },
+    {
+      "id": "SZSE_Downstream",
+      "symbol": "sz399706",
+      "kind": "index",
+      "scale": 1.0,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "identity_source": "https://akshare.akfamily.xyz/data/index/index.html"
+    },
+    {
+      "id": "HUNAN_SILVER_CO_LTD",
+      "symbol": "sz002716",
+      "kind": "stock",
+      "scale": 1.054,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tongling_Nonferrous_Metals_Group_Co_Ltd",
+      "symbol": "sz000630",
+      "kind": "stock",
+      "scale": 3.684,
+      "compared_observations": 242,
+      "max_absolute_error": 1.7763568394002505e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GANSU_ENERGY_CHEMICAL_CO_LTD",
+      "symbol": "sz000552",
+      "kind": "stock",
+      "scale": 0.764,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHENZHEN_ZHONGJIN_LINGNAN_NONFEMET_CO_LTD",
+      "symbol": "sz000060",
+      "kind": "stock",
+      "scale": 1.773,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Pangang_Group_Vanadium_and_Titanium_Resources_Co_Ltd",
+      "symbol": "sz000629",
+      "kind": "stock",
+      "scale": 1.8,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Nonferrous_Metal_Industrys_Foreign_Engineering_and_Construction_Co_Ltd",
+      "symbol": "sz000758",
+      "kind": "stock",
+      "scale": 0.979,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "NORTH_COPPER_CO_LTD",
+      "symbol": "sz000737",
+      "kind": "stock",
+      "scale": 1.037,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "INNER_MONGOLIA_XINGYE_SILVER_and_TIN_MINING_CO_LTD",
+      "symbol": "sz000426",
+      "kind": "stock",
+      "scale": 2.504,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jizhong_Energy_Resources_Co_Ltd",
+      "symbol": "sz000937",
+      "kind": "stock",
+      "scale": 1.005,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "North_Huajin_Chemical_Industries_Co_Ltd",
+      "symbol": "sz000059",
+      "kind": "stock",
+      "scale": 0.77,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HENGYI_PETROCHEMICAL_CO_LTD",
+      "symbol": "sz000703",
+      "kind": "stock",
+      "scale": 2.035,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Truchum_Advanced_Materials_and_Technology_Co_Ltd",
+      "symbol": "sz002171",
+      "kind": "stock",
+      "scale": 1.36,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Oriental_Energy_Company_Limited",
+      "symbol": "sz002221",
+      "kind": "stock",
+      "scale": 1.175,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TIANSHAN_ALUMINUM_GROUP_CO_LTD",
+      "symbol": "sz002532",
+      "kind": "stock",
+      "scale": 3.154,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Advanced_Technology_and_Materials_Co_Ltd",
+      "symbol": "sz000969",
+      "kind": "stock",
+      "scale": 1.253,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANXI_MEIJIN_ENERGY_CO_LTD",
+      "symbol": "sz000723",
+      "kind": "stock",
+      "scale": 1.932,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Humon_Smelting_Co_Ltd",
+      "symbol": "sz002237",
+      "kind": "stock",
+      "scale": 0.943,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanjin_International_Gold_Co_Ltd",
+      "symbol": "sz000975",
+      "kind": "stock",
+      "scale": 5.125,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Aluminium_Co_Ltd",
+      "symbol": "sz000807",
+      "kind": "stock",
+      "scale": 4.804,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ZHE_JIANG_HAI_LIANG_CO_LTD",
+      "symbol": "sz002203",
+      "kind": "stock",
+      "scale": 1.741,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Coking_Coal_Energy_Group_Co_Ltd",
+      "symbol": "sz000983",
+      "kind": "stock",
+      "scale": 2.764,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Copper_Co_Ltd",
+      "symbol": "sz000878",
+      "kind": "stock",
+      "scale": 2.48,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "INNER_MONGOLIA_DIAN_TOU_ENERGY_CORPORATION_LIMITED",
+      "symbol": "sz002128",
+      "kind": "stock",
+      "scale": 3.039,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yantai_Zhenghai_Magnetic_Material_Co_Ltd",
+      "symbol": "sz300224",
+      "kind": "stock",
+      "scale": 0.928,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shengda_Resources_Co_Ltd",
+      "symbol": "sz000603",
+      "kind": "stock",
+      "scale": 0.846,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hunan_Gold_Corporation_Limited",
+      "symbol": "sz002155",
+      "kind": "stock",
+      "scale": 2.861,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Zhong_Ke_San_Huan_High_Tech_Co_Ltd",
+      "symbol": "sz000970",
+      "kind": "stock",
+      "scale": 1.551,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "YUNNANTINCO_LTD",
+      "symbol": "sz000960",
+      "kind": "stock",
+      "scale": 2.069,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Henan_Shenhuo_Coal_and_Power_Co_Ltd",
+      "symbol": "sz000933",
+      "kind": "stock",
+      "scale": 4.071,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Tungsten_and_Hightech_Materials_Co_Ltd",
+      "symbol": "sz000657",
+      "kind": "stock",
+      "scale": 1.322,
+      "compared_observations": 238,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-12-26",
+        "2023-12-27",
+        "2023-12-28",
+        "2023-12-29"
+      ]
+    },
+    {
+      "id": "Guocheng_Mining_Co_LTD",
+      "symbol": "sz000688",
+      "kind": "stock",
+      "scale": 0.59,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Baowu_Magnesium_Technology_Co_Ltd",
+      "symbol": "sz002182",
+      "kind": "stock",
+      "scale": 1.261,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinoma_Science_and_Technology_Co_Ltd",
+      "symbol": "sz002080",
+      "kind": "stock",
+      "scale": 1.404,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SICHUAN_YAHUA_INDUSTRIAL_GROUP_CO_LTD",
+      "symbol": "sz002497",
+      "kind": "stock",
+      "scale": 1.961,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yantai_Jereh_Oilfield_Services_Group_Co_Ltd",
+      "symbol": "sz002353",
+      "kind": "stock",
+      "scale": 2.93,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JL_MAG_RARE_EARTH_CO_LTD",
+      "symbol": "sz300748",
+      "kind": "stock",
+      "scale": 2.135,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHINA_RARE_EARTH_RESOURCES_AND_TECHNOLOGY_CO_LTD",
+      "symbol": "sz000831",
+      "kind": "stock",
+      "scale": 3.523,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chengxin_Lithium_Group_Co_Ltd",
+      "symbol": "sz002240",
+      "kind": "stock",
+      "scale": 1.247,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Xizang_Mineral_Development_Co_LTD",
+      "symbol": "sz000762",
+      "kind": "stock",
+      "scale": 1.174,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Nanjing_Hanrui_Cobalt_Co_Ltd",
+      "symbol": "sz300618",
+      "kind": "stock",
+      "scale": 1.043,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hubei_Feilihua_Quartz_Glass_Co_Ltd",
+      "symbol": "sz300395",
+      "kind": "stock",
+      "scale": 3.828,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinomine_Resource_Group_Co_Ltd",
+      "symbol": "sz002738",
+      "kind": "stock",
+      "scale": 3.194,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GANZHOU_TENGYUAN_COBALT_NEW_MATERIAL_CO_LTD",
+      "symbol": "sz301219",
+      "kind": "stock",
+      "scale": 0.791,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ganfeng_Lithium_Group_Co_Ltd",
+      "symbol": "sz002460",
+      "kind": "stock",
+      "scale": 5.139,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tianqi_Lithium_Corporation",
+      "symbol": "sz002466",
+      "kind": "stock",
+      "scale": 4.525,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "POCO_Holding_Co_Ltd",
+      "symbol": "sz300811",
+      "kind": "stock",
+      "scale": 1.035,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yongxing_Special_Materials_Technology_Co_Ltd",
+      "symbol": "sz002756",
+      "kind": "stock",
+      "scale": 1.507,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Youngy_Co_Ltd",
+      "symbol": "sz002192",
+      "kind": "stock",
+      "scale": 0.858,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_MTC_Co_Ltd",
+      "symbol": "sz002429",
+      "kind": "stock",
+      "scale": 0.262,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Easyhome_New_Retail_Group_Corporation_Limited",
+      "symbol": "sz000785",
+      "kind": "stock",
+      "scale": 0.224,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Railway_Special_Cargo_Logistics_Co_Ltd",
+      "symbol": "sz001213",
+      "kind": "stock",
+      "scale": 0.095,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Ultrapower_Software_Co_Ltd",
+      "symbol": "sz300002",
+      "kind": "stock",
+      "scale": 0.577,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Offcn_Education_Technology_Co_Ltd",
+      "symbol": "sz002607",
+      "kind": "stock",
+      "scale": 0.399,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wangsu_Science_and_Technology_Co_Ltd",
+      "symbol": "sz300017",
+      "kind": "stock",
+      "scale": 0.764,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Meinian_Onehealth_Healthcare_Holdings_Co_Ltd",
+      "symbol": "sz002044",
+      "kind": "stock",
+      "scale": 0.449,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanghai_RAAS_Blood_Products_Co_Ltd",
+      "symbol": "sz002252",
+      "kind": "stock",
+      "scale": 0.837,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "KINGNET_NETWORK_CO_LTD",
+      "symbol": "sz002517",
+      "kind": "stock",
+      "scale": 0.786,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Focus_Media_Information_Technology_Co_Ltd",
+      "symbol": "sz002027",
+      "kind": "stock",
+      "scale": 1.955,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Merchants_Expressway_Network_Technology_Holdings_Co_Ltd",
+      "symbol": "sz001965",
+      "kind": "stock",
+      "scale": 0.705,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Giant_Network_Group_Co_Ltd",
+      "symbol": "sz002558",
+      "kind": "stock",
+      "scale": 0.529,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Zhujiang_Brewery_Co_Ltd",
+      "symbol": "sz002461",
+      "kind": "stock",
+      "scale": 0.126,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Enlight_Media_Co_Ltd",
+      "symbol": "sz300251",
+      "kind": "stock",
+      "scale": 0.76,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Dabeinong_Technology_Group_Co_Ltd",
+      "symbol": "sz002385",
+      "kind": "stock",
+      "scale": 0.379,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yili_Chuanning_Biotechnology_Co_Ltd",
+      "symbol": "sz301301",
+      "kind": "stock",
+      "scale": 0.208,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Yanjing_Brewery_Co_Ltd",
+      "symbol": "sz000729",
+      "kind": "stock",
+      "scale": 0.492,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "NavInfo_Co_Ltd",
+      "symbol": "sz002405",
+      "kind": "stock",
+      "scale": 0.531,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Changan_Automobile_Company_Limited",
+      "symbol": "sz000625",
+      "kind": "stock",
+      "scale": 1.634,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Perfect_World_Co_Ltd",
+      "symbol": "sz002624",
+      "kind": "stock",
+      "scale": 0.496,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "New_Hope_Liuhe_Co_Ltd",
+      "symbol": "sz000876",
+      "kind": "stock",
+      "scale": 0.583,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WANDA_FILM_HOLDING_CO_LTD",
+      "symbol": "sz002739",
+      "kind": "stock",
+      "scale": 0.395,
+      "compared_observations": 237,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-12-06",
+        "2023-12-07",
+        "2023-12-08",
+        "2023-12-11",
+        "2023-12-12"
+      ]
+    },
+    {
+      "id": "Hisense_Home_Appliances_Group_Co_Ltd",
+      "symbol": "sz000921",
+      "kind": "stock",
+      "scale": 0.341,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "YUNDA_Holding_Group_Co_Ltd",
+      "symbol": "sz002120",
+      "kind": "stock",
+      "scale": 0.264,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kunlun_Tech_Co_Ltd",
+      "symbol": "sz300418",
+      "kind": "stock",
+      "scale": 0.739,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Merchants_Port_Group_Co_Ltd",
+      "symbol": "sz001872",
+      "kind": "stock",
+      "scale": 0.119,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Songcheng_Performance_Development_Co_ltd",
+      "symbol": "sz300144",
+      "kind": "stock",
+      "scale": 0.395,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Shiji_Information_Technology_Co_Ltd",
+      "symbol": "sz002153",
+      "kind": "stock",
+      "scale": 0.183,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CSPC_Innovation_Pharmaceutical_Co_Ltd",
+      "symbol": "sz300765",
+      "kind": "stock",
+      "scale": 0.474,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "N_37_INTERACTIVE_ENTERTAINMENT_NETWORK_TECHNOLOGY_GROUP_CO_LTD",
+      "symbol": "sz002555",
+      "kind": "stock",
+      "scale": 0.633,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_HopeRun_Software_Co_Ltd",
+      "symbol": "sz300339",
+      "kind": "stock",
+      "scale": 1.104,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_NHU_Company_Ltd",
+      "symbol": "sz002001",
+      "kind": "stock",
+      "scale": 0.918,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Unisplendour_Corporation_Limited",
+      "symbol": "sz000938",
+      "kind": "stock",
+      "scale": 1.545,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WENS_FOODSTUFF_GROUP_CO_LTD",
+      "symbol": "sz300498",
+      "kind": "stock",
+      "scale": 2.422,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Sanhua_Intelligent_Controls_Co_Ltd",
+      "symbol": "sz002050",
+      "kind": "stock",
+      "scale": 1.612,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hubei_Dinglong_Co_Ltd",
+      "symbol": "sz300054",
+      "kind": "stock",
+      "scale": 0.601,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Digital_China_Group_Co_Ltd",
+      "symbol": "sz000034",
+      "kind": "stock",
+      "scale": 0.623,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Centre_Testing_International_Group_Co_Ltd",
+      "symbol": "sz300012",
+      "kind": "stock",
+      "scale": 0.504,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "By_health_Co_Ltd",
+      "symbol": "sz300146",
+      "kind": "stock",
+      "scale": 0.301,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Haisco_Pharmaceutical_Group_Co_Ltd",
+      "symbol": "sz002653",
+      "kind": "stock",
+      "scale": 0.386,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Lepu_Medical_Technology_Beijing_Co_Ltd",
+      "symbol": "sz300003",
+      "kind": "stock",
+      "scale": 0.397,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hualan_Biological_Engineering_Inc",
+      "symbol": "sz002007",
+      "kind": "stock",
+      "scale": 0.483,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Pacific_Shuanglin_Bio_pharmacy_Co_LTD",
+      "symbol": "sz000403",
+      "kind": "stock",
+      "scale": 0.258,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Fujian_Sunner_Development_Co_Ltd",
+      "symbol": "sz002299",
+      "kind": "stock",
+      "scale": 0.268,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Nhwa_Pharmaceutical_Co_LTD",
+      "symbol": "sz002262",
+      "kind": "stock",
+      "scale": 0.366,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Henan_Shuanghui_Investment_and_Development_Co_Ltd",
+      "symbol": "sz000895",
+      "kind": "stock",
+      "scale": 0.697,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Venustech_Group_Inc",
+      "symbol": "sz002439",
+      "kind": "stock",
+      "scale": 0.304,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sichuan_Kelun_Pharmaceutical_Co_Ltd",
+      "symbol": "sz002422",
+      "kind": "stock",
+      "scale": 1.246,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_Robam_Appliances_Co_Ltd",
+      "symbol": "sz002508",
+      "kind": "stock",
+      "scale": 0.248,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shijiazhuang_Yiling_Pharmaceutical_Co_Ltd",
+      "symbol": "sz002603",
+      "kind": "stock",
+      "scale": 0.308,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Mango_Excellent_Media_Co_Ltd",
+      "symbol": "sz300413",
+      "kind": "stock",
+      "scale": 0.457,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jafron_Biomedical_Co_Ltd",
+      "symbol": "sz300529",
+      "kind": "stock",
+      "scale": 0.275,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Aier_Eye_Hospital_Group_Co_Ltd",
+      "symbol": "sz300015",
+      "kind": "stock",
+      "scale": 1.626,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Kangtai_Biological_Products_Co_Ltd",
+      "symbol": "sz300601",
+      "kind": "stock",
+      "scale": 0.245,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JIANGSU_YUYUE_MEDICAL_EQUIPMENT_and_SUPPLY_CO_LTD",
+      "symbol": "sz002223",
+      "kind": "stock",
+      "scale": 0.557,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GREE_ELECTRIC_APPLIANCES_INC_OF_ZHUHAI",
+      "symbol": "sz000651",
+      "kind": "stock",
+      "scale": 5.483,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "LIVZON_PHARMACEUTICAL_GROUP_INC",
+      "symbol": "sz000513",
+      "kind": "stock",
+      "scale": 0.345,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Iflytek_Co_Ltd",
+      "symbol": "sz002230",
+      "kind": "stock",
+      "scale": 2.331,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHENZHEN_SALUBRIS_PHARMACEUTICALS_CO_LTD",
+      "symbol": "sz002294",
+      "kind": "stock",
+      "scale": 0.612,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "iSoftStone_Information_Technology_Group_Co_Ltd",
+      "symbol": "sz301236",
+      "kind": "stock",
+      "scale": 0.892,
+      "compared_observations": 242,
+      "max_absolute_error": 3.552713678800501e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANGHAI_BAIRUN_INVESTMENT_HOLDING_GROUP_CO_LTD",
+      "symbol": "sz002568",
+      "kind": "stock",
+      "scale": 0.368,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Walvax_Biotechnology_Co_Ltd",
+      "symbol": "sz300142",
+      "kind": "stock",
+      "scale": 0.43,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Dong_E_E_Jiao_Co_Ltd",
+      "symbol": "sz000423",
+      "kind": "stock",
+      "scale": 0.659,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Range_Intelligent_Computing_Technology_Group_Company_Limited",
+      "symbol": "sz300442",
+      "kind": "stock",
+      "scale": 0.898,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yihai_Kerry_Arawana_Holdings_Co_Ltd",
+      "symbol": "sz300999",
+      "kind": "stock",
+      "scale": 0.509,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Compass_Technology_Development_Co_Ltd",
+      "symbol": "sz300803",
+      "kind": "stock",
+      "scale": 0.561,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HUADONG_MEDICINE_CO_LTD",
+      "symbol": "sz000963",
+      "kind": "stock",
+      "scale": 0.915,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Resources_Sanjiu_Medical_and_Pharmaceutical_Co_Ltd",
+      "symbol": "sz000999",
+      "kind": "stock",
+      "scale": 0.567,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Muyuan_Foods_Co_Ltd",
+      "symbol": "sz002714",
+      "kind": "stock",
+      "scale": 2.911,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Betta_Pharmaceuticals_Co_Ltd",
+      "symbol": "sz300558",
+      "kind": "stock",
+      "scale": 0.341,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Supor_Co_Ltd",
+      "symbol": "sz002032",
+      "kind": "stock",
+      "scale": 0.242,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_New_Industries_Biomedical_Engineering_Co_Ltd",
+      "symbol": "sz300832",
+      "kind": "stock",
+      "scale": 0.553,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Andon_Health_Co_Ltd",
+      "symbol": "sz002432",
+      "kind": "stock",
+      "scale": 0.398,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Midea_Group_Co_Ltd",
+      "symbol": "sz000333",
+      "kind": "stock",
+      "scale": 9.668,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "YUNNAN_BAIYAO_GROUP_CO_LTD",
+      "symbol": "sz000538",
+      "kind": "stock",
+      "scale": 1.372,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huali_Industrial_Group_Company_Limited",
+      "symbol": "sz300979",
+      "kind": "stock",
+      "scale": 0.209,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "S_F_Holding_Co_Ltd",
+      "symbol": "sz002352",
+      "kind": "stock",
+      "scale": 2.815,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Glodon_Company_Limited",
+      "symbol": "sz002410",
+      "kind": "stock",
+      "scale": 0.524,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangdong_Haid_Group_Co_Limited",
+      "symbol": "sz002311",
+      "kind": "stock",
+      "scale": 1.24,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Pharmaron_Beijing_Co_Ltd",
+      "symbol": "sz300759",
+      "kind": "stock",
+      "scale": 0.647,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Winner_Medical_Co_Ltd",
+      "symbol": "sz300888",
+      "kind": "stock",
+      "scale": 0.327,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huaxia_Eye_Hospital_Group_Co_Ltd",
+      "symbol": "sz301267",
+      "kind": "stock",
+      "scale": 0.127,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Chongqing_Zhifei_Biological_Products_Co_Ltd",
+      "symbol": "sz300122",
+      "kind": "stock",
+      "scale": 0.606,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hithink_RoyalFlush_Information_Network_Co_Ltd",
+      "symbol": "sz300033",
+      "kind": "stock",
+      "scale": 1.494,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Thunder_Software_Technology_Co_Ltd",
+      "symbol": "sz300496",
+      "kind": "stock",
+      "scale": 0.547,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_Tigermed_Consulting_Co_Ltd",
+      "symbol": "sz300347",
+      "kind": "stock",
+      "scale": 0.622,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sangfor_Technologies_Inc",
+      "symbol": "sz300454",
+      "kind": "stock",
+      "scale": 0.664,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenyang_Xingqi_Pharmaceutical_Co_Ltd",
+      "symbol": "sz300573",
+      "kind": "stock",
+      "scale": 0.302,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiugui_Liquor_Co_Ltd",
+      "symbol": "sz000799",
+      "kind": "stock",
+      "scale": 0.262,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Asymchem_Laboratories_Tianjin_Co_Ltd",
+      "symbol": "sz002821",
+      "kind": "stock",
+      "scale": 0.524,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Botanee_Bio_Technology_Group_Co_LTD",
+      "symbol": "sz300957",
+      "kind": "stock",
+      "scale": 0.188,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JIANGSUYANGHEDISTILLERYCO_LTD",
+      "symbol": "sz002304",
+      "kind": "stock",
+      "scale": 1.11,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Changchun_High_Tech_Industries_Group_Inc",
+      "symbol": "sz000661",
+      "kind": "stock",
+      "scale": 0.76,
+      "compared_observations": 242,
+      "max_absolute_error": 1.4210854715202004e-14,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wuliangye_Yibin_Co_ltd",
+      "symbol": "sz000858",
+      "kind": "stock",
+      "scale": 6.708,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Luzhou_Laojiao_CO_LTD",
+      "symbol": "sz000568",
+      "kind": "stock",
+      "scale": 2.446,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BYD_Company_Limited",
+      "symbol": "sz002594",
+      "kind": "stock",
+      "scale": 8.588,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Gujing_Distillery_Company_Limited",
+      "symbol": "sz000596",
+      "kind": "stock",
+      "scale": 0.722,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Mindray_Bio_Medical_Electronics_Co_Ltd",
+      "symbol": "sz300760",
+      "kind": "stock",
+      "scale": 3.576,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "IMEIK_TECHNOLOGY_DEVELOPMENT_CO_LTD",
+      "symbol": "sz300896",
+      "kind": "stock",
+      "scale": 0.703,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HBIS_Company_Limited",
+      "symbol": "sz000709",
+      "kind": "stock",
+      "scale": 0.2,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Angang_Steel_Company_Limited",
+      "symbol": "sz000898",
+      "kind": "stock",
+      "scale": 0.122,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Boe_Technology_Group_Co_Ltd",
+      "symbol": "sz000725",
+      "kind": "stock",
+      "scale": 3.16,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TCL_Technology_Group_Corporation",
+      "symbol": "sz000100",
+      "kind": "stock",
+      "scale": 1.735,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Shougang_Co_Ltd",
+      "symbol": "sz000959",
+      "kind": "stock",
+      "scale": 0.125,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhefu_Holding_Group_Co_Ltd",
+      "symbol": "sz002266",
+      "kind": "stock",
+      "scale": 0.183,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shanxi_Taigang_Stainless_Steel_Co_Ltd",
+      "symbol": "sz000825",
+      "kind": "stock",
+      "scale": 0.179,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "LINGYI_iTECH_GUANGDONG_COMPANY",
+      "symbol": "sz002600",
+      "kind": "stock",
+      "scale": 0.498,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hunan_Valin_Steel_Co_Ltd",
+      "symbol": "sz000932",
+      "kind": "stock",
+      "scale": 0.451,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Originwater_Technology_Co_Ltd",
+      "symbol": "sz300070",
+      "kind": "stock",
+      "scale": 0.215,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WANXIANG_QIANCHAO_CO_LTD",
+      "symbol": "sz000559",
+      "kind": "stock",
+      "scale": 0.191,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "XCMG_Construction_Machinery_Co_Ltd",
+      "symbol": "sz000425",
+      "kind": "stock",
+      "scale": 1.623,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zoomlion_Heavy_Industry_Science_And_Technology_Co_Ltd",
+      "symbol": "sz000157",
+      "kind": "stock",
+      "scale": 0.811,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Southern_Power_Grid_Energy_Efficiency_and_Clean_Energy_Co_Ltd",
+      "symbol": "sz003035",
+      "kind": "stock",
+      "scale": 0.109,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangxi_Liugong_Machinery_Co_Ltd",
+      "symbol": "sz000528",
+      "kind": "stock",
+      "scale": 0.351,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Wanfeng_Auto_Wheel_CO_LTD",
+      "symbol": "sz002085",
+      "kind": "stock",
+      "scale": 0.474,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tinergy_Chemical_Co_Ltd",
+      "symbol": "sz002145",
+      "kind": "stock",
+      "scale": 0.246,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangdong_Construction_Engineering_Group_Co_Ltd",
+      "symbol": "sz002060",
+      "kind": "stock",
+      "scale": 0.087,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_International_Marine_Containers_Group_Co_Ltd",
+      "symbol": "sz000039",
+      "kind": "stock",
+      "scale": 0.31,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CECEP_ENVIRONMENTAL_PROTECTION_CO_LTD",
+      "symbol": "sz300140",
+      "kind": "stock",
+      "scale": 0.116,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GEM_Co_Ltd",
+      "symbol": "sz002340",
+      "kind": "stock",
+      "scale": 0.699,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huaming_Power_Equipment_Co_Ltd",
+      "symbol": "sz002270",
+      "kind": "stock",
+      "scale": 0.18,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "FAW_Jiefang_Group_Co_Ltd",
+      "symbol": "sz000800",
+      "kind": "stock",
+      "scale": 0.158,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Inner_Mongolia_Berun_Chemical_Company_Limited",
+      "symbol": "sz000683",
+      "kind": "stock",
+      "scale": 0.299,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Haige_Communications_Group_Incorporated_Company",
+      "symbol": "sz002465",
+      "kind": "stock",
+      "scale": 0.459,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tianshui_Huatian_Technology_Co_Ltd",
+      "symbol": "sz002185",
+      "kind": "stock",
+      "scale": 0.53,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Tianshan_Material_Co_Ltd",
+      "symbol": "sz000877",
+      "kind": "stock",
+      "scale": 0.155,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TIANMA_MICROELECTRONICS_CO_LTD",
+      "symbol": "sz000050",
+      "kind": "stock",
+      "scale": 0.218,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "DBG_Technology_Co_Ltd",
+      "symbol": "sz300735",
+      "kind": "stock",
+      "scale": 0.211,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Fastprint_Circuit_Tech_Co_Ltd",
+      "symbol": "sz002436",
+      "kind": "stock",
+      "scale": 0.471,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GRG_Banking_Equipment_Co_Ltd",
+      "symbol": "sz002152",
+      "kind": "stock",
+      "scale": 0.341,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Weichai_Power_Co_Ltd",
+      "symbol": "sz000338",
+      "kind": "stock",
+      "scale": 1.837,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHINAGREATWALLTECHNOLOGYGROUPCO_LTD",
+      "symbol": "sz000066",
+      "kind": "stock",
+      "scale": 0.632,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AVIC_CHENGDU_AIRCRAFT_COMPANY_LIMITED",
+      "symbol": "sz302132",
+      "kind": "stock",
+      "scale": 0.385,
+      "compared_observations": 232,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-01-12",
+        "2023-01-13",
+        "2023-01-16",
+        "2023-01-17",
+        "2023-01-18",
+        "2023-01-19",
+        "2023-01-20",
+        "2023-01-30",
+        "2023-01-31",
+        "2023-02-01"
+      ]
+    },
+    {
+      "id": "Lens_Technology_Co_Ltd",
+      "symbol": "sz300433",
+      "kind": "stock",
+      "scale": 0.924,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Kaifa_Technology_Co_Ltd",
+      "symbol": "sz000021",
+      "kind": "stock",
+      "scale": 0.373,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WuhanGuideInfraredCo_Ltd",
+      "symbol": "sz002414",
+      "kind": "stock",
+      "scale": 0.314,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GOLDWIND_SCIENCE_and_TECHNOLOGY_CO_LTD",
+      "symbol": "sz002202",
+      "kind": "stock",
+      "scale": 0.538,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ChengDu_Hi_Tech_Development_Co_Ltd",
+      "symbol": "sz000628",
+      "kind": "stock",
+      "scale": 0.183,
+      "compared_observations": 232,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": [
+        "2023-09-27",
+        "2023-09-28",
+        "2023-10-09",
+        "2023-10-10",
+        "2023-10-11",
+        "2023-10-12",
+        "2023-10-13",
+        "2023-10-16",
+        "2023-10-17",
+        "2023-10-18"
+      ]
+    },
+    {
+      "id": "Zhejiang_Dahua_Technology_Co_Ltd",
+      "symbol": "sz002236",
+      "kind": "stock",
+      "scale": 0.692,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANDONG_SUN_PAPER_CO_LTD",
+      "symbol": "sz002078",
+      "kind": "stock",
+      "scale": 0.523,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Crystal_Optech_Co_Ltd",
+      "symbol": "sz002273",
+      "kind": "stock",
+      "scale": 0.607,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WUS_PRINTED_CIRCUIT_KUNSHAN_CO_LTD",
+      "symbol": "sz002463",
+      "kind": "stock",
+      "scale": 0.832,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Baoan_Group_Co_Ltd",
+      "symbol": "sz000009",
+      "kind": "stock",
+      "scale": 0.356,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Rongsheng_Petro_Chemical_Co_Ltd",
+      "symbol": "sz002493",
+      "kind": "stock",
+      "scale": 0.563,
+      "compared_observations": 242,
+      "max_absolute_error": 1.7763568394002505e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Luxi_Chemical_Group_Co_Ltd",
+      "symbol": "sz000830",
+      "kind": "stock",
+      "scale": 0.273,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Victory_Giant_Technology_HuiZhou_Co_Ltd",
+      "symbol": "sz300476",
+      "kind": "stock",
+      "scale": 0.984,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Eastern_Shenghong_Co_Ltd",
+      "symbol": "sz000301",
+      "kind": "stock",
+      "scale": 0.518,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Newland_Digital_Technology_Co_Ltd",
+      "symbol": "sz000997",
+      "kind": "stock",
+      "scale": 0.493,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anhui_Zhongding_Sealing_Parts_Co_Ltd",
+      "symbol": "sz000887",
+      "kind": "stock",
+      "scale": 0.319,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "GUANGDONG_FENGHUA_ADVANCED_TECHNOLOGY_HOLDING_CO_LTD",
+      "symbol": "sz000636",
+      "kind": "stock",
+      "scale": 0.27,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sinotruk_Jinan_Truck_Co_Ltd",
+      "symbol": "sz000951",
+      "kind": "stock",
+      "scale": 0.222,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Titan_Wind_Energy_Suzhou_Co_Ltd",
+      "symbol": "sz002531",
+      "kind": "stock",
+      "scale": 0.129,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Qingdao_TGOOD_Electric_Co_Ltd",
+      "symbol": "sz300001",
+      "kind": "stock",
+      "scale": 0.38,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SATELLITE_CHEMICAL_CO_LTD",
+      "symbol": "sz002648",
+      "kind": "stock",
+      "scale": 0.679,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Accelink_Technologies_Co_Ltd",
+      "symbol": "sz002281",
+      "kind": "stock",
+      "scale": 0.453,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HUAGONG_TECH_COMPANY_LIMITED",
+      "symbol": "sz000988",
+      "kind": "stock",
+      "scale": 0.908,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Sunway_Communication_Co_Ltd",
+      "symbol": "sz300136",
+      "kind": "stock",
+      "scale": 0.429,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TONGFU_MICROELECTRONICS_CO_LTD",
+      "symbol": "sz002156",
+      "kind": "stock",
+      "scale": 0.606,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Jiuli_Hi_tech_Metals_Co_Ltd",
+      "symbol": "sz002318",
+      "kind": "stock",
+      "scale": 0.356,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Goertek_Inc",
+      "symbol": "sz002241",
+      "kind": "stock",
+      "scale": 1.148,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Kuang_Chi_Technologies_Co_Ltd",
+      "symbol": "sz002625",
+      "kind": "stock",
+      "scale": 1.417,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Citic_Pacific_Special_Steel_Group_Co_Ltd",
+      "symbol": "sz000708",
+      "kind": "stock",
+      "scale": 0.263,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hengdian_Group_DMEGC_Magnetics_Co_Ltd",
+      "symbol": "sz002056",
+      "kind": "stock",
+      "scale": 0.237,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "LB_Group_Co_Ltd",
+      "symbol": "sz002601",
+      "kind": "stock",
+      "scale": 0.615,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_Great_Star_Industrial_Co_Ltd",
+      "symbol": "sz002444",
+      "kind": "stock",
+      "scale": 0.374,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "North_Industries_Group_Red_Arrow_Co_Ltd",
+      "symbol": "sz000519",
+      "kind": "stock",
+      "scale": 0.314,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "XJ_Electric_Co_Ltd",
+      "symbol": "sz000400",
+      "kind": "stock",
+      "scale": 0.338,
+      "compared_observations": 242,
+      "max_absolute_error": 8.881784197001252e-16,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Sed_Industry_Co_Ltd",
+      "symbol": "sz000032",
+      "kind": "stock",
+      "scale": 0.229,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Aerospace_CH_UAV_Co_Ltd",
+      "symbol": "sz002389",
+      "kind": "stock",
+      "scale": 0.279,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sunwoda_Electronic_Co_Ltd",
+      "symbol": "sz300207",
+      "kind": "stock",
+      "scale": 0.625,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Weixing_New_Building_Materials_Co_Ltd",
+      "symbol": "sz002372",
+      "kind": "stock",
+      "scale": 0.167,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "IEIT_SYSTEMS_Co_Ltd",
+      "symbol": "sz000977",
+      "kind": "stock",
+      "scale": 1.167,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Himile_Mechanical_Science_And_Technology_Shandong_Co_Ltd",
+      "symbol": "sz002595",
+      "kind": "stock",
+      "scale": 0.506,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Eoptolink_Technology_Inc_Ltd",
+      "symbol": "sz300502",
+      "kind": "stock",
+      "scale": 1.417,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Suzhou_Dongshan_Precision_Manufacturing_Co_Ltd",
+      "symbol": "sz002384",
+      "kind": "stock",
+      "scale": 0.787,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Risen_Energy_Co_Ltd",
+      "symbol": "sz300118",
+      "kind": "stock",
+      "scale": 0.18,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Suzhou_TFC_Optical_Communication_Co_Ltd",
+      "symbol": "sz300394",
+      "kind": "stock",
+      "scale": 0.507,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "AVIC_XIAN_AIRCRAFT_INDUSTRY_GROUP_COMPANY_LTD",
+      "symbol": "sz000768",
+      "kind": "stock",
+      "scale": 0.719,
+      "compared_observations": 242,
+      "max_absolute_error": 1.7763568394002505e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ZHEJIANG_SHUANGHUAN_DRIVELINE_CO_LTD",
+      "symbol": "sz002472",
+      "kind": "stock",
+      "scale": 0.508,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Aecc_Aero_Engine_Control_Co_Ltd",
+      "symbol": "sz000738",
+      "kind": "stock",
+      "scale": 0.314,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hans_Laser_Technology_Industry_Group_Co_Ltd",
+      "symbol": "sz002008",
+      "kind": "stock",
+      "scale": 0.433,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_New_Building_Materials_Public_Limited_Company",
+      "symbol": "sz000786",
+      "kind": "stock",
+      "scale": 0.633,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ZTE_Corporation",
+      "symbol": "sz000063",
+      "kind": "stock",
+      "scale": 2.292,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Sunlord_Electronics_Co_Ltd",
+      "symbol": "sz002138",
+      "kind": "stock",
+      "scale": 0.5,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangdong_Hongda_Holdings_Group_Co_Ltd",
+      "symbol": "sz002683",
+      "kind": "stock",
+      "scale": 0.31,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhongji_Innolight_Co_Ltd",
+      "symbol": "sz300308",
+      "kind": "stock",
+      "scale": 1.668,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HANGJIN_TECHNOLOGY_CO_LTD",
+      "symbol": "sz000818",
+      "kind": "stock",
+      "scale": 0.293,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shandong_Sinocera_Functional_Material_Co_Ltd",
+      "symbol": "sz300285",
+      "kind": "stock",
+      "scale": 0.298,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Avary_Holding_Shenzhen_Co_Limited",
+      "symbol": "sz002938",
+      "kind": "stock",
+      "scale": 0.443,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SHANGHAI_HUACE_NAVIGATION_TECHNOLOGY_LTD",
+      "symbol": "sz300627",
+      "kind": "stock",
+      "scale": 0.312,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Gotion_High_tech_Co_Ltd",
+      "symbol": "sz002074",
+      "kind": "stock",
+      "scale": 0.497,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Levima_Advanced_Materials_Corporation",
+      "symbol": "sz003022",
+      "kind": "stock",
+      "scale": 0.131,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "QINGDAO_SENTURY_TIRE_CO_LTD",
+      "symbol": "sz002984",
+      "kind": "stock",
+      "scale": 0.254,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CHAOZHOU_THREE_CIRCLE_GROUP_CO_LTD",
+      "symbol": "sz300408",
+      "kind": "stock",
+      "scale": 1.025,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Luxshare_Precision_Industry_Co_Ltd",
+      "symbol": "sz002475",
+      "kind": "stock",
+      "scale": 3.475,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_KTC_Technology_Co_Ltd",
+      "symbol": "sz001308",
+      "kind": "stock",
+      "scale": 0.038,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "ShenZhen_YUTO_Packaging_Technology_Co_Ltd",
+      "symbol": "sz002831",
+      "kind": "stock",
+      "scale": 0.172,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Envicool_Technology_Co_Ltd",
+      "symbol": "sz002837",
+      "kind": "stock",
+      "scale": 0.312,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Do_Fluoride_New_Materials_Co_Ltd",
+      "symbol": "sz002407",
+      "kind": "stock",
+      "scale": 0.308,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "BEIJING_ORIENTAL_YUHONG_WATERPROOF_TECHNOLOGY_CO_LTD",
+      "symbol": "sz002271",
+      "kind": "stock",
+      "scale": 0.485,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ruijie_Networks_Co_Ltd",
+      "symbol": "sz301165",
+      "kind": "stock",
+      "scale": 0.112,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HANGZHOU_HIKVISION_DIGITAL_TECHNOLOGY_CO_LTD",
+      "symbol": "sz002415",
+      "kind": "stock",
+      "scale": 2.32,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Electric_Connector_Technology_Co_Ltd",
+      "symbol": "sz300679",
+      "kind": "stock",
+      "scale": 0.271,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "TCL_Zhonghuan_Renewable_Energy_Technology_Co_Ltd",
+      "symbol": "sz002129",
+      "kind": "stock",
+      "scale": 0.552,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Sieyuan_Electric_Co_Ltd",
+      "symbol": "sz002028",
+      "kind": "stock",
+      "scale": 0.993,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HANGZHOU_OXYGEN_PLANT_GROUP_CO_LTD",
+      "symbol": "sz002430",
+      "kind": "stock",
+      "scale": 0.218,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Wuxi_Lead_Intelligent_Equipment_CO_LTD",
+      "symbol": "sz300450",
+      "kind": "stock",
+      "scale": 0.486,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Tinci_Materials_Technology_Co_Ltd",
+      "symbol": "sz002709",
+      "kind": "stock",
+      "scale": 0.523,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Capchem_Technology_Co_Ltd",
+      "symbol": "sz300037",
+      "kind": "stock",
+      "scale": 0.373,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Hangzhou_Chang_Chuan_Technology_Co_Ltd",
+      "symbol": "sz300604",
+      "kind": "stock",
+      "scale": 0.409,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "WUHAN_JINGCE_ELECTRONIC_GROUP_CO_LTD",
+      "symbol": "sz300567",
+      "kind": "stock",
+      "scale": 0.259,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jiangsu_Yoke_Technology_Co_Ltd",
+      "symbol": "sz002409",
+      "kind": "stock",
+      "scale": 0.351,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ninestar_Corporation",
+      "symbol": "sz002180",
+      "kind": "stock",
+      "scale": 0.487,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yangzhou_Yangjie_Electronic_Technology_Co_Ltd",
+      "symbol": "sz300373",
+      "kind": "stock",
+      "scale": 0.351,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Changsha_Jingjia_Microelectronics_Co_Ltd",
+      "symbol": "sz300474",
+      "kind": "stock",
+      "scale": 0.403,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Canmax_Technologies_Co_Ltd",
+      "symbol": "sz300390",
+      "kind": "stock",
+      "scale": 0.231,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Beijing_Easpring_Material_Technology_Co_Ltd",
+      "symbol": "sz300073",
+      "kind": "stock",
+      "scale": 0.342,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Jonhon_Optronic_Technology_Co_Ltd",
+      "symbol": "sz002179",
+      "kind": "stock",
+      "scale": 1.151,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Anker_Innovations_Technology_Co_Ltd",
+      "symbol": "sz300866",
+      "kind": "stock",
+      "scale": 0.421,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guangzhou_Shiyuan_Electronic_Technology_Company_Limited",
+      "symbol": "sz002841",
+      "kind": "stock",
+      "scale": 0.313,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Longsys_Electronics_Co_Ltd",
+      "symbol": "sz301308",
+      "kind": "stock",
+      "scale": 0.217,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "JA_Solar_Technology_Co_Ltd",
+      "symbol": "sz002459",
+      "kind": "stock",
+      "scale": 0.422,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yealink_Xiamen_Network_Technology_Co_Ltd",
+      "symbol": "sz300628",
+      "kind": "stock",
+      "scale": 0.374,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Zhejiang_Jingsheng_Mechanical_and_Electrical_Co_Ltd",
+      "symbol": "sz300316",
+      "kind": "stock",
+      "scale": 0.4,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Guizhou_Space_Appliance_Co_LTD",
+      "symbol": "sz002025",
+      "kind": "stock",
+      "scale": 0.311,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "CNGR_Advanced_Material_Co_Ltd",
+      "symbol": "sz300919",
+      "kind": "stock",
+      "scale": 0.329,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Inovance_Technology_Co_Ltd",
+      "symbol": "sz300124",
+      "kind": "stock",
+      "scale": 3.434,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ingenic_Semiconductor_Co_Ltd",
+      "symbol": "sz300223",
+      "kind": "stock",
+      "scale": 0.509,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shennan_Circuits_Co_Ltd",
+      "symbol": "sz002916",
+      "kind": "stock",
+      "scale": 0.498,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "EVE_Energy_Co_Ltd",
+      "symbol": "sz300014",
+      "kind": "stock",
+      "scale": 1.123,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Empyrean_Technology_Co_Ltd",
+      "symbol": "sz301269",
+      "kind": "stock",
+      "scale": 0.576,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "HEBEI_SINOPACK_ELECTRONIC_TECHNOLOGY_CO_LTD",
+      "symbol": "sz003031",
+      "kind": "stock",
+      "scale": 0.187,
+      "compared_observations": 242,
+      "max_absolute_error": 3.552713678800501e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Huizhou_Desay_SV_Automotive_Co_Ltd",
+      "symbol": "sz002920",
+      "kind": "stock",
+      "scale": 0.644,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SUNGROW_POWER_SUPPLY_CO_LTD",
+      "symbol": "sz300274",
+      "kind": "stock",
+      "scale": 1.958,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_S_C_New_Energy_Technology_Corporation",
+      "symbol": "sz300724",
+      "kind": "stock",
+      "scale": 0.34,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Maxscend_Microelectronics_Company_Limited",
+      "symbol": "sz300782",
+      "kind": "stock",
+      "scale": 0.624,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "China_Zhenhua_Group_Science_and_Technology_Co_Ltd",
+      "symbol": "sz000733",
+      "kind": "stock",
+      "scale": 0.442,
+      "compared_observations": 242,
+      "max_absolute_error": 7.105427357601002e-15,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Shenzhen_Kedali_Industry_Co_Ltd",
+      "symbol": "sz002850",
+      "kind": "stock",
+      "scale": 0.555,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Yunnan_Energy_New_Material_Group_Co_Ltd",
+      "symbol": "sz002812",
+      "kind": "stock",
+      "scale": 0.359,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Unigroup_Guoxin_Microelectronics_Co_Ltd",
+      "symbol": "sz002049",
+      "kind": "stock",
+      "scale": 0.968,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "SG_Micro_Corp",
+      "symbol": "sz300661",
+      "kind": "stock",
+      "scale": 0.742,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Ginlong_Technologies_Co_Ltd",
+      "symbol": "sz300763",
+      "kind": "stock",
+      "scale": 0.28,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "NAURA_Technology_Group_Co_Ltd",
+      "symbol": "sz002371",
+      "kind": "stock",
+      "scale": 3.2,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Contemporary_Amperex_Technology_Co_Ltd",
+      "symbol": "sz300750",
+      "kind": "stock",
+      "scale": 13.62,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    },
+    {
+      "id": "Suzhou_Maxwell_Technologies_Co_Ltd",
+      "symbol": "sz300751",
+      "kind": "stock",
+      "scale": 0.216,
+      "compared_observations": 242,
+      "max_absolute_error": 0.0,
+      "legacy_zero_sessions": []
+    }
+  ]
+}
