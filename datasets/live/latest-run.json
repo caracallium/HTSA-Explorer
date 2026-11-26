@@ -6,10 +6,10 @@
   },
   "audit": {
     "analysis_input_sha256": "0D4E868CB4DB798890AE24A61B6D9A256FA980028B2D797D49D687E80AACA7E7",
-    "created_at": "2026-11-26T03:22:47.496695+00:00",
-    "record_file": "20261126T032248Z_equities.graphml_5242c1ee6f4d.json",
-    "run_id": "5242c1ee6f4d47e89bc4e234fee960cc",
-    "runtime_seconds": 1.0801940000383183,
+    "created_at": "2026-11-26T03:23:40.559999+00:00",
+    "record_file": "20261126T032341Z_equities.graphml_1fd4801d6276.json",
+    "run_id": "1fd4801d62764fa1ad09aa04a9d22602",
+    "runtime_seconds": 0.9802947000134736,
     "software_version": "0.3.0"
   },
   "coverage": {
@@ -338,6 +338,6 @@
       "root": "Home_Appliances_and_Digital"
     }
   ],
-  "summary_file": "20261126T032248Z_equities.graphml_5242c1ee6f4d_summary_edges.txt",
+  "summary_file": "20261126T032341Z_equities.graphml_1fd4801d6276_summary_edges.txt",
   "ts_key": "d0"
 }
