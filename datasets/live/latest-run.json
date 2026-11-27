@@ -5,19 +5,19 @@
     "vertices": 759
   },
   "audit": {
-    "analysis_input_sha256": "5ACCF49DE7E2A43BB206E0E6EC6BCD4E42BBCD60D2E17167081066B8253AB171",
-    "created_at": "2026-11-26T19:55:26.341372+00:00",
-    "record_file": "20261126T195526Z_equities.graphml_3ce5a42bf8d2.json",
-    "run_id": "3ce5a42bf8d243f79982264bf00f2393",
-    "runtime_seconds": 0.4349746350000032,
+    "analysis_input_sha256": "93DD8CEF54EC4C2EBA8CFA99B5C812357ED1AFF57FA334AE9942558716BD3A5C",
+    "created_at": "2026-11-27T19:45:11.266963+00:00",
+    "record_file": "20261127T194511Z_equities.graphml_7b263ed7df63.json",
+    "run_id": "7b263ed7df63404fbccfcdf38ae04168",
+    "runtime_seconds": 0.5129238980000537,
     "software_version": "0.3.0"
   },
   "coverage": {
     "definition": "selected importance / total importance",
-    "importance_fraction": 0.8451942469413214,
-    "selected_importance": 254916727.94969368,
-    "selected_vertices": 69,
-    "total_importance": 301607268.23711044,
+    "importance_fraction": 0.8453654149975516,
+    "selected_importance": 255227096.26410562,
+    "selected_vertices": 70,
+    "total_importance": 301913340.3568974,
     "total_vertices": 759
   },
   "execution": {
@@ -149,14 +149,14 @@
   "strategy": "Path-greedy",
   "subgraphs": [
     {
-      "g_value": 68593367.23098399,
+      "g_value": 68667217.37879914,
       "nodes": [
         "SSE_Composite_Index"
       ],
       "root": "SSE_Composite_Index"
     },
     {
-      "g_value": 55939309.78451622,
+      "g_value": 55963904.94120197,
       "nodes": [
         "Alcoholic_Beverages",
         "Condiments_and_Dairy",
@@ -164,12 +164,13 @@
         "Kweichow_Moutai_Co_Ltd",
         "SSE_Cons_Staples",
         "Shanxi_Xinghuacun_Fen_Wine_Factory_Co_Ltd",
+        "Sichuan_Swellfun_Co_Ltd",
         "Tsingtao_Brewery_Co_Ltd"
       ],
       "root": "SSE_Cons_Staples"
     },
     {
-      "g_value": 18402572.10128554,
+      "g_value": 18412041.038995497,
       "nodes": [
         "Advanced_Computing",
         "Cambricon_Technologies_Corporation_Limited",
@@ -182,7 +183,7 @@
       "root": "SSE_Info_technology"
     },
     {
-      "g_value": 15512130.07684094,
+      "g_value": 15455965.573163103,
       "nodes": [
         "Anhui_Zhongding_Sealing_Parts_Co_Ltd",
         "Contemporary_Amperex_Technology_Co_Ltd",
@@ -208,7 +209,7 @@
       "root": "SZSE_Fundamental_200_Index"
     },
     {
-      "g_value": 7984561.057349749,
+      "g_value": 7936570.811813979,
       "nodes": [
         "Chemical_Pharmaceuticals",
         "Medical_Devices",
@@ -220,7 +221,7 @@
       "root": "SSE_Health_Care"
     },
     {
-      "g_value": 4844827.4940742,
+      "g_value": 4846586.184019377,
       "nodes": [
         "SSE_Materials",
         "Steel_and_Nonferrous_Metals"
@@ -228,14 +229,14 @@
       "root": "SSE_Materials"
     },
     {
-      "g_value": 4286569.850645326,
+      "g_value": 4289983.266661011,
       "nodes": [
         "SSE_Cons_Disc"
       ],
       "root": "SSE_Cons_Disc"
     },
     {
-      "g_value": 3196651.120459417,
+      "g_value": 3200245.9622471016,
       "nodes": [
         "China_Mobile_Limited",
         "Communications_and_Networks"
@@ -243,7 +244,7 @@
       "root": "Communications_and_Networks"
     },
     {
-      "g_value": 3018552.4983870494,
+      "g_value": 3028936.143903029,
       "nodes": [
         "Integrated_Financial_Holdings",
         "Large_Banks",
@@ -253,14 +254,14 @@
       "root": "SSE_Financials"
     },
     {
-      "g_value": 2949111.9854637245,
+      "g_value": 2952074.1372395866,
       "nodes": [
         "SSE_Communication_Services"
       ],
       "root": "SSE_Communication_Services"
     },
     {
-      "g_value": 2544218.3677582988,
+      "g_value": 2545455.3792809364,
       "nodes": [
         "Automobiles_and_Tires",
         "Chongqing_Sokon_Industry_Group_Stock_Co_Ltd",
@@ -269,7 +270,7 @@
       "root": "Automobiles_and_Tires"
     },
     {
-      "g_value": 2242077.0329237254,
+      "g_value": 2246130.55844536,
       "nodes": [
         "Pharmaceutical_Platforms",
         "WuXi_AppTec_Co_Ltd"
@@ -277,7 +278,7 @@
       "root": "Pharmaceutical_Platforms"
     },
     {
-      "g_value": 2125116.529380004,
+      "g_value": 2126928.341048794,
       "nodes": [
         "Beijing_Kingsoft_Office_Software_Inc",
         "Software_Platforms"
@@ -285,21 +286,21 @@
       "root": "Software_Platforms"
     },
     {
-      "g_value": 1883877.4889490313,
+      "g_value": 1885613.510305944,
       "nodes": [
         "SSE_Industrials"
       ],
       "root": "SSE_Industrials"
     },
     {
-      "g_value": 1685686.39084,
+      "g_value": 1686321.9028399999,
       "nodes": [
         "BYD_Company_Limited"
       ],
       "root": "BYD_Company_Limited"
     },
     {
-      "g_value": 1530018.9363206853,
+      "g_value": 1539327.1901030089,
       "nodes": [
         "Electric_Power_Energy",
         "SSE_Utilities"
@@ -307,14 +308,14 @@
       "root": "SSE_Utilities"
     },
     {
-      "g_value": 1503396.53925,
+      "g_value": 1504221.00225,
       "nodes": [
         "Eastroc_Beverage_Group_Co_Ltd"
       ],
       "root": "Eastroc_Beverage_Group_Co_Ltd"
     },
     {
-      "g_value": 1497749.249753497,
+      "g_value": 1499184.8550387549,
       "nodes": [
         "Chemicals_and_New_Materials",
         "Wanhua_Chemical_Group_Co_Ltd"
@@ -322,7 +323,7 @@
       "root": "Chemicals_and_New_Materials"
     },
     {
-      "g_value": 1478156.343280494,
+      "g_value": 1482020.0003535524,
       "nodes": [
         "BeiGene_Ltd",
         "Biopharmaceuticals"
@@ -330,7 +331,7 @@
       "root": "Biopharmaceuticals"
     },
     {
-      "g_value": 1411797.214128567,
+      "g_value": 1412841.522770887,
       "nodes": [
         "Beijing_Roborock_Technology_Co_Ltd",
         "Home_Appliances_and_Digital"
@@ -338,6 +339,6 @@
       "root": "Home_Appliances_and_Digital"
     }
   ],
-  "summary_file": "20261126T195526Z_equities.graphml_3ce5a42bf8d2_summary_edges.txt",
+  "summary_file": "20261127T194511Z_equities.graphml_7b263ed7df63_summary_edges.txt",
   "ts_key": "d0"
 }
